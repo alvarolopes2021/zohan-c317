@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1.2em;
 }
 img{
     width: 40%;

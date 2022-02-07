@@ -13,6 +13,7 @@ h1{
 .side-side{
     display: flex;
     flex-direction: row;
+    margin-top: 1.2em;
 }
 .hold-icon{
     border: px solid red;

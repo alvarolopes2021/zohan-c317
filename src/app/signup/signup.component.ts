@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IconServiceService } from 'src/assets/icon-service.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    private iconService: IconServiceService
+
+  ) { }
+
+  icons : Map<string, any> = new Map<string, any>();
 
   ngOnInit(): void {
+    this.icons = this.iconService.getIcons();
   }
+
+  
 
 }
