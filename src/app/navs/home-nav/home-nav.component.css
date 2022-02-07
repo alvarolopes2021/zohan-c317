@@ -18,3 +18,8 @@ a{
 .menu-right{
     float: right;
 }
+
+.active{
+    background-color: #cecece;
+    color: #000;
+}

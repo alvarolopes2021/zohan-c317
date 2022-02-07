@@ -1,0 +1,45 @@
+.main{
+    border: px solid red;
+    width: 100%;
+}
+h1{
+    color: #eee;
+    display: block;
+    margin-top: 1%;
+    margin-bottom: 1%;    
+    text-align: center;
+    font-family: 'Rye', cursive;
+}
+.side-side{
+    display: flex;
+    flex-direction: row;
+}
+.hold-icon{
+    border: px solid red;
+    width: 20%;
+    position: relative;
+}
+.hold-icon img{
+    margin-top: 30%;
+    margin-left: 25%;
+    width: 80%;
+}
+
+.hold-prices{
+    border: px solid red;
+    color: #eee;
+    position: relative;
+    margin-left: 10%;
+    width: 65%;
+}
+
+.hold-prices table{
+    border-collapse: collapse;
+    
+    width: 85%;
+}
+.hold-prices td{
+    text-align: center;
+    padding: 1.2em;
+    border-bottom: 1px solid #eee;    
+}
