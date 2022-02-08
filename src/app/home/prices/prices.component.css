@@ -21,23 +21,28 @@ h1{
     position: relative;
 }
 .hold-icon img{
-    margin-top: 30%;
-    margin-left: 25%;
+    margin: 50% auto 40% 25%;
     width: 80%;
 }
 
+.info-box{
+    border: px solid red;
+    position: relative;
+    margin-left: 10%;
+    width: 65%;    
+    border-radius: 1%;
+}
 .hold-prices{
     border: px solid red;
     color: #eee;
-    position: relative;
+    position: relative;    
+    width: 80%;
     margin-left: 10%;
-    width: 65%;
 }
 
 .hold-prices table{
-    border-collapse: collapse;
-    
-    width: 85%;
+    border-collapse: collapse;    
+    width: 100%;
 }
 .hold-prices td{
     text-align: center;

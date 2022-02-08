@@ -21,22 +21,22 @@ h1{
     position: relative;
 }
 .hold-icon img{
-    margin: 30% auto 40% 25%;
+    margin: 50% auto 40% 25%;
     width: 80%;
 }
-
-.hold-ads{
-    border: 1px solid #eee;
-    color: rgba(255,255,255,0.5);
+.info-box{
     position: relative;
     margin-left: 10%;
-    width: 65%;
-    min-height: 80%;
+    width: 65%;    
     border-radius: 1%;
+}
+.hold-ads{
+    min-height: 85%;
+    border: 1px solid #eee;
+    color: rgba(255,255,255,0.5);    
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;    
 }
 .hold-ads h2{
-    vertical-align: middle;
     margin-top: 20%;
 }

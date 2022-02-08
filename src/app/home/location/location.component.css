@@ -21,14 +21,17 @@ h1{
     position: relative;
 }
 .hold-icon img{
-    margin-top: 30%;
-    margin-left: 25%;
+    margin: 50% auto 40% 25%;
     width: 80%;
 }
-
+.info-box{
+    position: relative;
+    margin-left: 10%;
+    width: 65%;    
+    border-radius: 1%;
+}
 .hold-location{
     border: px solid red;
     position: relative;
-    margin-left: 10%;
-    width: 65%;
+    margin-left: 5%;
 }
