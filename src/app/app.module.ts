@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeNavComponent } from './navs/home-nav/home-nav.component';
@@ -13,6 +15,7 @@ import { LocationComponent } from './home/location/location.component';
 import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +25,15 @@ import { AdsComponent } from './home/ads/ads.component';
     SignupComponent,
     LocationComponent,
     PricesComponent,
-    AdsComponent
+    AdsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

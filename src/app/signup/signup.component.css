@@ -31,37 +31,39 @@ h1{
     margin-bottom: 5%;
     border-radius: 1%;
     padding-left: 1%;
+    padding-right: 1%;
 }
 
 
 input[type="text"], 
 input[type="tel"],
-input[type="password"], 
-input[type="email"]{
+input[type="password"]{
      width: 80%;
-     padding: 0.75em;
+     padding: 2.5%;
      margin-top: 1.2em;
      margin-right: 1.2em;
      margin-bottom: 1.2em;
-     border: 1px solid #898998;
+     border: none;
      border-bottom-right-radius: 0.5em;
      border-top-right-radius: 0.5em;
+
  }
 
 
- input[type="submit"]{
+ .submit{
      margin-top: 3%;
      margin-left: 0;
-     margin-bottom: 10%;
+     margin-bottom: 5%;
      width: 50%;
-     padding: 0.7em;
+     padding: 0.9em;
      background-color: #898998;
      border: none;
      cursor: pointer;
      font-weight: bolder;
+     text-decoration: none;
  }
 
- input[type="submit"]:hover{
+ .submit:hover{
     background-color: #9a9a9a;
 }
 
@@ -69,6 +71,15 @@ input[type="email"]{
     color: #000;
     background-color: #fff;
     display: inline-block;
-    padding: 0.5em;
-    
+    padding: 2.15%;    
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+.input-icons:hover{
+    cursor: pointer;
+}
+
+.alreadyUser{
+    color: #000;
+    font-weight: bolder;
 }

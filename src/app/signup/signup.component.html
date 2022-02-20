@@ -7,49 +7,54 @@
     <div class="hold-form">
 
         <h1>CADASTRO</h1>
-        <form action="">
+
+        <form [formGroup]="signupForm">
 
             <div class="input-container">
                 <label for="username">
                     <fa-icon [icon]="icons.get('faFileSignature')" class="input-icons"></fa-icon>
-                </label>                
-                <input type="text" id="username" placeholder="Nome ou Apelido">
+                </label>
+                <input type="text" id="username" name="username" formControlName="userName"
+                    placeholder="Nome ou Apelido">
             </div>
 
             <div class="input-container">
-                <label for="email">
-                    <fa-icon [icon]="icons.get('faEnvelope')" class="input-icons"></fa-icon>
-                </label>                
-                <input type="email" id="email" placeholder="Email">
-            </div>
-
-            <div class="input-container">
-                <label for="">
+                <label for="phone">
                     <fa-icon [icon]="icons.get('faPhone')" class="input-icons"></fa-icon>
-                </label>                
-                <input type="tel" placeholder="Telefone">
+                </label>
+                <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone">
             </div>
 
             <div class="input-container">
                 <label for="psw">
                     <fa-icon [icon]="icons.get('faLock')" class="input-icons"></fa-icon>
-                </label>                
-                <input type="password" name="" id="psw" placeholder="Senha">
+                </label>
+                <input type="password" id="psw" name="psw" formControlName="userPsw" placeholder="Senha">
             </div>
 
 
             <div class="input-container">
                 <label for="confirmPsw">
                     <fa-icon [icon]="icons.get('faCheck')" class="input-icons"></fa-icon>
-                </label>                
-                <input type="password" name="" id="confirmPsw" placeholder="Confirmar senha">
+                </label>
+                <input type="password" id="confirmPsw" name="confirmPsw" formControlName="userConfirmPsw"
+                    placeholder="Confirmar senha">
             </div>
 
             <div>
-                <input type="submit" value="ENVIAR">
+                <button class="submit" (click)="signup()">ENVIAR</button>
             </div>
 
         </form>
+
+        <div class="alreadyUser">
+            <p>&#9986; Já possui cadastro? Então, efetue o <a routerLink='/login' >login</a> 
+                e realize um agendamento. &#9986;
+            </p>
+        </div>
+
+        <br>
+
     </div>
 
 </div>
