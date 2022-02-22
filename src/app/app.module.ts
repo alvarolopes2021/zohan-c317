@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AppComponent } from './app.component';
 import { HomeNavComponent } from './navs/home-nav/home-nav.component';
@@ -14,6 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LocationComponent } from './home/location/location.component';
 import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { AdsComponent } from './home/ads/ads.component';
     LocationComponent,
     PricesComponent,
     AdsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { AdsComponent } from './home/ads/ads.component';
     BrowserAnimationsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

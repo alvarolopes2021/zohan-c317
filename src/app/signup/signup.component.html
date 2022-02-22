@@ -22,7 +22,7 @@
                 <label for="phone">
                     <fa-icon [icon]="icons.get('faPhone')" class="input-icons"></fa-icon>
                 </label>
-                <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone">
+                <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone" (keyup)="phoneMask()" mask="(00) 0 0000-0000">
             </div>
 
             <div class="input-container">
@@ -48,7 +48,7 @@
         </form>
 
         <div class="alreadyUser">
-            <p>&#9986; Já possui cadastro? Então, efetue o <a routerLink='/login' >login</a> 
+            <p>&#9986; Já possui cadastro? Efetue o <a routerLink='/login' >login</a> 
                 e realize um agendamento. &#9986;
             </p>
         </div>
