@@ -1,8 +1,8 @@
 <div class="main">
 
     <div class="hold-logo">
-        <img src="./../../assets/bg2.jpg" alt="logo">
-    </div>
+        <img src="./../../assets/darkThemeLogo - original.jpg" alt="logo">
+    </div> 
 
     <div class="hold-form">
 
@@ -14,15 +14,28 @@
                 <label for="username">
                     <fa-icon [icon]="icons.get('faFileSignature')" class="input-icons"></fa-icon>
                 </label>
-                <input type="text" id="username" name="username" formControlName="userName"
-                    placeholder="Nome ou Apelido">
+                <input 
+                    type="text"
+                    id="username" 
+                    name="username"
+                    formControlName="userName"
+                    placeholder="Nome ou Apelido"                    
+                >
             </div>
 
             <div class="input-container">
                 <label for="phone">
                     <fa-icon [icon]="icons.get('faPhone')" class="input-icons"></fa-icon>
                 </label>
-                <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone" (keyup)="phoneMask()" mask="(00) 0 0000-0000">
+                <input 
+                    type="tel"
+                    name="phone" 
+                    id="phone" 
+                    formControlName="userPhone" 
+                    placeholder="Telefone"
+                    title="Telefone - (35) 9 9898-9898"
+                    mask="(00) 0 0000-0000"
+                >
             </div>
 
             <div class="input-container">
@@ -42,13 +55,19 @@
             </div>
 
             <div>
-                <button class="submit" (click)="signup()">ENVIAR</button>
+                <button class="submit" (click)="signup()" *ngIf="!isSigningUp">ENVIAR</button>
+                <mat-spinner 
+                    class="example-margin"
+                    mode="indeterminate"
+                    *ngIf="isSigningUp" 
+                >
+                </mat-spinner>
             </div>
 
         </form>
 
         <div class="alreadyUser">
-            <p>&#9986; Já possui cadastro? Efetue o <a routerLink='/login' >login</a> 
+            <p>&#9986; Já possui cadastro? Efetue o <a routerLink='/login'>login</a>
                 e realize um agendamento. &#9986;
             </p>
         </div>

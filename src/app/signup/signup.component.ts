@@ -15,6 +15,11 @@ import { User } from '../models/user.model';
 
 export class SignupComponent implements OnInit {
 
+  /* FLAGS */
+
+  isSigningUp: boolean = false;
+
+
   errors: Map<string, string> = new Map<string, string>();
 
   icons: Map<string, any> = new Map<string, any>();
@@ -38,6 +43,7 @@ export class SignupComponent implements OnInit {
 
 
   async signup() {
+    
     const formValue = this.signupForm;
 
     if (formValue.valid) {
@@ -46,6 +52,8 @@ export class SignupComponent implements OnInit {
         this.errors.set(Constants.Errors.PASSWORD_DONT_MATCH, 'As senhas não batem');
         return;
       }
+      
+      this.isSigningUp = true;
 
       let user = new User();
 
@@ -60,13 +68,18 @@ export class SignupComponent implements OnInit {
 
 
       if (response == null) {
-        console.log('')
+        console.log('');
+        this.isSigningUp = false;
       }
+      
+      this.isSigningUp = false;
 
     }
-
     else
       alert('todos os campos precisam ser preenchidos');
+
+    
+    this.isSigningUp = true;
 
     if (!formValue.get('userName')?.valid)
       this.errors.set(Constants.Errors.USERNAME_EMPTY, 'O usuário não pode ser vazio');
@@ -77,11 +90,8 @@ export class SignupComponent implements OnInit {
     if (!formValue.get('userPsw')?.valid)
       this.errors.set(Constants.Errors.PASSWORD_EMPTY, 'A senha não pode ser vazia');
 
-  }
+    this.isSigningUp = false;
 
-  phoneMask(){
-    
   }
-
 
 }

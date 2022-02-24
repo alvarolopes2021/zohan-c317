@@ -26,4 +26,17 @@ export class AuthService {
     return this.http.post<User>(Constants.HttpEndpoints.SIGN_UP, user);
 
   }
+
+  login(user: User): Observable<User> | null {
+    if(user == null)
+      return user;
+
+    if (user.password == null || user.phone == null)
+      return null;
+
+    user.password = btoa(user.password.toString());
+
+    return this.http.post<User>(Constants.HttpEndpoints.LOGIN, user);
+  }
+  
 }

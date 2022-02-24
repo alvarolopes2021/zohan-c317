@@ -5,8 +5,7 @@ li{
     margin: 0;    
 }
 li:hover{
-    background-color: #000;
-    background-color: #bdbdbd;
+    background-color: #fff;
     color: #000;
 }
 a{
@@ -20,6 +19,6 @@ a{
 }
 
 .active{
-    background-color: #cecece;
+    background-color: #fff;
     color: #000;
 }

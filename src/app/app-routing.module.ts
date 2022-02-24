@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LocationComponent } from './home/location/location.component';
 import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'prices', component: PricesComponent, data: {animation: 'PricesAnimation'}},
   {path: 'location', component: LocationComponent, data: {animation: 'LocationAnimation'}},
   {path: 'signup', component: SignupComponent, data: {animation: 'SignUpAnimation'}},
+  {path: 'login', component: LoginComponent}
 ];
 
 
