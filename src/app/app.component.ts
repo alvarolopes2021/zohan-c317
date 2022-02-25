@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from './services/auth.service';
+
 import { slideInAnimation } from './animations/slideAnimation';
 
 @Component({
@@ -10,11 +13,23 @@ import { slideInAnimation } from './animations/slideAnimation';
     slideInAnimation
   ]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
   
   title = 'Zohan - Barber Shop';
+
+  
+  isLoggedIn?: boolean; 
+
+  constructor(private authService: AuthService){}
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'];
   }
+
+  ngOnInit() {
+    this.authService.isLoggedIn.subscribe((value) => this.isLoggedIn = value); // {2}
+  }
+
+
 }

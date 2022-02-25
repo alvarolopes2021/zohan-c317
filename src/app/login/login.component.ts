@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    
+
+    this.authService.login(null);
 
   }
 
