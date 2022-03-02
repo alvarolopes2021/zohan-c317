@@ -22,7 +22,7 @@ export class AuthService {
     return this.loggedIn.asObservable(); // {2}
   }
 
-  signup(user: User): Observable<User> | null {
+  signup(user: User): Observable<any> | null {
     if (user == null)
       return user;
 
@@ -31,7 +31,7 @@ export class AuthService {
 
     user.password = btoa(user.password.toString());  //converts the password to base64  
 
-    return this.http.post<User>(Constants.HttpEndpoints.SIGN_UP, user);
+    return this.http.post<any>(Constants.HttpEndpoints.SIGN_UP, user);
 
   }
 

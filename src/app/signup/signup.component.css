@@ -66,22 +66,32 @@ input[type="password"]{
 
 }
 
+.display-errors{
+    color: #ee0000;
+    text-align: center;
+    margin: auto;
+    font-weight: bolder;
+}
 
- .submit{
-     margin-top: 3%;
-     margin-left: 0;
-     margin-bottom: 5%;
-     width: 50%;
-     padding: 0.9em;
-     background-color: #898998;
-     border: none;
-     cursor: pointer;
-     font-weight: bolder;
-     text-decoration: none;
- }
+.submit{
+    margin-top: 3%;
+    margin-left: 0;
+    margin-bottom: 5%;
+    width: 50%;
+    padding: 0.9em;
+    background-color: #898998;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+    text-decoration: none;
+}
 
- .submit:hover{
-    background-color: #9a9a9a;
+.submit:hover{
+   background-color: #9a9a9a;
+}
+
+.spinner{
+    margin: auto auto 2% auto;
 }
 
 .alreadyUser{

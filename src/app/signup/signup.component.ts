@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { AuthService } from '../services/auth.service';
 import { Constants } from 'src/constants';
 import { User } from '../models/user.model';
+import { catchError } from 'rxjs';
+import { ErrorHandler } from '../services/errorHandler';
 
 @Component({
   selector: 'app-signup',
@@ -19,6 +22,9 @@ export class SignupComponent implements OnInit {
 
   isSigningUp: boolean = false;
 
+  readonly CONSTANTS = Constants;
+
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   errors: Map<string, string> = new Map<string, string>();
 
@@ -41,10 +47,10 @@ export class SignupComponent implements OnInit {
     this.icons = this.iconService.getIcons();
   }
 
-
   async signup() {
-    
+
     const formValue = this.signupForm;
+
 
     if (formValue.valid) {
 
@@ -52,7 +58,7 @@ export class SignupComponent implements OnInit {
         this.errors.set(Constants.Errors.PASSWORD_DONT_MATCH, 'As senhas não batem');
         return;
       }
-      
+
       this.isSigningUp = true;
 
       let user = new User();
@@ -62,36 +68,22 @@ export class SignupComponent implements OnInit {
       user.password = formValue.get('userPsw')?.value
       user.type = Constants.Roles.USER;
 
-      let response = this.authService.signup(user)?.subscribe((value) => {
-        console.log(value);
-      });
+      this.authService.signup(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
+        if(value instanceof Map){
+          if(value.has(Constants.Errors.ERROR)){
+            this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR));
+          }
+        }
 
-      if (response == null) {
-        console.log('');
         this.isSigningUp = false;
-      }
-      
-      this.isSigningUp = false;
+      });
 
     }
     else
-      alert('todos os campos precisam ser preenchidos');
-
-    
-    this.isSigningUp = true;
-
-    if (!formValue.get('userName')?.valid)
-      this.errors.set(Constants.Errors.USERNAME_EMPTY, 'O usuário não pode ser vazio');
-
-    if (!formValue.get('userPhone')?.valid)
-      this.errors.set(Constants.Errors.USER_PHONE_EMPTY, 'O telefone não pode ser vazio');
-
-    if (!formValue.get('userPsw')?.valid)
-      this.errors.set(Constants.Errors.PASSWORD_EMPTY, 'A senha não pode ser vazia');
-
-    this.isSigningUp = false;
+      alert('Todos os campos precisam ser preenchidos!');
 
   }
+
 
 }

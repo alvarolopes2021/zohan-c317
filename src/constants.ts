@@ -2,13 +2,16 @@ export class Constants{
 
     static HttpEndpoints = class {
 
-        static LOGIN: string = "http://192.168.0.3:3000/auth/login";
+        static IP: string = "http://192.168.0.6:3000/";
+
+        static LOGIN: string = this.IP + "auth/login";
         
-        static SIGN_UP: string = "http://192.168.0.3:3000/auth/signup";
+        static SIGN_UP: string = this.IP + "auth/signup";
                 
     }
 
     static Errors = class {
+        static ERROR = "ERROR";
 
         static USERNAME_EMPTY = 'USERNAME_EMPTY';
 
