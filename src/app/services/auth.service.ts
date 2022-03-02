@@ -35,11 +35,7 @@ export class AuthService {
 
   }
 
-  login(user: User | null): string | null {
-
-    let token: string = "";
-
-    this.loggedIn.next(true);
+  login(user: User | null): Observable<any> | null {
 
     if (user == null)
       return user;
@@ -49,18 +45,7 @@ export class AuthService {
 
     user.password = btoa(user.password.toString());
 
-    this.http.post<string>(Constants.HttpEndpoints.LOGIN, user).subscribe((response) => token = response);
-
-    if (token == null)
-      return null;
-
-    if (token.length <= 0)
-      return null;
-
-    
-    this.router.navigate(['/logged/client/home']);
-
-    return token;
+    return this.http.post<any>(Constants.HttpEndpoints.LOGIN, user);
 
   }
 

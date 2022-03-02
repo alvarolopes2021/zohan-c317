@@ -14,14 +14,8 @@
                 <label for="phone">
                     <fa-icon [icon]="icons.get('faPhone')" class="input-icons"></fa-icon>
                 </label>
-                <input 
-                    type="tel" 
-                    name="phone" 
-                    id="phone" 
-                    formControlName="userPhone" 
-                    placeholder="Telefone"
-                    title="Telefone - (35) 9 9898-9898"
-                    mask="(00) 0 0000-0000">
+                <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone"
+                    title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000">
 
             </div>
 
@@ -32,13 +26,17 @@
                 <input type="password" id="psw" name="psw" formControlName="userPsw" placeholder="Senha">
             </div>
 
+            <div class="display-errors" *ngIf="errors.size > 0 && errors.has(CONSTANTS.Errors.ERROR)">
+                <p>{{errors.get(CONSTANTS.Errors.ERROR)}}</p>
+            </div>
+
+            
             <div>
-                <button class="submit" (click)="login()" >ENVIAR</button>
-                <mat-spinner 
-                    class="example-margin"
-                    mode="indeterminate"
-                    *ngIf="isSigningUp" 
-                >
+                <button class="submit" (click)="login()" *ngIf="!isLoggingIn">ENVIAR</button>
+            </div>
+
+            <div>
+                <mat-spinner class="spinner" [mode]="mode" *ngIf="isLoggingIn">
                 </mat-spinner>
             </div>
 

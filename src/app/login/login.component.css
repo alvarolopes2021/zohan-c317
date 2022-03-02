@@ -67,6 +67,16 @@ input[type="password"]{
 }
 
 
+.display-errors{
+    margin: auto;
+    color: #ee0000;
+    font-weight: bolder;
+}
+
+.spinner{
+    margin: auto auto 2% auto;
+}
+
  .submit{
      margin-top: 3%;
      margin-left: 0;

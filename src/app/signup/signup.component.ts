@@ -9,6 +9,7 @@ import { Constants } from 'src/constants';
 import { User } from '../models/user.model';
 import { catchError } from 'rxjs';
 import { ErrorHandler } from '../services/errorHandler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -39,7 +40,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private iconService: IconServiceService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router 
   ) { }
 
 
@@ -69,14 +71,18 @@ export class SignupComponent implements OnInit {
       user.type = Constants.Roles.USER;
 
       this.authService.signup(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
-
+        
         if(value instanceof Map){
           if(value.has(Constants.Errors.ERROR)){
             this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR));
+            this.isSigningUp = false;
+            return;
           }
         }
 
-        this.isSigningUp = false;
+        this.router.navigate(['/login']);
+
+        
       });
 
     }
