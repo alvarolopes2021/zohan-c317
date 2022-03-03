@@ -21,6 +21,9 @@ export class AuthService {
   get isLoggedIn() {
     return this.loggedIn.asObservable(); // {2}
   }
+  public set setIsLoggedIn(value : boolean){
+    this.loggedIn.next(value);
+  }
 
   signup(user: User): Observable<any> | null {
     if (user == null)
@@ -35,7 +38,7 @@ export class AuthService {
 
   }
 
-  login(user: User | null): Observable<any> | null {
+  login(user: User | null): Observable<User> | null {
 
     if (user == null)
       return user;
@@ -45,7 +48,7 @@ export class AuthService {
 
     user.userPsw = btoa(user.userPsw.toString());
 
-    return this.http.post<any>(Constants.HttpEndpoints.LOGIN, user, {withCredentials: true });
+    return this.http.post<User>(Constants.HttpEndpoints.LOGIN, user, {withCredentials: true });
 
   }
 

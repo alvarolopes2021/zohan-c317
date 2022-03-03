@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
 
     this.isLoggingIn = true;
 
-    let user: User = new User();
+    let user: User = {};
 
     user.userPhone = formValue.get('userPhone')?.value;
     user.userPsw = formValue.get('userPsw')?.value;
@@ -71,23 +71,26 @@ export class LoginComponent implements OnInit {
 
       if (value instanceof Map) { //if it came from ErrorHandler class, it is a Map (something went wrong in the server)
         if (value.has(Constants.Errors.ERROR)) {
-          this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR));
+          this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR) as string);
           this.isLoggingIn = false;
           return;
         }
       }
 
-      let user = new User();
+      user = (<User>value);
 
-      Object.assign(user, value);
-
-      if(user instanceof User){
-        switch(user.userType){
-          case Constants.Roles.USER:
-            this.router.navigate(['/logged/client']);
-            break;
-        }
-      }     
+      switch (user.userType) {
+        case Constants.Roles.USER:
+          this.router.navigate(['/logged/client']);
+          this.authService.setIsLoggedIn = true;
+          break;
+        case Constants.Roles.BARBER:
+          this.router.navigate(['/logged/barber']);
+          break;
+        case Constants.Roles.ADMIN:
+          this.router.navigate(['/logged/admin']);
+          break;
+      }
 
     });
 

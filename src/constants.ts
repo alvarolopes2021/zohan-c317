@@ -27,6 +27,8 @@ export class Constants{
 
     static Roles = class {
         static USER = "USER";
+        static ADMIN = "ADMIN";
+        static BARBER = "BARBER";
     }
 
 }

@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
 
       this.isSigningUp = true;
 
-      let user = new User();
+      let user : User = {};
 
       user.userName = formValue.get('userName')?.value;
       user.userPhone = formValue.get('userPhone')?.value
