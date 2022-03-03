@@ -17,6 +17,7 @@ import { LocationComponent } from './home/location/location.component';
 import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
 import { LoginComponent } from './login/login.component';
+import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
     PricesComponent,
     AdsComponent,
     LoginComponent,
+    ClientHomeComponent,
   ],
   imports: [
     BrowserModule,

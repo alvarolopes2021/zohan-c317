@@ -26,10 +26,10 @@ export class AuthService {
     if (user == null)
       return user;
 
-    if (user.password == null)
+    if (user.userPsw == null)
       return null;
 
-    user.password = btoa(user.password.toString());  //converts the password to base64  
+    user.userPsw = btoa(user.userPsw.toString());  //converts the password to base64  
 
     return this.http.post<any>(Constants.HttpEndpoints.SIGN_UP, user);
 
@@ -40,12 +40,12 @@ export class AuthService {
     if (user == null)
       return user;
 
-    if (user.password == null || user.phone == null)
+    if (user.userPsw == null || user.userPhone == null)
       return null;
 
-    user.password = btoa(user.password.toString());
+    user.userPsw = btoa(user.userPsw.toString());
 
-    return this.http.post<any>(Constants.HttpEndpoints.LOGIN, user);
+    return this.http.post<any>(Constants.HttpEndpoints.LOGIN, user, {withCredentials: true });
 
   }
 

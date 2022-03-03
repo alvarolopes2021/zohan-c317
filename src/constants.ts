@@ -2,7 +2,7 @@ export class Constants{
 
     static HttpEndpoints = class {
 
-        static IP: string = "http://192.168.0.6:3000/";
+        static IP: string = "https://localhost:8443/";
 
         static LOGIN: string = this.IP + "auth/login";
         

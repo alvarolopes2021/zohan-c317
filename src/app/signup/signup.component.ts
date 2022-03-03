@@ -65,10 +65,10 @@ export class SignupComponent implements OnInit {
 
       let user = new User();
 
-      user.username = formValue.get('userName')?.value;
-      user.phone = formValue.get('userPhone')?.value
-      user.password = formValue.get('userPsw')?.value
-      user.type = Constants.Roles.USER;
+      user.userName = formValue.get('userName')?.value;
+      user.userPhone = formValue.get('userPhone')?.value
+      user.userPsw = formValue.get('userPsw')?.value
+      user.userType = Constants.Roles.USER;
 
       this.authService.signup(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
         

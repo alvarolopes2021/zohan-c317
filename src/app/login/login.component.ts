@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+
 
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { AuthService } from '../services/auth.service';
 import { Constants } from 'src/constants';
 import { User } from '../models/user.model';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { catchError } from 'rxjs';
 import { ErrorHandler } from '../services/errorHandler';
+
 
 @Component({
   selector: 'app-login',
@@ -35,7 +38,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private iconService: IconServiceService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
 
@@ -44,14 +48,14 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    
-    if(this.errors.has(Constants.Errors.ERROR)){
+
+    if (this.errors.has(Constants.Errors.ERROR)) {
       this.errors.delete(Constants.Errors.ERROR);
     }
 
     let formValue = this.loginForm;
 
-    if(!formValue.valid){
+    if (!formValue.valid) {
       alert('Todos os campos devem ser preenchidos!');
       return;
     }
@@ -60,18 +64,31 @@ export class LoginComponent implements OnInit {
 
     let user: User = new User();
 
-    user.phone = formValue.get('userPhone')?.value;
-    user.password = formValue.get('userPsw')?.value;
+    user.userPhone = formValue.get('userPhone')?.value;
+    user.userPsw = formValue.get('userPsw')?.value;
 
     this.authService.login(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
-      if(value instanceof Map){ //if it came from ErrorHandler class, it is a Map (something went wrong in the server)
-        if(value.has(Constants.Errors.ERROR)){
+      if (value instanceof Map) { //if it came from ErrorHandler class, it is a Map (something went wrong in the server)
+        if (value.has(Constants.Errors.ERROR)) {
           this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR));
+          this.isLoggingIn = false;
+          return;
         }
       }
 
-      this.isLoggingIn = false;
+      let user = new User();
+
+      Object.assign(user, value);
+
+      if(user instanceof User){
+        switch(user.userType){
+          case Constants.Roles.USER:
+            this.router.navigate(['/logged/client']);
+            break;
+        }
+      }     
+
     });
 
   }
