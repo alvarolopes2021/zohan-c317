@@ -18,6 +18,7 @@ import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
 import { LoginComponent } from './login/login.component';
 import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
+import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ClientHomeComponent } from './logged/client/client-home/client-home.com
     AdsComponent,
     LoginComponent,
     ClientHomeComponent,
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,

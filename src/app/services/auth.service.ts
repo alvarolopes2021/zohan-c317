@@ -4,7 +4,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { Constants } from 'src/constants';
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
+import { UtilService } from '../utils/util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,19 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router : Router
   ) { }
 
   get isLoggedIn() {
     return this.loggedIn.asObservable(); // {2}
   }
+  
   public set setIsLoggedIn(value : boolean){
     this.loggedIn.next(value);
   }
 
-  signup(user: User): Observable<any> | null {
+
+  signup(user: UserModel): Observable<any> | null {
     if (user == null)
       return user;
 
@@ -38,7 +41,7 @@ export class AuthService {
 
   }
 
-  login(user: User | null): Observable<User> | null {
+  login(user: UserModel | null): Observable<UserModel> | null {
 
     if (user == null)
       return user;
@@ -48,8 +51,14 @@ export class AuthService {
 
     user.userPsw = btoa(user.userPsw.toString());
 
-    return this.http.post<User>(Constants.HttpEndpoints.LOGIN, user, {withCredentials: true });
+    return this.http.post<UserModel>(Constants.HttpEndpoints.LOGIN, user, {withCredentials: true });
 
+  }
+
+  logout(){
+    UtilService.removeFromLocalStorage(Constants.Auth.TOKEN);
+    this.router.navigate(['/login']);
+    this.setIsLoggedIn = false;
   }
 
 }

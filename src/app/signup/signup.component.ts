@@ -6,7 +6,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { AuthService } from '../services/auth.service';
 import { Constants } from 'src/constants';
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
 import { catchError } from 'rxjs';
 import { ErrorHandler } from '../services/errorHandler';
 import { Router } from '@angular/router';
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private iconService: IconServiceService,
     private authService: AuthService,
-    private router: Router 
+    private router: Router
   ) { }
 
 
@@ -51,19 +51,21 @@ export class SignupComponent implements OnInit {
 
   async signup() {
 
-    const formValue = this.signupForm;
+    this.errors.clear();
 
+    const formValue = this.signupForm;
 
     if (formValue.valid) {
 
+      this.isSigningUp = true;
+
       if (formValue.get('userPsw')?.value != formValue.get('userConfirmPsw')?.value) {
-        this.errors.set(Constants.Errors.PASSWORD_DONT_MATCH, 'As senhas não batem');
+        this.errors.set(Constants.Errors.ERROR, 'As senhas não batem');
+        this.isSigningUp = false;
         return;
       }
 
-      this.isSigningUp = true;
-
-      let user : User = {};
+      let user: UserModel = {};
 
       user.userName = formValue.get('userName')?.value;
       user.userPhone = formValue.get('userPhone')?.value
@@ -71,18 +73,15 @@ export class SignupComponent implements OnInit {
       user.userType = Constants.Roles.USER;
 
       this.authService.signup(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
-        
-        if(value instanceof Map){
-          if(value.has(Constants.Errors.ERROR)){
+
+        if (value instanceof Map) {
+          if (value.has(Constants.Errors.ERROR)) {
             this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR));
             this.isSigningUp = false;
             return;
           }
         }
-
         this.router.navigate(['/login']);
-
-        
       });
 
     }

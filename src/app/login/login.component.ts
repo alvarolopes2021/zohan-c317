@@ -8,8 +8,9 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { AuthService } from '../services/auth.service';
 import { Constants } from 'src/constants';
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
 import { ErrorHandler } from '../services/errorHandler';
+import { UtilService } from '../utils/util.service';
 
 
 @Component({
@@ -49,9 +50,7 @@ export class LoginComponent implements OnInit {
 
   async login() {
 
-    if (this.errors.has(Constants.Errors.ERROR)) {
-      this.errors.delete(Constants.Errors.ERROR);
-    }
+    this.errors.clear();
 
     let formValue = this.loginForm;
 
@@ -62,14 +61,14 @@ export class LoginComponent implements OnInit {
 
     this.isLoggingIn = true;
 
-    let user: User = {};
+    let user: UserModel = {};
 
     user.userPhone = formValue.get('userPhone')?.value;
     user.userPsw = formValue.get('userPsw')?.value;
 
     this.authService.login(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
-      if (value instanceof Map) { //if it came from ErrorHandler class, it is a Map (something went wrong in the server)
+      if (value instanceof Map) {
         if (value.has(Constants.Errors.ERROR)) {
           this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR) as string);
           this.isLoggingIn = false;
@@ -77,7 +76,9 @@ export class LoginComponent implements OnInit {
         }
       }
 
-      user = (<User>value);
+      user = <UserModel>value;
+
+      console.log(user);
 
       switch (user.userType) {
         case Constants.Roles.USER:
@@ -86,10 +87,17 @@ export class LoginComponent implements OnInit {
           break;
         case Constants.Roles.BARBER:
           this.router.navigate(['/logged/barber']);
+          this.authService.setIsLoggedIn = true;
           break;
         case Constants.Roles.ADMIN:
           this.router.navigate(['/logged/admin']);
+          this.authService.setIsLoggedIn = true;
           break;
+      }
+
+      // inserts the token in local storage
+      if (user.userToken != null) {        
+        UtilService.setInLocalStorage(Constants.Auth.TOKEN, user.userToken.token);
       }
 
     });

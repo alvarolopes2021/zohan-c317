@@ -8,6 +8,7 @@ import { PricesComponent } from './home/prices/prices.component';
 import { AdsComponent } from './home/ads/ads.component';
 import { LoginComponent } from './login/login.component';
 import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
+import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'location', component: LocationComponent, data: {animation: 'LocationAnimation'}},
   {path: 'signup', component: SignupComponent, data: {animation: 'SignUpAnimation'}},
   {path: 'login', component: LoginComponent},
-  {path: 'logged/client', component: ClientHomeComponent}
+  {path: 'logged/client', component: ClientHomeComponent},
+  {path: 'logged/admin', component: AdminHomeComponent}
 ];
 
 

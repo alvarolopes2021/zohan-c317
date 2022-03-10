@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+
+import { IconServiceService } from 'src/assets/icon-service.service';
 
 @Component({
   selector: 'app-logged-nav',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoggedNavComponent implements OnInit {
 
-  constructor() { }
+  icons: Map<string, any> = new Map<string, any>();
+
+  constructor(
+    private iconService : IconServiceService,
+    private authService : AuthService
+  
+  ) {}
 
   ngOnInit(): void {
+    this.icons = this.iconService.getIcons();
+  }
+
+  logout(){
+    let willLogout = confirm('Você tem cerrteza que deseja SAIR?');
+    if(willLogout)
+      this.authService.logout();
   }
 
 }

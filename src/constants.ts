@@ -2,12 +2,17 @@ export class Constants{
 
     static HttpEndpoints = class {
 
-        static IP: string = "https://localhost:8443/";
+        static IP: string = "http://localhost:3000/";
 
         static LOGIN: string = this.IP + "auth/login";
         
         static SIGN_UP: string = this.IP + "auth/signup";
                 
+    }
+
+    static HttpResponseTags = class {
+        static CONTENT: string = "CONTENT";
+        static AUTH: string = "AUTH";
     }
 
     static Errors = class {
@@ -23,6 +28,11 @@ export class Constants{
 
         static PASSWORD_DONT_MATCH = 'PASSWORD_DONT_MATCH';
         
+    }
+
+    static Auth = class {
+        static TOKEN = "TOKEN";
+        static EXPIRES_IN = "EXPIRES_IN";
     }
 
     static Roles = class {
