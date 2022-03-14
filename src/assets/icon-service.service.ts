@@ -11,7 +11,10 @@ import {
   faSignHanging,
   faLocationPin,
   faUser,
-  faSignOut
+  faSignOut,
+  faUpload,
+  faList,
+  faTrashCan
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -36,7 +39,11 @@ export class IconServiceService {
     icons.set("faLocation", faLocationPin);
     icons.set("faUser", faUser);    
     icons.set("faSignOut", faSignOut);
+    icons.set("faUpload", faUpload);
+    icons.set("faList", faList);
+    icons.set("faDelete", faTrashCan);
 
     return icons;
   }
 }
+

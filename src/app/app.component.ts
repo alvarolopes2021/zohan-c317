@@ -3,7 +3,6 @@ import { RouterOutlet, Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 import { slideInAnimation } from './animations/slideAnimation';
-import { UtilService } from './utils/util.service';
 import { Constants } from 'src/constants';
 
 
@@ -38,13 +37,29 @@ export class AppComponent implements OnInit {
   }
 
   async checkIsLoggedIn() {
-    let token = UtilService.getFromLocalStorage(Constants.Auth.TOKEN);
-    if (token != null && token.length > 0) {
+    let token = this.authService.getTokenInformation();
+
+    if (token != null && token.size > 0) {
       this.authService.setIsLoggedIn = true;
-      this.router.navigate(['/logged/client']);
+
+      switch (token.get(Constants.Keys.ROLE)){
+        case Constants.Roles.USER:
+          this.router.navigate(['/logged/client']);
+          break;
+        case Constants.Roles.BARBER:
+          this.router.navigate(['/logged/barber']);
+          break;
+        case Constants.Roles.ADMIN:
+          this.router.navigate(['/logged/admin']);
+          break;
+        default:
+          this.router.navigate(['/login']);
+          break;
+      }
+
       return;
     }
-    this.router.navigate(['/login']);
+    
   }
 
 }

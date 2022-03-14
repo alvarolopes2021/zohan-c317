@@ -23,6 +23,7 @@
     "@fortawesome/angular-fontawesome": "^0.10.1",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "dayjs": "^1.10.8",
+    "jwt-decode": "^3.1.2",
     "ngx-mask": "^13.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -78,8 +78,6 @@ export class LoginComponent implements OnInit {
 
       user = <UserModel>value;
 
-      console.log(user);
-
       switch (user.userType) {
         case Constants.Roles.USER:
           this.router.navigate(['/logged/client']);

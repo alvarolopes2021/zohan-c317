@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { HomeNavComponent } from './navs/home-nav/home-nav.component';
@@ -19,6 +21,7 @@ import { AdsComponent } from './home/ads/ads.component';
 import { LoginComponent } from './login/login.component';
 import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
 import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
+import { CreateScheduleComponent } from './logged/adm/create-schedule/create-schedule.component';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component
     LoginComponent,
     ClientHomeComponent,
     AdminHomeComponent,
+    CreateScheduleComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component
     ReactiveFormsModule,
     HttpClientModule,
     NgxMaskModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

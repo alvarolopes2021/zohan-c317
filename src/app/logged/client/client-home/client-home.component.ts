@@ -11,7 +11,6 @@ export class ClientHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.services);
   }
 
   services : ServicesModel[] = [

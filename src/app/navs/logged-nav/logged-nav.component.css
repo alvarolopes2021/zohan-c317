@@ -1,7 +1,22 @@
 nav{
     width: 20%;
+    height: 100%;
+    position: fixed;
     float: left;
+    background-color: rgb(29, 27, 27);
+    overflow: auto;
 }
+
+
+.first-child{
+    cursor: default !important;
+    text-align: center;
+}
+.first-child:hover{    
+    color: #eee;    
+    background-color: rgb(29, 27, 27);
+}
+
 li{
     padding: 1.2em;
     color: #eee;
@@ -11,6 +26,7 @@ li:hover{
     background-color: #eee;
     color: #000;
 }
+
 a{
     text-decoration: none;
 }

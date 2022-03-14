@@ -1,0 +1,88 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    width: 80%;
+    min-height: 100%;
+    color: #eee;
+    overflow: auto;
+}
+.hold-create-schedule{
+    width: 100%;
+}
+h1{
+    margin: 1.2em;    
+    text-align: center;
+}
+
+.calendar{
+    background-color: #fff;
+    color: #000;
+    width: 50%;
+    margin: auto;
+}
+fieldset{
+    width: 50%;
+    margin: 1.2em auto 1.2em auto;
+    text-align: center;
+}
+legend{
+    text-align: left;
+}
+
+input[type="text"]{
+    padding: 1%;
+    width: 50%;
+}
+
+.crud-button{
+    display: inline-block;
+    padding: 1%;
+    border: none;
+    color: #fff;
+    margin: 2%;
+    cursor: pointer;
+}
+.delete{
+    background-color: #ff0000;
+}
+.edit{
+    background-color: #294681;
+}
+
+.empty{
+    margin: 5%;
+}
+
+.mid-action-button{
+    background-color: #294681;
+    color: #eee;
+    border: none;
+    padding: 1%;
+    margin: 2%;
+    cursor: pointer;
+}
+.mid-action-button:hover{
+    background-color: #283f6b;
+   
+}
+
+.hold-button{
+    margin: 2% auto 2% auto;
+    text-align: center;
+}
+
+.final-action-button{
+    width: 30%;
+    background-color: #eee;
+    color: #000;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    padding: 1%;
+}
+.final-action-button:hover{
+    background-color: #aaa;
+}

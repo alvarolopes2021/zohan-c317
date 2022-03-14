@@ -1,0 +1,46 @@
+<div class="main">
+    <div class="hold-create-schedule">
+        <h1>CRIAR HORÁRIOS</h1>
+
+        <form [formGroup]="form">
+            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar"></mat-calendar>
+
+            <fieldset>
+                <legend>Horário a adicionar</legend>
+                <div>
+                    <input type="text" placeholder="13:00-13:45" formControlName="scheduleToInsert">
+                    <button type="button" (click)="addToList()" class="mid-action-button">ADICIONAR</button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Lista de horários</legend>
+                <div *ngIf="schedules.length <= 0" class="empty">
+                    <span>NENHUM HORÁRIO ADICIONADO</span>
+                </div>
+                <div *ngFor="let schedule of schedules">
+                    
+                    <span [id]="schedule">{{schedule}}</span>
+
+                    <button class="crud-button delete" (click)="deleteFromList(schedule)">
+                        <fa-icon [icon]="icons.get('faDelete')"></fa-icon>
+                    </button>
+
+                    <span> | </span>
+
+                    <button class="crud-button edit" (click)="editItemFromList(schedule)">
+                        <fa-icon [icon]="icons.get('faPencil')"></fa-icon>
+                    </button>
+
+                </div>
+            </fieldset>
+
+
+            <div class="hold-button">
+                <button type="button" (click)="createSchedule()" class="final-action-button">CRIAR</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

@@ -1,11 +1,22 @@
 <nav>
     <ul>
-        <a routerLink="">             
+        <li class="first-child">
+            {{userInfo?.get(CONSTANTS.Keys.USERNAME)}}
+        </li>
+        <a routerLink="/logged/admin">             
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faHome')" class="input-icons"></fa-icon>
                 </span>
                 INÍCIO
+            </li>
+        </a>        
+        <a routerLink="/logged/create-schedule"> 
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faUpload')" class="input-icons"></fa-icon>
+                </span>
+                CRIAR HORÁRIOS
             </li>
         </a>
         <a routerLink=""> 

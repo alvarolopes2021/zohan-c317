@@ -41,4 +41,9 @@ export class Constants{
         static BARBER = "BARBER";
     }
 
+    static Keys = class {
+        static USERNAME = "USERNAME";
+        static ROLE = "ROLE"
+    }
+
 }
