@@ -14,7 +14,8 @@ import {
   faSignOut,
   faUpload,
   faList,
-  faTrashCan
+  faTrashCan,
+  faScissors
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -42,6 +43,7 @@ export class IconServiceService {
     icons.set("faUpload", faUpload);
     icons.set("faList", faList);
     icons.set("faDelete", faTrashCan);
+    icons.set("faScissors", faScissors);
 
     return icons;
   }

@@ -9,24 +9,19 @@
     color: #eee;
     overflow: auto;
 }
-.hold-next-clients{
+.hold-edit-schedule{
+    width: 100%;
+    overflow: auto;
+}
+.hold-logo{
+    margin:1.2em auto auto auto;
+    width: 25%
+}
+.hold-logo img{
     width: 100%;
 }
+
 h1{
-    margin: 1.2em;    
-    text-align: center;
-}
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-}
-
-tr:nth-child(even){
-    background-color: #eee;
-    color: #000;
-}
-td, th{
-    padding: 1em;
+    margin: 1em;    
     text-align: center;
 }

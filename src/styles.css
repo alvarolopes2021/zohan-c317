@@ -3,9 +3,32 @@
     padding: 0;
 }
 
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.7em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 1.2em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555; 
+    border-radius: 1.2em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #333; 
+}
+
 body{
     background-color: #000;
     overflow-x: hidden;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

@@ -38,7 +38,7 @@ export class AuthService {
 
     user.userPsw = btoa(user.userPsw.toString());  //converts the password to base64  
 
-    return this.http.post<any>(Constants.HttpEndpoints.SIGN_UP, user);
+    return this.http.post<any>(Constants.HttpEndpoints.Login.SIGN_UP, user);
 
   }
 
@@ -52,7 +52,7 @@ export class AuthService {
 
     user.userPsw = btoa(user.userPsw.toString());
 
-    return this.http.post<UserModel>(Constants.HttpEndpoints.LOGIN, user, { withCredentials: true });
+    return this.http.post<UserModel>(Constants.HttpEndpoints.Login.LOGIN, user, { withCredentials: true });
 
   }
 

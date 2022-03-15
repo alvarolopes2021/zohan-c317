@@ -6,8 +6,6 @@ nav{
     background-color: rgb(29, 27, 27);
     overflow: auto;
 }
-
-
 .first-child{
     cursor: default !important;
     text-align: center;

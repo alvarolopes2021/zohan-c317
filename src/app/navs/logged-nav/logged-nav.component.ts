@@ -26,7 +26,7 @@ export class LoggedNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.icons = this.iconService.getIcons();
-    this.userInfo = this.authService.getTokenInformation();
+    this.userInfo = this.authService.getTokenInformation();        
   }
 
   logout(){

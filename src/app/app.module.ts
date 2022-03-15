@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
 import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
 import { CreateScheduleComponent } from './logged/adm/create-schedule/create-schedule.component';
+import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CreateScheduleComponent } from './logged/adm/create-schedule/create-sch
     ClientHomeComponent,
     AdminHomeComponent,
     CreateScheduleComponent,
+    EditScheduleComponent,
   ],
   imports: [
     BrowserModule,

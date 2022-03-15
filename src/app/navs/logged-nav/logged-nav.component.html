@@ -11,22 +11,6 @@
                 INÍCIO
             </li>
         </a>        
-        <a routerLink="/logged/create-schedule"> 
-            <li>
-                <span>
-                    <fa-icon [icon]="icons.get('faUpload')" class="input-icons"></fa-icon>
-                </span>
-                CRIAR HORÁRIOS
-            </li>
-        </a>
-        <a routerLink=""> 
-            <li>
-                <span>
-                    <fa-icon [icon]="icons.get('faPencil')" class="input-icons"></fa-icon>
-                </span>
-                AGENDAR
-            </li>
-        </a>
         <a routerLink=""> 
             <li>
                 <span>
@@ -38,12 +22,38 @@
         <a routerLink=""> 
             <li>
                 <span>
+                    <fa-icon [icon]="icons.get('faPencil')" class="input-icons"></fa-icon>
+                </span>
+                AGENDAR
+            </li>
+        </a>        
+        <a routerLink="/logged/create-schedule"> 
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faUpload')" class="input-icons"></fa-icon>
+                </span>
+                CRIAR HORÁRIOS
+            </li>
+        </a>
+        <a routerLink="/logged/edit-schedule"> 
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faScissors')" class="input-icons"></fa-icon>
+                </span>
+                EDITAR SERVIÇOS
+            </li>
+        </a>
+        <a routerLink=""> 
+            <li>
+                <span>
                     <fa-icon [icon]="icons.get('faSign')" class="input-icons"></fa-icon>
                 </span>
                 DIVULGAÇÕES
             </li>
         </a>
-        <a routerLink=""> 
+        <a routerLink="" *ngIf="userInfo !== null && 
+                                userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
+                                userInfo.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN"> 
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faLocation')" class="input-icons"></fa-icon>

@@ -1,13 +1,21 @@
-export class Constants{
+export class Constants {
 
     static HttpEndpoints = class {
 
-        static IP: string = "http://localhost:3000/";
+        static Login = class {
 
-        static LOGIN: string = this.IP + "auth/login";
-        
-        static SIGN_UP: string = this.IP + "auth/signup";
-                
+            static IP: string = "http://localhost:3000/";
+
+            static LOGIN: string = this.IP + "auth/login";
+
+            static SIGN_UP: string = this.IP + "auth/signup";
+        }
+
+        static SCHEDULES = class {
+
+            static IP: string = "http://localhost:3000/";
+            static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
+        }
     }
 
     static HttpResponseTags = class {
@@ -27,7 +35,7 @@ export class Constants{
         static PHONE_EXISTS = 'PHONE_EXISTS';
 
         static PASSWORD_DONT_MATCH = 'PASSWORD_DONT_MATCH';
-        
+
     }
 
     static Auth = class {
@@ -42,8 +50,10 @@ export class Constants{
     }
 
     static Keys = class {
-        static USERNAME = "USERNAME";
-        static ROLE = "ROLE"
+        static USERNAME: string = "USERNAME";
+        static ROLE: string = "ROLE";
+        static DATE: string = "DATE";
+        static SCHEDULE_LIST: string = "SCHEDULE_LIST";
     }
 
 }
