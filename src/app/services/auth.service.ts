@@ -74,14 +74,16 @@ export class AuthService {
       let payload = atob(values.get("params"));  //we get only the params from the token
 
       let data : string[] = payload.split(";"); //we split the params into the format the server created it
-      
+            
       let role = data[0].split("=")[1];
       let username = data[1].split("=")[1];
+      let userPhone = data[2].split("=")[1];
 
       let info : Map<string, string> = new Map<string, string>();
 
       info.set(Constants.Keys.USERNAME, username);
       info.set(Constants.Keys.ROLE, role);
+      info.set(Constants.Keys.USER_PHONE, userPhone);
 
       return info;
     }

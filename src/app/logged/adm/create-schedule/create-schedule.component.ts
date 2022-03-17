@@ -70,7 +70,7 @@ export class CreateScheduleComponent implements OnInit {
       //if the list has the old value
       if (oldSchedule != null && oldSchedule !== undefined) {        
 
-        if (input.value !== null) { // ensures the input is not empty
+        if (input.value !== null && input.value.length > 0) { // ensures the input is not empty
 
           oldSchedule = input.value;
 

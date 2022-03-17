@@ -11,10 +11,17 @@ export class Constants {
             static SIGN_UP: string = this.IP + "auth/signup";
         }
 
-        static SCHEDULES = class {
+        static Schedules = class {
 
             static IP: string = "http://localhost:3000/";
             static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
+            static GET_SCHEDULES: string = this.IP + "schedule/get-schedules";
+            static UPDATE_SCHEDULES: string = this.IP + "schedule/update-schedules";
+        }
+
+        static Users = class {
+            static IP: string = "http://localhost:3000/";
+            static GET_ALL_USERS: string = this.IP + "user/get-all-users";
         }
     }
 
@@ -54,6 +61,7 @@ export class Constants {
         static ROLE: string = "ROLE";
         static DATE: string = "DATE";
         static SCHEDULE_LIST: string = "SCHEDULE_LIST";
+        static USER_PHONE: string = "USER_PHONE";
     }
 
 }

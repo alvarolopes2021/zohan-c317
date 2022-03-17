@@ -10,13 +10,13 @@
     overflow: auto;
 }
 .hold-logo{
-    margin: 1.2em auto auto auto;
+    margin:1.2em auto auto auto;
     width: 20%;
 }
 .hold-logo img{
     width: 100%;
 }
-.hold-next-clients{
+.hold-clients{
     width: 100%;
 }
 h1{

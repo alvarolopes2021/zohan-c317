@@ -10,30 +10,23 @@
     overflow: auto;
 }
 .hold-logo{
-    margin: 1.2em auto auto auto;
+    margin:1.2em auto auto auto;
     width: 20%;
 }
-.hold-logo img{
+.hold-logo img{ 
     width: 100%;
 }
-.hold-next-clients{
-    width: 100%;
-}
+
 h1{
-    margin: 1.2em;    
+    margin: 1em;    
     text-align: center;
 }
-
-table{
+.hold-add-ads{    
     width: 100%;
-    border-collapse: collapse;
 }
 
-tr:nth-child(even){
-    background-color: #eee;
-    color: #000;
-}
-td, th{
-    padding: 1em;
-    text-align: center;
+textarea{
+    display: block;
+    margin: auto;
+    resize: none;
 }

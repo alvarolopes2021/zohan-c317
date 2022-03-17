@@ -23,6 +23,9 @@ import { ClientHomeComponent } from './logged/client/client-home/client-home.com
 import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
 import { CreateScheduleComponent } from './logged/adm/create-schedule/create-schedule.component';
 import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.component';
+import { ListClientsComponent } from './logged/adm/list-clients/list-clients.component';
+import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
+import { ProfileComponent } from './logged/common/profile/profile.component';
 
 
 @NgModule({
@@ -40,6 +43,9 @@ import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.
     AdminHomeComponent,
     CreateScheduleComponent,
     EditScheduleComponent,
+    ListClientsComponent,
+    AddAdsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

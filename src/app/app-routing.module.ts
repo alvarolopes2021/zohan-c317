@@ -11,6 +11,9 @@ import { ClientHomeComponent } from './logged/client/client-home/client-home.com
 import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
 import { CreateScheduleComponent } from './logged/adm/create-schedule/create-schedule.component';
 import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.component';
+import { ListClientsComponent } from './logged/adm/list-clients/list-clients.component';
+import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
+import { ProfileComponent } from './logged/common/profile/profile.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -23,7 +26,10 @@ const routes: Routes = [
   {path: 'logged/client', component: ClientHomeComponent},
   {path: 'logged/admin', component: AdminHomeComponent}, 
   {path: 'logged/create-schedule', component: CreateScheduleComponent},
-  {path: 'logged/edit-schedule', component: EditScheduleComponent}
+  {path: 'logged/edit-schedule', component: EditScheduleComponent},
+  {path: 'logged/list-clients', component: ListClientsComponent},
+  {path: 'logged/add-ads', component: AddAdsComponent},
+  {path: 'logged/profile', component: ProfileComponent}
 ];
 
 
