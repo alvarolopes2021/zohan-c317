@@ -3,7 +3,8 @@
         <li class="first-child">
             {{userInfo?.get(CONSTANTS.Keys.USERNAME)}}
         </li>
-        <a routerLink="/logged/admin">
+        <a routerLink="/logged/admin" 
+            *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faHome')" class="input-icons"></fa-icon>
@@ -11,9 +12,17 @@
                 INÍCIO
             </li>
         </a>
-        <a routerLink="/logged/list-clients" *ngIf="userInfo !== null && 
-        userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
-        userInfo.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+        <a routerLink="/logged/client"
+            *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faHome')" class="input-icons"></fa-icon>
+                </span>
+                INÍCIO
+            </li>
+        </a>
+        <a routerLink="/logged/list-clients" 
+        *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faPeople')" class="input-icons"></fa-icon>
@@ -29,7 +38,7 @@
                 HISTÓRICO
             </li>
         </a>
-        <a routerLink="">
+        <a routerLink="" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faPencil')" class="input-icons"></fa-icon>
@@ -37,9 +46,7 @@
                 AGENDAR
             </li>
         </a>
-        <a routerLink="/logged/create-schedule" *ngIf="userInfo !== null && 
-        userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
-        userInfo.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+        <a routerLink="/logged/create-schedule" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faUpload')" class="input-icons"></fa-icon>
@@ -47,9 +54,7 @@
                 CRIAR HORÁRIOS
             </li>
         </a>
-        <a routerLink="/logged/edit-schedule" *ngIf="userInfo !== null && 
-        userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
-        userInfo.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+        <a routerLink="/logged/edit-schedule" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faClock')" class="input-icons"></fa-icon>
@@ -57,9 +62,15 @@
                 EDITAR HORÁRIOS
             </li>
         </a>
-        <a routerLink="/logged/add-ads" *ngIf="userInfo !== null && 
-        userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
-        userInfo.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+        <a routerLink="/logged/add-services" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faScissors')" class="input-icons"></fa-icon>
+                </span>
+                ADICIONAR SERVIÇOS
+            </li>
+        </a>
+        <a routerLink="/logged/add-ads" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faSign')" class="input-icons"></fa-icon>
@@ -67,9 +78,7 @@
                 DIVULGAÇÕES
             </li>
         </a>
-        <a routerLink="" *ngIf="userInfo !== null && 
-                                userInfo.get(CONSTANTS.Keys.ROLE) !== null &&
-                                userInfo.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
+        <a routerLink="logged/location" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faLocation')" class="input-icons"></fa-icon>

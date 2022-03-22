@@ -8,27 +8,49 @@
 
         <div class="profile-box">
 
-            <div class="side-by-side">
-                <div class="hold-profile-image">
-                    <img src="../../../../assets/barber.ico" alt="Imagem do perfil">
+            <form action="" [formGroup]="form">
+
+                <div class="side-by-side">
+
+                    <div class="left-side">
+
+                        <div class="top">
+                            <div class="hold-profile-image">
+                                <img src="../../../../assets/barber.ico" alt="Imagem do perfil">
+                            </div>
+                        </div>                        
+
+                        <div class="bottom">
+                            <label for="">ALTERAR SENHA</label>
+                            <input type="checkbox" (change)="willChangePassword = !willChangePassword">
+                        </div>  
+
+                    </div>
+
+                    <div class="right-side">
+                        <div class="side-image-information">
+                            <label for="">NOME OU APELIDO</label>
+                            <input type="text" name="" id="" value="MANO ALVARO">
+                            <label for="">TELEFONE</label>
+                            <input type="text" name="" id="" value="(35) 9 9999-9999">
+                            <label for="">EMAIL</label>
+                            <input type="text" name="" id="" value="alvaro.email@email.com">
+                        </div>
+                    </div>                   
                 </div>
-    
-                <div class="side-image-information">
-                    <input type="text" name="" id="" value="MANO ALVARO">
-                    <input type="text" name="" id="" value="(35) 9 9999-9999">  
-                    <input type="text" name="" id="" value="alvaro.email@email.com">  
+
+                <div class="below-image-information">
+                    <div *ngIf="willChangePassword">
+                        <label for="">SENHA ANTIGA</label>
+                        <input type="text" name="" id="" value="side">
+                        <label for="">NOVA SENHA</label>
+                        <input type="text" name="" id="" value="(35) 9 9999-9999">
+                        <label for="">CONFIRMAR NOVA SENHA</label>
+                        <input type="text" name="" id="" value="(35) 9 9999-9999">
+                    </div>
                 </div>
-            </div>            
 
-            <div class="below-image-information"> 
-                <input type="text" name="" id="" value="side">
-                <input type="text" name="" id="" value="(35) 9 9999-9999">
-                
-            </div>
-
-            <div class="">
-
-            </div>
+            </form>
 
         </div>
 

@@ -10,6 +10,9 @@ h1{
     text-align: center;
     font-family: 'Rye', cursive;
 }
+h2{
+    text-align: center;
+}
 .side-side{
     display: flex;
     flex-direction: row;
@@ -31,11 +34,12 @@ h1{
     border-radius: 1%;
 }
 .hold-ads{
-    min-height: 85%;
+    min-height: 80%;
+    max-height: 80%;
     border: 1px solid #eee;
-    color: rgba(255,255,255,0.5);    
-    text-align: center;
+    color: rgba(255,255,255,0.5);   
     font-family: Arial, Helvetica, sans-serif;    
+    overflow: auto;
 }
 .hold-ads h2{
     margin-top: 20%;

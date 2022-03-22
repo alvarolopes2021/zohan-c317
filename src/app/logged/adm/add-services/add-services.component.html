@@ -1,0 +1,48 @@
+<div class="main">
+    <div class="hold-add-ads">
+
+        <div class="hold-logo">
+            <img src="./../../../../assets/dark_theme_main.jpeg" alt="Logotipo" srcset="">
+        </div>
+
+        <h1>ADICIONAR SERVIÇOS</h1>
+
+        <form [formGroup]="form">
+
+            <table>
+                <tr>
+                    <th>DESCRIÇÃO</th>
+                    <th>VALOR</th>
+                    <th>ALTERAR</th>
+                    <th>DELETAR</th>
+                </tr>
+                <tr *ngIf="services.length == 0">
+                    <td colspan="4">NENHUM SERVIÇO ADICIONADO</td>
+                </tr>
+                <tr *ngFor="let service of services">
+                    <td>{{service.serviceDescription}}</td>
+                    <td>{{service.serviceValue}}</td>
+                    <td>
+                        <button class="crud-button edit" >
+                            <fa-icon [icon]="icons.get('faPencil')"></fa-icon>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="crud-button delete" >
+                            <fa-icon [icon]="icons.get('faDelete')"></fa-icon>
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+
+            <button class="mid-action-button" (click)="addToList()">+</button>
+
+            <div class="hold-button">
+                <button type="button" (click)="addServices()" class="final-action-button">ADICIONAR</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>

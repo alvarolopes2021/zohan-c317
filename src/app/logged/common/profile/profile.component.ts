@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,14 +9,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
+
+  userInfo : Map<string, string> | null = new Map<string, string>();
+
+  willChangePassword : boolean = false;
+  
+  form : FormGroup = new FormGroup({
+    willChangePassword: new FormControl(false)
+  })
+
   constructor(
     private authService : AuthService
   ) { }
 
-  userInfo : Map<string, string> | null = new Map<string, string>();
 
   ngOnInit(): void {
     this.userInfo = this.authService.getTokenInformation();
+  }
+
+  changePassword(){
+    
   }
 
 }

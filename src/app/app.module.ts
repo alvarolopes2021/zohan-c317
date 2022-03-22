@@ -26,6 +26,7 @@ import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.
 import { ListClientsComponent } from './logged/adm/list-clients/list-clients.component';
 import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
 import { ProfileComponent } from './logged/common/profile/profile.component';
+import { AddServicesComponent } from './logged/adm/add-services/add-services.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { ProfileComponent } from './logged/common/profile/profile.component';
     ListClientsComponent,
     AddAdsComponent,
     ProfileComponent,
+    AddServicesComponent,
   ],
   imports: [
     BrowserModule,

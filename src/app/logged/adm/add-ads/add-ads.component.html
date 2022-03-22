@@ -7,10 +7,16 @@
 
         <h1>ADICIONAR DIVULGAÇÕES</h1>
 
-        <div class="text-area">
-            <textarea name="" id="" cols="65" rows="35" class="text-area" 
-                placeholder="ESCREVA NOVAS DIVULGAÇÕES"></textarea>
-        </div>
+        <form [formGroup]="form">
+            <div class="text-area">
+                <textarea name="" id="" cols="60" rows="20" class="text-area"
+                    placeholder="ESCREVA NOVAS DIVULGAÇÕES" formControlName="ad"></textarea>
+            </div>
 
+            <div class="hold-button">
+                <button type="button" class="final-action-button" (click)="createAd()" >CRIAR</button>
+            </div>
+
+        </form>
     </div>
 </div>

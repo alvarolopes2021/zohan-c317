@@ -23,6 +23,12 @@ export class Constants {
             static IP: string = "http://localhost:3000/";
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
         }
+
+        static Ads = class {
+            static IP: string = "http://localhost:3000/";
+            static CREATE_AD: string = this.IP + "ads/insert-ad";
+            static GET_ADD: string = this.IP + "ads/get-ads";
+        }
     }
 
     static HttpResponseTags = class {

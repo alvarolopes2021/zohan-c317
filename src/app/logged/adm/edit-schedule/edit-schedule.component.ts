@@ -85,7 +85,7 @@ export class EditScheduleComponent implements OnInit {
       span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' mask='00:00-00:00'           autofocus>`;
     }
     if (input !== null) {
-
+ 
       //find in the list the old value
       let oldSchedule = this.schedules.find((schedule) => schedule === value);
 
@@ -115,7 +115,7 @@ export class EditScheduleComponent implements OnInit {
 
   getSchedules() {
     if (this.selected == null)
-      return alert('Escolha um dia');
+      return;
 
     if (this.selected != this.oldSelection) {
       this.oldSelection = this.selected;

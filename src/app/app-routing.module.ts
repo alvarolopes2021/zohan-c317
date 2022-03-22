@@ -14,6 +14,7 @@ import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.
 import { ListClientsComponent } from './logged/adm/list-clients/list-clients.component';
 import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
 import { ProfileComponent } from './logged/common/profile/profile.component';
+import { AddServicesComponent } from './logged/adm/add-services/add-services.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -24,11 +25,13 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent, data: {animation: 'SignUpAnimation'}},
   {path: 'login', component: LoginComponent},
   {path: 'logged/client', component: ClientHomeComponent},
+  {path: 'logged/location', component: LocationComponent},
   {path: 'logged/admin', component: AdminHomeComponent}, 
   {path: 'logged/create-schedule', component: CreateScheduleComponent},
   {path: 'logged/edit-schedule', component: EditScheduleComponent},
   {path: 'logged/list-clients', component: ListClientsComponent},
   {path: 'logged/add-ads', component: AddAdsComponent},
+  {path: 'logged/add-services', component: AddServicesComponent},
   {path: 'logged/profile', component: ProfileComponent}
 ];
 
