@@ -20,6 +20,15 @@ export class AddAdsComponent implements OnInit {
   constructor(private adsService: AdsService) { }
 
   ngOnInit(): void {
+    this.adsService.getAds()?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {    
+
+      if(value instanceof Map){
+        return;
+      }    
+
+      let textArea = this.form.get("ad")  ;
+      textArea?.setValue(<string>value[0].adDescription);      
+    })
   }
 
   createAd() {

@@ -10,7 +10,10 @@
             <tr>
                 <th>NOME</th>
                 <th>TELEFONE</th>
-            </tr>           
+            </tr>      
+            <tr *ngIf="users.length == 0">
+                <td colspan="2">NENHUM CLIENTE CADASTRADO</td>
+            </tr>     
             <tr *ngFor="let user of users">
                 <td>{{user.userName}}</td>
                 <td>{{user.userPhone}}</td>

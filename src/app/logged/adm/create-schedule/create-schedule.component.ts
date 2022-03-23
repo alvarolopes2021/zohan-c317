@@ -60,7 +60,7 @@ export class CreateScheduleComponent implements OnInit {
     let input = document.getElementById(edit + value) as HTMLInputElement;
 
     if (span !== null) {
-      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' mask='00:00-00:00'           autofocus>`;
+      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' mask='00:00-00:00'autofocus>`;
     }
     if (input !== null) {
 

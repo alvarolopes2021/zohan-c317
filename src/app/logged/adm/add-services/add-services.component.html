@@ -20,15 +20,19 @@
                     <td colspan="4">NENHUM SERVIÇO ADICIONADO</td>
                 </tr>
                 <tr *ngFor="let service of services">
-                    <td>{{service.serviceDescription}}</td>
-                    <td>{{service.serviceValue}}</td>
                     <td>
-                        <button class="crud-button edit" >
+                        <span [id]="service.serviceId" class="description">{{service.serviceDescription}}</span>
+                    </td>
+                    <td>
+                        <span [id]="service.serviceId" class="value">{{service.serviceValue}}</span>
+                    </td>
+                    <td>
+                        <button class="crud-button edit" (click)="editItemInList(service)">
                             <fa-icon [icon]="icons.get('faPencil')"></fa-icon>
                         </button>
                     </td>
                     <td>
-                        <button class="crud-button delete" >
+                        <button class="crud-button delete" (click)="deleteFromList(service)" >
                             <fa-icon [icon]="icons.get('faDelete')"></fa-icon>
                         </button>
                     </td>

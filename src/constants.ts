@@ -29,6 +29,12 @@ export class Constants {
             static CREATE_AD: string = this.IP + "ads/insert-ad";
             static GET_ADD: string = this.IP + "ads/get-ads";
         }
+
+        static Services = class {
+            static IP: string = "http://localhost:3000/";
+            static ADD_SERVICES = this.IP + "services/add-services";
+            static GET_SERVICES = this.IP + "services/get-services";
+        }
     }
 
     static HttpResponseTags = class {

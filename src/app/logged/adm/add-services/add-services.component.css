@@ -43,15 +43,14 @@ td, th{
 
 input[type="text"]{
     padding: 1%;
-    width: 50%;
+    width: 40%;
 }
 
 .crud-button{
     display: inline-block;
-    padding: 1%;
+    padding: 3%;
     border: none;
-    color: #fff;
-    margin: 2%;
+    color: #fff;    
     cursor: pointer;
 }
 .delete{
@@ -94,4 +93,16 @@ input[type="text"]{
 }
 .final-action-button:hover{
     background-color: #aaa;
+}
+
+
+
+@media only screen and (max-width: 500px) { 
+    .main{
+        width: 90%;
+    }
+    td, th{
+        padding: 0.5em;
+        text-align: center;
+    }
 }
