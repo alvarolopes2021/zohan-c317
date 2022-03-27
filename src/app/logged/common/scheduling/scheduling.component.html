@@ -1,0 +1,42 @@
+<div class="main">
+    <div class="hold-scheduling">
+
+        <app-logged-header title="AGENDAR"></app-logged-header>
+
+        <form [formGroup]="form">
+            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar" (click)="getSchedules()">
+            </mat-calendar>
+
+            <div>
+                <fieldset>
+                    <legend>HORÁRIOS DISPONÍVEIS</legend>
+                    <div *ngIf="schedules.length <= 0" class="empty">
+                        <span *ngIf="errors.size <= 0">ESCOLHA UM DIA</span>
+                        <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
+                    </div>
+                    <div *ngFor="let schedule of schedules">
+                        <div class="selectable-schedule" [id]="schedule.scheduleId">
+                            <label [for]="schedule.scheduleTime">{{schedule.scheduleTime}}</label>
+                            <input type="radio" [id]="schedule.scheduleTime" name="schedule" value="schedule.scheduleTime" (change)="selectDiv(schedule.scheduleId)">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div>
+                <fieldset>
+                    <legend>SERVIÇOS</legend>
+                    <div *ngIf="services.length <= 0" class="empty">
+                        <span>NÃO HÁ SERVIÇOS CADASTRADOS</span>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="hold-button">
+                <button class="final-action-button">AGENDAR</button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -12,8 +12,6 @@ a{
     text-decoration: none;
     color: #bdbdbd;
 }
-
-
 .menu-right{
     float: right;
 }
@@ -21,4 +19,13 @@ a{
 .active{
     background-color: #fff;
     color: #000;
+}
+
+@media only screen and (max-width: 600px) {         
+    li{
+        padding: 0.5em ;
+    }   
+    .menu-right{
+        float: none;
+    }
 }

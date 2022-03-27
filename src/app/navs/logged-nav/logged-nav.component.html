@@ -30,7 +30,7 @@
                 <span class="media-query">CLIENTES</span>
             </li>
         </a>
-        <a routerLink="">
+        <a routerLink="/logged/all-orders">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faBook')" class="input-icons"></fa-icon>
@@ -38,7 +38,7 @@
                 <span class="media-query">HISTÓRICO</span>
             </li>
         </a>
-        <a routerLink="" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
+        <a routerLink="/logged/scheduling" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) !== CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faPencil')" class="input-icons"></fa-icon>

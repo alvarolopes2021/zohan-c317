@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { catchError } from 'rxjs';
 
@@ -11,7 +11,8 @@ import { Constants } from 'src/constants';
 @Component({
   selector: 'app-edit-schedule',
   templateUrl: './edit-schedule.component.html',
-  styleUrls: ['./edit-schedule.component.css']
+  styleUrls: ['./edit-schedule.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class EditScheduleComponent implements OnInit {
 
@@ -82,7 +83,7 @@ export class EditScheduleComponent implements OnInit {
     let input = document.getElementById(edit + value) as HTMLInputElement;
 
     if (span !== null) {
-      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' mask='00:00-00:00'           autofocus>`;
+      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' class='list-input' mask='00:00-00:00' autofocus>`;
     }
     if (input !== null) {
  

@@ -1,11 +1,7 @@
 <div class="main">
     <div class="hold-add-ads">
 
-        <div class="hold-logo">
-            <img src="./../../../../assets/dark_theme_main.jpeg" alt="Logotipo" srcset="">
-        </div>
-
-        <h1>ADICIONAR DIVULGAÇÕES</h1>
+        <app-logged-header title="ADICIONAR DIVULGAÇÕES"></app-logged-header>
 
         <form [formGroup]="form">
             <div class="text-area">
@@ -15,7 +11,7 @@
             </div>
 
             <div class="hold-button">
-                <button type="button" class="final-action-button" (click)="createAd()" >CRIAR</button>
+                <button type="button" class="final-action-button" (click)="createAd()">DIVULGAR</button>
             </div>
 
         </form>

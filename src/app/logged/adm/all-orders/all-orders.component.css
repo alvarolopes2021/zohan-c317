@@ -9,30 +9,13 @@
     color: #eee;
     overflow: auto;
 }
-.hold-clients{
-    width: 100%;
-}
-h1{
-    margin: 1.2em;    
-    text-align: center;
-}
 
-table{
+.hold-add-ads{    
     width: 100%;
-    border-collapse: collapse;
-}
-
-tr:nth-child(even){
-    background-color: #eee;
-    color: #000;
-}
-td, th{
-    padding: 1em;
-    text-align: center;
 }
 
 @media only screen and (max-width: 600px) { 
     .main{
         width: 90%;
-    }
+    }   
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
@@ -9,7 +9,8 @@ import { IconServiceService } from 'src/assets/icon-service.service';
 @Component({
   selector: 'app-create-schedule',
   templateUrl: './create-schedule.component.html',
-  styleUrls: ['./create-schedule.component.css']
+  styleUrls: ['./create-schedule.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CreateScheduleComponent implements OnInit {
 
@@ -60,7 +61,7 @@ export class CreateScheduleComponent implements OnInit {
     let input = document.getElementById(edit + value) as HTMLInputElement;
 
     if (span !== null) {
-      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' mask='00:00-00:00'autofocus>`;
+      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' class='list-input' mask='00:00-00:00'autofocus>`;
     }
     if (input !== null) {
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { ServicesModel } from 'src/app/models/services.model';
+import { ErrorHandler } from 'src/app/services/errorHandler';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-client-home',
@@ -8,14 +11,21 @@ import { ServicesModel } from 'src/app/models/services.model';
 })
 export class ClientHomeComponent implements OnInit {
 
-  constructor() { }
+  services : ServicesModel[] = [];
+  
+  constructor(private servicesService: ServicesService) { }
 
   ngOnInit(): void {
+    this.servicesService.getServices()?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
+
+      if(value instanceof Map){
+        return;
+      }
+
+      this.services = <ServicesModel[]>value[0];
+    });
   }
 
-  services : ServicesModel[] = [
-    {serviceId: "a", serviceDescription: "CORTE", serviceValue: "25.00"},
-    {serviceId: "a", serviceDescription: "BARBA", serviceValue: "15.00"}
-  ];
+  
 
 }

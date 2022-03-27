@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { catchError } from 'rxjs';
+
 import { ServicesModel } from 'src/app/models/services.model';
 import { ErrorHandler } from 'src/app/services/errorHandler';
 import { ServicesService } from 'src/app/services/services.service';
@@ -9,7 +10,8 @@ import { IconServiceService } from 'src/assets/icon-service.service';
 @Component({
   selector: 'app-add-services',
   templateUrl: './add-services.component.html',
-  styleUrls: ['./add-services.component.css']
+  styleUrls: ['./add-services.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddServicesComponent implements OnInit {
 
@@ -94,10 +96,10 @@ export class AddServicesComponent implements OnInit {
             }
 
             descriptionSpan[i].innerHTML =
-              `<input type='text' value='${item.serviceDescription}' id='${editDescription + item.serviceId}'>`;
+              `<input type='text' value='${item.serviceDescription}' id='${editDescription + item.serviceId}' class='description'>`;
 
             valueSpan[i].innerHTML =
-              `<input type='text' value='${item.serviceValue}' id='${editValue + item.serviceId}'>`;
+              `<input type='text' value='${item.serviceValue}' id='${editValue + item.serviceId}' class='value'>`;
           }
         }
       }

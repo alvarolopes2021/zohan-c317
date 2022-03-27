@@ -33,12 +33,12 @@ a{
     margin-right: 5%;
 }
 
-@media only screen and (max-width: 500px) { 
+@media only screen and (max-width: 600px) { 
     nav{
         width: 10%;
     }
     li{
-        padding: 1.2em 0 1.2em 0.8em;
+        padding: 1.2em 0 1.2em 0.65em;
         color: #eee;
         cursor: pointer;
     }    

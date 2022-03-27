@@ -9,13 +9,6 @@
     color: #eee;
     overflow: auto;
 }
-.hold-logo{
-    margin:1.2em auto auto auto;
-    width: 20%;
-}
-.hold-logo img{ 
-    width: 100%;
-}
 
 h1{
     margin: 1.2em;    
@@ -88,4 +81,32 @@ input[type="checkbox"]{
 .below-image-information{
     text-align: left;        
     position: relative;    
+}
+
+@media only screen and (max-width: 600px) { 
+    .main{
+        width: 90%;
+    }
+    .profile-box{                  
+        margin: auto auto 5% auto;
+        width: 80%;
+    }    
+    .left-side{            
+        width: 40%;
+        height: 100%;
+    }
+    .right-side{
+        height: 100%;
+        width: 60%;
+        float: right;
+    }
+    .hold-profile-image{                  
+        width: 70%;
+        height: 65%;
+        margin-top: 2rem;
+    }
+    .final-action-button{
+        width: 50%;
+        padding: 3%;
+    }
 }

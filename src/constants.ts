@@ -4,7 +4,7 @@ export class Constants {
 
         static Login = class {
 
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "http://192.168.0.3:3000/";
 
             static LOGIN: string = this.IP + "auth/login";
 
@@ -13,25 +13,25 @@ export class Constants {
 
         static Schedules = class {
 
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "http://192.168.0.3:3000/";
             static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
             static GET_SCHEDULES: string = this.IP + "schedule/get-schedules";
             static UPDATE_SCHEDULES: string = this.IP + "schedule/update-schedules";
         }
 
         static Users = class {
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "http://192.168.0.3:3000/";
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
         }
 
         static Ads = class {
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "http://192.168.0.3:3000/";
             static CREATE_AD: string = this.IP + "ads/insert-ad";
             static GET_ADD: string = this.IP + "ads/get-ads";
         }
 
         static Services = class {
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "http://192.168.0.3:3000/";
             static ADD_SERVICES = this.IP + "services/add-services";
             static GET_SERVICES = this.IP + "services/get-services";
         }

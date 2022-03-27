@@ -9,18 +9,7 @@
     color: #eee;
     overflow: auto;
 }
-.hold-logo{
-    margin:1.2em auto auto auto;
-    width: 20%;
-}
-.hold-logo img{ 
-    width: 100%;
-}
 
-h1{
-    margin: 1.2em;    
-    text-align: center;
-}
 .hold-add-ads{    
     width: 100%;
 }
@@ -51,4 +40,18 @@ textarea{
 }
 .final-action-button:hover{
     background-color: #aaa;
+}
+
+
+@media only screen and (max-width: 600px) { 
+    .main{
+        width: 90%;
+    }       
+    textarea{
+        width: 80%;
+    } 
+    .final-action-button{
+        width: 50%;
+        padding: 3%;
+    }
 }

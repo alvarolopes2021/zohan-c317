@@ -27,6 +27,9 @@ import { ListClientsComponent } from './logged/adm/list-clients/list-clients.com
 import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
 import { ProfileComponent } from './logged/common/profile/profile.component';
 import { AddServicesComponent } from './logged/adm/add-services/add-services.component';
+import { AllOrdersComponent } from './logged/adm/all-orders/all-orders.component';
+import { LoggedHeaderComponent } from './logged/common/logged-header/logged-header.component';
+import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import { AddServicesComponent } from './logged/adm/add-services/add-services.com
     AddAdsComponent,
     ProfileComponent,
     AddServicesComponent,
+    AllOrdersComponent,
+    LoggedHeaderComponent,
+    SchedulingComponent,
   ],
   imports: [
     BrowserModule,

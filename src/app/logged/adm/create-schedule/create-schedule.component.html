@@ -1,11 +1,7 @@
 <div class="main">
     <div class="hold-create-schedule">
 
-        <div class="hold-logo">
-            <img src="./../../../../assets/dark_theme_main.jpeg" alt="" srcset="">
-        </div>
-
-        <h1>CRIAR HORÁRIOS</h1>
+        <app-logged-header title="CADASTRAR HORÁRIOS"></app-logged-header>
 
         <form [formGroup]="form" >
             <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar"></mat-calendar>

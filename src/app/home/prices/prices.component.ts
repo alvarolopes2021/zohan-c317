@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { catchError } from 'rxjs';
 import { ServicesModel } from 'src/app/models/services.model';
 import { ErrorHandler } from 'src/app/services/errorHandler';
@@ -7,7 +7,8 @@ import { ServicesService } from 'src/app/services/services.service';
 @Component({
   selector: 'app-prices',
   templateUrl: './prices.component.html',
-  styleUrls: ['./prices.component.css']
+  styleUrls: ['./prices.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PricesComponent implements OnInit {
 

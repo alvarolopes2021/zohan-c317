@@ -13,13 +13,6 @@
     width: 100%;
     overflow: auto;
 }
-.hold-logo{
-    margin:1.2em auto auto auto;
-    width: 20%
-}
-.hold-logo img{
-    width: 100%;
-}
 
 h1{
     margin: 1.2em;    
@@ -43,7 +36,7 @@ td, th{
 
 input[type="text"]{
     padding: 1%;
-    width: 40%;
+    width: 60%;
 }
 
 .crud-button{
@@ -64,7 +57,7 @@ input[type="text"]{
     margin: 5%;
 }
 
-.mid-action-button{
+.add-button{
     background-color: #294681;
     color: #eee;
     border: none;
@@ -72,7 +65,7 @@ input[type="text"]{
     width: 100%;
     cursor: pointer;
 }
-.mid-action-button:hover{
+.add-button:hover{
     background-color: #283f6b;
    
 }
@@ -97,12 +90,26 @@ input[type="text"]{
 
 
 
-@media only screen and (max-width: 500px) { 
+@media only screen and (max-width: 600px) { 
     .main{
         width: 90%;
     }
     td, th{
-        padding: 0.5em;
+        padding: 0.2em;
         text-align: center;
     }
+    input[type="text"]{        
+        width: 55%;
+    }
+    .mid-action-button{
+        margin: 0;
+    }
+    .hold-button{
+        margin-top: 1.5em;        
+    }
+    .final-action-button{
+        width: 50%;
+        padding: 3%;
+    }
+    
 }

@@ -15,6 +15,8 @@ import { ListClientsComponent } from './logged/adm/list-clients/list-clients.com
 import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
 import { ProfileComponent } from './logged/common/profile/profile.component';
 import { AddServicesComponent } from './logged/adm/add-services/add-services.component';
+import { AllOrdersComponent } from './logged/adm/all-orders/all-orders.component';
+import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -32,7 +34,9 @@ const routes: Routes = [
   {path: 'logged/list-clients', component: ListClientsComponent},
   {path: 'logged/add-ads', component: AddAdsComponent},
   {path: 'logged/add-services', component: AddServicesComponent},
-  {path: 'logged/profile', component: ProfileComponent}
+  {path: 'logged/profile', component: ProfileComponent},
+  {path: 'logged/all-orders', component: AllOrdersComponent},
+  {path: 'logged/scheduling', component: SchedulingComponent}
 ];
 
 

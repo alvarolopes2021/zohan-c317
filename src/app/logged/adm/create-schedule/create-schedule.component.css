@@ -13,14 +13,6 @@
     width: 100%;
     overflow: auto;
 }
-.hold-logo{
-    margin:1.2em auto auto auto;
-    width: 20%
-}
-.hold-logo img{
-    width: 100%;
-}
-
 h1{
     margin: 1.2em;    
     text-align: center;
@@ -45,6 +37,9 @@ legend{
 input[type="text"]{
     padding: 1%;
     width: 50%;
+}
+.list-input{
+    width: 80% !important;
 }
 
 .span{
@@ -79,10 +74,8 @@ input[type="text"]{
     cursor: pointer;
 }
 .mid-action-button:hover{
-    background-color: #283f6b;
-   
+    background-color: #283f6b;   
 }
-
 .hold-button{
     margin: 2% auto 2% auto;
     text-align: center;
@@ -99,4 +92,35 @@ input[type="text"]{
 }
 .final-action-button:hover{
     background-color: #aaa;
+}
+
+@media only screen and (max-width: 600px) { 
+    .main{
+        width: 90%;
+    }
+    .calendar{
+        width: 80%;
+    }
+    fieldset{
+        width: 80%;   
+    }    
+    input[type="text"]{   
+        padding: 2%;     
+        width: 60%;
+    }
+    .span{
+        margin: 0;
+    }
+    .crud-button{        
+        padding: 3%;
+        margin: 1%;
+    }
+    .mid-action-button{
+        padding: 2%;
+        margin: 1%;
+    }
+    .final-action-button{
+        width: 50%;
+        padding: 3%;
+    }
 }
