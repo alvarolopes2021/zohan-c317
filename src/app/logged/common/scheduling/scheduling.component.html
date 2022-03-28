@@ -4,7 +4,7 @@
         <app-logged-header title="AGENDAR"></app-logged-header>
 
         <form [formGroup]="form">
-            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar" (click)="getSchedules()">
+            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar" (click)="getData()">
             </mat-calendar>
 
             <div>
@@ -17,7 +17,8 @@
                     <div *ngFor="let schedule of schedules">
                         <div class="selectable-schedule" [id]="schedule.scheduleId">
                             <label [for]="schedule.scheduleTime">{{schedule.scheduleTime}}</label>
-                            <input type="radio" [id]="schedule.scheduleTime" name="schedule" value="schedule.scheduleTime" (change)="selectDiv(schedule.scheduleId)">
+                            <input type="radio" [id]="schedule.scheduleTime" name="schedule" formControlName="schedule"
+                                value="schedule.scheduleTime" (change)="selectDiv(schedule.scheduleId)">
                         </div>
                     </div>
                 </fieldset>
@@ -28,13 +29,23 @@
                 <fieldset>
                     <legend>SERVIÇOS</legend>
                     <div *ngIf="services.length <= 0" class="empty">
-                        <span>NÃO HÁ SERVIÇOS CADASTRADOS</span>
+                        <span *ngIf="schedules.length <= 0 && errors.size <= 0">ESCOLHA UM DIA</span>
+                        <span *ngIf="errors.size <= 0 && schedules.length > 0">NÃO HÁ SERVIÇOS CADASTRADOS</span>
+                        <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
+                    </div>
+                    <div *ngFor="let service of services">
+                        <div class="selectable-service" [id]="service.serviceId">
+                            <label [for]="service.serviceDescription">{{service.serviceDescription}}</label>
+                            <input type="radio" [id]="service.serviceDescription" name="service"
+                                value="service.serviceDescription" formControlName="service"
+                                (change)="selectService(service.serviceId)">
+                        </div>
                     </div>
                 </fieldset>
             </div>
 
             <div class="hold-button">
-                <button class="final-action-button">AGENDAR</button>
+                <button class="final-action-button" (click)="createOrder()">AGENDAR</button>
             </div>
 
         </form>

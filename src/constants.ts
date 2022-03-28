@@ -35,6 +35,11 @@ export class Constants {
             static ADD_SERVICES = this.IP + "services/add-services";
             static GET_SERVICES = this.IP + "services/get-services";
         }
+
+        static Orders = class {
+            static IP: string = "http://192.168.0.3:3000/";
+            static CRAETE_ORDER = this.IP + "orders/create-order";
+        }
     }
 
     static HttpResponseTags = class {

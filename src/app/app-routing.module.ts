@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LocationComponent } from './home/location/location.component';
@@ -17,6 +19,7 @@ import { ProfileComponent } from './logged/common/profile/profile.component';
 import { AddServicesComponent } from './logged/adm/add-services/add-services.component';
 import { AllOrdersComponent } from './logged/adm/all-orders/all-orders.component';
 import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
+import { LoggedLocationComponent } from './logged/common/logged-location/logged-location.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
@@ -27,7 +30,6 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent, data: {animation: 'SignUpAnimation'}},
   {path: 'login', component: LoginComponent},
   {path: 'logged/client', component: ClientHomeComponent},
-  {path: 'logged/location', component: LocationComponent},
   {path: 'logged/admin', component: AdminHomeComponent}, 
   {path: 'logged/create-schedule', component: CreateScheduleComponent},
   {path: 'logged/edit-schedule', component: EditScheduleComponent},
@@ -36,7 +38,8 @@ const routes: Routes = [
   {path: 'logged/add-services', component: AddServicesComponent},
   {path: 'logged/profile', component: ProfileComponent},
   {path: 'logged/all-orders', component: AllOrdersComponent},
-  {path: 'logged/scheduling', component: SchedulingComponent}
+  {path: 'logged/scheduling', component: SchedulingComponent},
+  {path: 'logged/location', component: LoggedLocationComponent}
 ];
 
 

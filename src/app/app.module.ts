@@ -30,6 +30,8 @@ import { AddServicesComponent } from './logged/adm/add-services/add-services.com
 import { AllOrdersComponent } from './logged/adm/all-orders/all-orders.component';
 import { LoggedHeaderComponent } from './logged/common/logged-header/logged-header.component';
 import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
+import { LoggedLocationComponent } from './logged/common/logged-location/logged-location.component';
+import { httpInterceptorProviders } from './services/interceptor.module';
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { SchedulingComponent } from './logged/common/scheduling/scheduling.compo
     AllOrdersComponent,
     LoggedHeaderComponent,
     SchedulingComponent,
+    LoggedLocationComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ import { SchedulingComponent } from './logged/common/scheduling/scheduling.compo
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
