@@ -8,6 +8,7 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { Constants } from 'src/constants';
 import { EditDayTimeActionModel } from 'src/app/models/edit-dayTime-action.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-schedule',
@@ -37,7 +38,8 @@ export class EditScheduleComponent implements OnInit {
 
   constructor(
     private iconService: IconServiceService,
-    private scheduleService: ScheduleService
+    private scheduleService: ScheduleService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -182,15 +184,24 @@ export class EditScheduleComponent implements OnInit {
       return alert('Escolha um dia');
 
     if (this.schedules.length <= 0)
-      return alert("O dia não pode ficar sem horário!");
+      return alert("O dia não pode ficar sem horário!");   
 
-    this.scheduleService.updateSchedules(this.editionActions)?.subscribe((value) => {
+    this.scheduleService.updateSchedules(this.editionActions)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
+
+      console.log(value);
 
       if (value instanceof Map) {
+        this.editionActions = [];
         return;
       }
 
+      this.editionActions = [];
 
+      this.snackBar.open("Horários atualizados ✅",
+        "OK",
+        { duration: 5000, panelClass: ['blue-snackbar'] }
+      );
+       
 
     });
 

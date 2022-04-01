@@ -16,7 +16,7 @@
                     </div>
                     <div *ngFor="let schedule of schedules">
                         <div class="selectable-schedule" [id]="schedule.dayTimeId">
-                            <label [for]="schedule.dayTimeStart">{{schedule.dayTimeStart}}</label>
+                            <label [for]="schedule.dayTimeStart">{{schedule.dayTimePretty}}</label>
                             <input type="radio" [id]="schedule.dayTimeStart" name="schedule" formControlName="schedule"
                                 value="schedule.dayTimeStart" (change)="selectDiv(schedule.dayTimeId)">
                         </div>
