@@ -9,6 +9,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HomeNavComponent } from './navs/home-nav/home-nav.component';
@@ -32,6 +33,9 @@ import { LoggedHeaderComponent } from './logged/common/logged-header/logged-head
 import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
 import { LoggedLocationComponent } from './logged/common/logged-location/logged-location.component';
 import { httpInterceptorProviders } from './services/interceptor.module';
+import { ForbidenComponent } from './logged/common/forbiden/forbiden.component';
+import { OrdersHistoryComponent } from './logged/client/orders-history/orders-history.component';
+import { SnackBarComponent } from './custom-components/snack-bar/snack-bar.component';
 
 
 @NgModule({
@@ -57,6 +61,9 @@ import { httpInterceptorProviders } from './services/interceptor.module';
     LoggedHeaderComponent,
     SchedulingComponent,
     LoggedLocationComponent,
+    ForbidenComponent,
+    OrdersHistoryComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +75,8 @@ import { httpInterceptorProviders } from './services/interceptor.module';
     NgxMaskModule.forRoot(),
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

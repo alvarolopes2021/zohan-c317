@@ -4,7 +4,7 @@ export class Constants {
 
         static Login = class {
 
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
 
             static LOGIN: string = this.IP + "auth/login";
 
@@ -13,31 +13,32 @@ export class Constants {
 
         static Schedules = class {
 
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
             static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
             static GET_SCHEDULES: string = this.IP + "schedule/get-schedules";
             static UPDATE_SCHEDULES: string = this.IP + "schedule/update-schedules";
         }
 
         static Users = class {
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
+            static USER_PROFILE: string = this.IP + "user/user-profile";
         }
 
         static Ads = class {
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
             static CREATE_AD: string = this.IP + "ads/insert-ad";
             static GET_ADD: string = this.IP + "ads/get-ads";
         }
 
         static Services = class {
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
             static ADD_SERVICES = this.IP + "services/add-services";
             static GET_SERVICES = this.IP + "services/get-services";
         }
 
         static Orders = class {
-            static IP: string = "http://192.168.0.3:3000/";
+            static IP: string = "http://localhost:3000/";
             static CRAETE_ORDER = this.IP + "orders/create-order";
         }
     }
@@ -60,6 +61,8 @@ export class Constants {
 
         static PASSWORD_DONT_MATCH = 'PASSWORD_DONT_MATCH';
 
+        static ERR_BLOCKED_BY_CLIENT = "ERR_BLOCKED_BY_CLIENT";
+
     }
 
     static Auth = class {
@@ -73,12 +76,19 @@ export class Constants {
         static BARBER = "BARBER";
     }
 
+    static Edition = class {
+        static ADDED = "ADDED";
+        static DELETED = "DELETED";
+        static UPDATED = "UPDATED";
+    }
+
     static Keys = class {
         static USERNAME: string = "USERNAME";
         static ROLE: string = "ROLE";
         static DATE: string = "DATE";
         static SCHEDULE_LIST: string = "SCHEDULE_LIST";
         static USER_PHONE: string = "USER_PHONE";
+        static SESSION_CLIENT_ID: string = "SESSION_CLIENT_ID"
     }
 
 }

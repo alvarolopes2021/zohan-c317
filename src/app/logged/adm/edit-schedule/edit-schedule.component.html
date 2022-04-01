@@ -25,8 +25,8 @@
                 </div>
                 <div *ngFor="let schedule of schedules">
 
-                    <div class="span" [id]="schedule">
-                        <span>{{schedule}}</span>
+                    <div class="span" [id]="schedule.dayTimePretty">
+                        <span>{{schedule.dayTimePretty}}</span>
                     </div>
 
                     <button class="crud-button delete" (click)="deleteFromList(schedule)">

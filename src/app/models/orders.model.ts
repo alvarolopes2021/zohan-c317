@@ -3,4 +3,5 @@ export interface OrdersModel{
     orderDate?: Date;
     order_clientId?: string;
     order_scheduleId?: string;
+    order_serviceId?: string;
 }

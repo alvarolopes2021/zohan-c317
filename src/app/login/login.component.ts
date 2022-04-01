@@ -69,11 +69,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
       if (value instanceof Map) {
-        if (value.has(Constants.Errors.ERROR)) {
-          this.errors.set(Constants.Errors.ERROR, value.get(Constants.Errors.ERROR) as string);
-          this.isLoggingIn = false;
-          return;
-        }
+        this.errors = value;
+        this.isLoggingIn = false;
+        return;
       }
 
       user = <UserModel>value;
@@ -94,8 +92,9 @@ export class LoginComponent implements OnInit {
       }
 
       // inserts the token in local storage
-      if (user.userToken != null) {        
+      if (user.userToken != null && user.userId != null) {
         UtilService.setInLocalStorage(Constants.Auth.TOKEN, user.userToken.token);
+        UtilService.setInLocalStorage(Constants.Keys.SESSION_CLIENT_ID, user.userId);
       }
 
     });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError } from 'rxjs';
 import { AdsService } from 'src/app/services/ads.service';
 import { ErrorHandler } from 'src/app/services/errorHandler';
@@ -17,17 +18,17 @@ export class AddAdsComponent implements OnInit {
 
   errors: Map<string, string> = new Map<string, string>();
 
-  constructor(private adsService: AdsService) { }
+  constructor(private adsService: AdsService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.adsService.getAds()?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {    
+    this.adsService.getAds()?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
-      if(value instanceof Map){
+      if (value instanceof Map) {
         return;
-      }    
+      }
 
-      let textArea = this.form.get("ad")  ;
-      textArea?.setValue(<string>value[0].adDescription);      
+      let textArea = this.form.get("ad");
+      textArea?.setValue(<string>value[0].adDescription);
     })
   }
 
@@ -43,9 +44,13 @@ export class AddAdsComponent implements OnInit {
 
         if (value instanceof Map) {
           this.errors = value;
+          return;
         }
 
-        console.log(value);
+        this.snackBar.open("Conteúdo divulgado com sucesso ✅",
+          "OK",
+          { duration: 5000, panelClass: ['blue-snackbar'] }
+        );
 
       });
 

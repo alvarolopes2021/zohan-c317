@@ -3,10 +3,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { catchError } from 'rxjs';
 
 import { ErrorHandler } from '../../../services/errorHandler';
-import { ScheduleModel } from 'src/app/models/schedule.model';
+import { DayTimeModel } from 'src/app/models/dayTime.model';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { Constants } from 'src/constants';
+import { EditDayTimeActionModel } from 'src/app/models/edit-dayTime-action.model';
 
 @Component({
   selector: 'app-edit-schedule',
@@ -16,19 +17,17 @@ import { Constants } from 'src/constants';
 })
 export class EditScheduleComponent implements OnInit {
 
-  selected?: Date | null;
-  oldSelection?: Date = new Date();
+  selected?: Date;
+  oldSelection?: Date;
   minDate?: Date | null = new Date();
 
-  schedules: string[] = [];
+  schedules: DayTimeModel[] = [];
 
   icons: Map<string, any> = new Map<string, any>();
 
   errors: Map<string, string> = new Map<string, string>();
 
-  deletedSchedulesValues?: string[] = [];
-  schedulesToBeInserted?: ScheduleModel[] = []; //schedules added on edit section
-  scheduleToBeUpdated?: Map<string, string> = new Map<string, string>(); // Map<oldValue, newValue>
+  editionActions: EditDayTimeActionModel[] = [];
 
   readonly CONSTANTS = Constants;
 
@@ -46,7 +45,6 @@ export class EditScheduleComponent implements OnInit {
   }
 
   addToList() {
-
     if (this.selected === null || this.selected === undefined)
       return alert('Escolha um dia');
 
@@ -58,35 +56,56 @@ export class EditScheduleComponent implements OnInit {
     if (String(timeToBeInserted).length <= 0)
       return alert('O horário não pode ser vazio');
 
-    if (!this.schedules.includes(timeToBeInserted)) {
-      this.schedules.push(timeToBeInserted);
-      this.schedulesToBeInserted?.push(timeToBeInserted);
-    }
+    if (this.schedules.filter(e => e.dayTimePretty === timeToBeInserted).length > 0)
+      return;
 
-    this.schedules = this.schedules.sort();
+    let dayTimeModel: DayTimeModel = {};
+    dayTimeModel.dayTimeDay = this.selected.toISOString().split("T")[0];
+    dayTimeModel.dayTimeStart = String(this.form.get("scheduleToInsert")?.value).split("-")[0] + ":00";
+    dayTimeModel.dayTimeEnd = String(this.form.get("scheduleToInsert")?.value).split("-")[1] + ":00";
+    dayTimeModel.dayTimePretty = timeToBeInserted;
+    this.schedules.push(dayTimeModel);
+
+    let editionModel: EditDayTimeActionModel = {};
+    editionModel.date = this.selected;
+    editionModel.action = Constants.Edition.ADDED;
+    editionModel.newValue = timeToBeInserted;
+    editionModel.oldValue = null;
+    this.editionActions.push(editionModel);
+
+    this.schedules = this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
 
   }
 
-  deleteFromList(value: string): void {
+  deleteFromList(value: DayTimeModel): void {
     if (this.schedules.includes(value)) {
       const index: number = this.schedules.indexOf(value);
       if (index !== -1) {
         this.schedules.splice(index, 1);
-        this.deletedSchedulesValues?.push(value);
+
+        let editionModel: EditDayTimeActionModel = {};
+        editionModel.dayTimeId = value.dayTimeId;
+        editionModel.date = this.selected;
+        editionModel.action = Constants.Edition.DELETED;
+        editionModel.newValue = null;
+        editionModel.oldValue = null;
+        this.editionActions.push(editionModel);
+
+        this.schedules = this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
       }
     }
   }
 
-  editItemFromList(value: string): void {
+  editItemFromList(value: DayTimeModel): void {
     let edit = "edit_";
-    let span = document.getElementById(value);
-    let input = document.getElementById(edit + value) as HTMLInputElement;
+    let span = document.getElementById(value.dayTimePretty!);
+    let input = document.getElementById(edit + value.dayTimePretty) as HTMLInputElement;
 
     if (span !== null) {
-      span.innerHTML = `<input type='text' value='${value}' id='${edit + value}' class='list-input' mask='00:00-00:00' autofocus>`;
+      span.innerHTML = `<input type='text' value='${value.dayTimePretty}' id='${edit + value.dayTimePretty}' class='list-input' mask='00:00-00:00' autofocus>`;
     }
     if (input !== null) {
- 
+
       //find in the list the old value
       let oldSchedule = this.schedules.find((schedule) => schedule === value);
 
@@ -94,23 +113,29 @@ export class EditScheduleComponent implements OnInit {
       if (oldSchedule != null && oldSchedule !== undefined) {
 
         if (input.value !== null) { // ensures the input is not empty
+          let editionModel: EditDayTimeActionModel = {};
+          editionModel.dayTimeId = oldSchedule.dayTimeId;
+          editionModel.date = this.selected;
+          editionModel.action = Constants.Edition.UPDATED;
+          editionModel.newValue = input.value;
+          editionModel.oldValue = oldSchedule.dayTimePretty;
+          this.editionActions.push(editionModel);
 
-          oldSchedule = input.value;
+          oldSchedule.dayTimePretty = input.value;
 
           let index = this.schedules.indexOf(value); // gets the index of the old value
 
           if (index !== null && oldSchedule !== undefined) {
-            this.scheduleToBeUpdated?.set(this.schedules[index], oldSchedule);
             //if the old value was found and input was not empty
             this.schedules[index] = oldSchedule; //we update the list in that point
 
           }
-          this.schedules = this.schedules.sort();
+          this.schedules = this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
         }
       }
 
       if (span != null)
-        span.innerHTML = `<span id="${value}">${value}</span>`;
+        span.innerHTML = `<span id="${value.dayTimePretty}">${value.dayTimePretty}</span>`;
     }
   }
 
@@ -120,6 +145,9 @@ export class EditScheduleComponent implements OnInit {
 
     if (this.selected != this.oldSelection) {
       this.oldSelection = this.selected;
+
+      this.selected.setHours(new Date().getHours() - 3);
+      this.oldSelection.setHours(new Date().getHours() - 3);
 
       this.schedules = [];
 
@@ -139,13 +167,9 @@ export class EditScheduleComponent implements OnInit {
               }
             }
 
-            let shceduleList: ScheduleModel[] = <ScheduleModel[]>value[0];
+            this.schedules = <DayTimeModel[]>value[0];
 
-            shceduleList.forEach((element) => {
-              this.schedules.push(String(element.scheduleTime));
-            })
-
-            this.schedules = this.schedules.sort();
+            this.schedules = this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
 
           });
       }
@@ -160,7 +184,13 @@ export class EditScheduleComponent implements OnInit {
     if (this.schedules.length <= 0)
       return alert("O dia não pode ficar sem horário!");
 
-    this.scheduleService.updateSchedules(this.selected, this.deletedSchedulesValues, this.schedulesToBeInserted, this.scheduleToBeUpdated)?.subscribe((value) => {
+    this.scheduleService.updateSchedules(this.editionActions)?.subscribe((value) => {
+
+      if (value instanceof Map) {
+        return;
+      }
+
+
 
     });
 

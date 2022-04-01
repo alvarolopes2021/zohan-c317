@@ -15,10 +15,10 @@
                         <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
                     </div>
                     <div *ngFor="let schedule of schedules">
-                        <div class="selectable-schedule" [id]="schedule.scheduleId">
-                            <label [for]="schedule.scheduleTime">{{schedule.scheduleTime}}</label>
-                            <input type="radio" [id]="schedule.scheduleTime" name="schedule" formControlName="schedule"
-                                value="schedule.scheduleTime" (change)="selectDiv(schedule.scheduleId)">
+                        <div class="selectable-schedule" [id]="schedule.dayTimeId">
+                            <label [for]="schedule.dayTimeStart">{{schedule.dayTimeStart}}</label>
+                            <input type="radio" [id]="schedule.dayTimeStart" name="schedule" formControlName="schedule"
+                                value="schedule.dayTimeStart" (change)="selectDiv(schedule.dayTimeId)">
                         </div>
                     </div>
                 </fieldset>

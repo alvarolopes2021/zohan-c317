@@ -20,26 +20,31 @@ import { AddServicesComponent } from './logged/adm/add-services/add-services.com
 import { AllOrdersComponent } from './logged/adm/all-orders/all-orders.component';
 import { SchedulingComponent } from './logged/common/scheduling/scheduling.component';
 import { LoggedLocationComponent } from './logged/common/logged-location/logged-location.component';
+import { RoleGuardService } from './services/role-guard.service';
+import { Constants } from 'src/constants';
+import { AuthGuardService } from './services/auth-guard.service';
+import { ForbidenComponent } from './logged/common/forbiden/forbiden.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/home', data: {animation: 'HomePageAnimation'}},
+  {path: 'forbiden', component: ForbidenComponent},
   {path: 'home', component: HomeComponent, data: {animation: 'HomePageAnimation'}},
   {path: 'ads', component: AdsComponent, data: {animation: 'AdsAnimation'}},
   {path: 'prices', component: PricesComponent, data: {animation: 'PricesAnimation'}},
   {path: 'location', component: LocationComponent, data: {animation: 'LocationAnimation'}},
   {path: 'signup', component: SignupComponent, data: {animation: 'SignUpAnimation'}},
   {path: 'login', component: LoginComponent},
-  {path: 'logged/client', component: ClientHomeComponent},
-  {path: 'logged/admin', component: AdminHomeComponent}, 
-  {path: 'logged/create-schedule', component: CreateScheduleComponent},
-  {path: 'logged/edit-schedule', component: EditScheduleComponent},
-  {path: 'logged/list-clients', component: ListClientsComponent},
-  {path: 'logged/add-ads', component: AddAdsComponent},
-  {path: 'logged/add-services', component: AddServicesComponent},
-  {path: 'logged/profile', component: ProfileComponent},
-  {path: 'logged/all-orders', component: AllOrdersComponent},
-  {path: 'logged/scheduling', component: SchedulingComponent},
-  {path: 'logged/location', component: LoggedLocationComponent}
+  {path: 'logged/client', component: ClientHomeComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}},
+  {path: 'logged/admin', component: AdminHomeComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}}, 
+  {path: 'logged/create-schedule', component: CreateScheduleComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/edit-schedule', component: EditScheduleComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/list-clients', component: ListClientsComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/add-ads', component: AddAdsComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/add-services', component: AddServicesComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'logged/all-orders', component: AllOrdersComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
+  {path: 'logged/scheduling', component: SchedulingComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}},
+  {path: 'logged/location', component: LoggedLocationComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}}
 ];
 
 

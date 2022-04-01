@@ -4,12 +4,13 @@ import { catchError } from 'rxjs';
 import { OrdersModel } from 'src/app/models/orders.model';
 
 
-import { ScheduleModel } from 'src/app/models/schedule.model';
+import { DayTimeModel } from 'src/app/models/dayTime.model';
 import { ServicesModel } from 'src/app/models/services.model';
 import { ErrorHandler } from 'src/app/services/errorHandler';
 import { OrdersService } from 'src/app/services/orders.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { ServicesService } from 'src/app/services/services.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { IconServiceService } from 'src/assets/icon-service.service';
 import { Constants } from 'src/constants';
 
@@ -32,7 +33,10 @@ export class SchedulingComponent implements OnInit {
   icons: Map<string, any> = new Map<string, any>();
 
   services: ServicesModel[] = [];
-  schedules: ScheduleModel[] = [];
+  schedules: DayTimeModel[] = [];
+
+  selectedService: ServicesModel = {};
+  selectedSchedule: DayTimeModel = {};
 
 
   form = new FormGroup({
@@ -45,7 +49,8 @@ export class SchedulingComponent implements OnInit {
     private iconsService: IconServiceService,
     private scheduleService: ScheduleService,
     private servicesService: ServicesService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -67,6 +72,9 @@ export class SchedulingComponent implements OnInit {
     for (let i = 0; i < selectableDivs.length; i++) {
       if (selectableDivs[i].id === scheduleId) {
         selectableDivs[i].className = "selected-div";
+        let index = this.schedules.findIndex((value) => value.dayTimeId === scheduleId);
+        if (index !== null)
+          this.selectedSchedule = this.schedules[index];
       }
       else {
         selectableDivs[i].className = "selectable-schedule";
@@ -89,6 +97,9 @@ export class SchedulingComponent implements OnInit {
     for (let i = 0; i < selectableDivs.length; i++) {
       if (selectableDivs[i].id === serviceid) {
         selectableDivs[i].className = "selected-service";
+        let index = this.services.findIndex((value) => value.serviceId === serviceid);
+        if (index !== null)
+          this.selectedService = this.services[index];
       }
       else {
         selectableDivs[i].className = "selectable-service";
@@ -115,8 +126,8 @@ export class SchedulingComponent implements OnInit {
             return;
           }
 
-          this.schedules = <ScheduleModel[]>value[0];
-          this.schedules = this.schedules.sort((a, b) => a.scheduleTime!.localeCompare(b.scheduleTime!));
+          this.schedules = <DayTimeModel[]>value[0];
+          this.schedules = this.schedules.sort((a, b) => a.dayTimeStart!.localeCompare(b.dayTimeEnd!));
 
         });
 
@@ -139,30 +150,45 @@ export class SchedulingComponent implements OnInit {
   }
 
   createOrder() {
-    if(this.selected == null || this.selected == undefined)
+    if (this.selected == null || this.selected == undefined)
       return alert("Escolha um dia!");
 
     let form = this.form;
-    if(!form.valid){
+    if (!form.valid) {
 
-      if(form.get("schedule")?.invalid)
+      if (form.get("schedule")?.invalid)
         return alert("Escolha um horário!");
 
-      if(form.get("service")?.invalid)
+      if (form.get("service")?.invalid)
         return alert("Escolha um serviço");
 
       return alert("Selecione algum serviço");
     }
 
+    let userInfo: Map<string, string> | null = this.authService.getTokenInformation();
+
+    if (userInfo == null)
+      return;
+
+
     let orderModel: OrdersModel = {};
 
-    /*
+    orderModel.orderDate = this.selected;
+    orderModel.order_clientId = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
+    orderModel.order_scheduleId = this.selectedSchedule.dayTimeId;
+    orderModel.order_serviceId = this.selectedService.serviceId;
 
-    this.ordersService.createOrder().pipe(catchError(ErrorHandler.handleError)).subscribe((value)=> {
+    this.ordersService.createOrder(orderModel).pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
+
+      if (value instanceof Map) {
+        return;
+      }
+
+      console.log(value);
+
 
     });
-    
-    */
+
 
   }
 

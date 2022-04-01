@@ -10,8 +10,7 @@ export class OrdersService {
 
   constructor(private http: HttpClient) { }
 
-  createOrder(order: OrdersModel, date : Date){
-    order.orderDate = date;
+  createOrder(order: OrdersModel){
     return this.http.post(Constants.HttpEndpoints.Orders.CRAETE_ORDER, order);
   }
 }

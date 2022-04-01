@@ -23,7 +23,7 @@
                     <fa-icon [icon]="icons.get('faPhone')" class="input-icons"></fa-icon>
                 </label>
                 <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone"
-                    title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000">
+                    title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false">
             </div>
             
             <div class="input-container">

@@ -67,23 +67,23 @@ export class AuthService {
     let token = UtilService.getFromLocalStorage(Constants.Auth.TOKEN);
     let decoded : Object;
 
-    if (token != null) { //if the token is not null
+    if (token != null && token != undefined) { //if the token is not null
       decoded = decode(token);  // we get the payload
       
       let values = new Map(Object.entries(decoded)); //we put the payload into a map
       let payload = atob(values.get("params"));  //we get only the params from the token
 
       let data : string[] = payload.split(";"); //we split the params into the format the server created it
-            
+                  
       let role = data[0].split("=")[1];
       let username = data[1].split("=")[1];
-      let userPhone = data[2].split("=")[1];
+      let userId = data[2].split("=")[1];
 
       let info : Map<string, string> = new Map<string, string>();
 
       info.set(Constants.Keys.USERNAME, username);
       info.set(Constants.Keys.ROLE, role);
-      info.set(Constants.Keys.USER_PHONE, userPhone);
+      info.set(Constants.Keys.SESSION_CLIENT_ID, userId);
 
       return info;
     }

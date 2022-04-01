@@ -17,6 +17,11 @@ export class AdsComponent implements OnInit {
   ngOnInit(): void {
     this.adsService.getAds()?.pipe(catchError(ErrorHandler.handleError)).subscribe((ads) => {
 
+      let adsArray = ads as Array<any>;
+      
+      if(adsArray.length <= 0)
+        return;
+
       this.ad = ads[0].adDescription;
 
       let adh3 = document.getElementById("ad");

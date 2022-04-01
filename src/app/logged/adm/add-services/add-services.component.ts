@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError } from 'rxjs';
 
 import { ServicesModel } from 'src/app/models/services.model';
@@ -25,7 +26,8 @@ export class AddServicesComponent implements OnInit {
 
   constructor(
     private iconService: IconServiceService,
-    private servicesService : ServicesService
+    private servicesService: ServicesService,
+    private snackBar: MatSnackBar
   ) { }
 
 
@@ -108,7 +110,15 @@ export class AddServicesComponent implements OnInit {
 
   addServices() {
     this.servicesService.insertServices(this.services)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
-      console.log(value);
+      if (value instanceof Map) {
+        return;
+      }
+
+      this.snackBar.open("Serviços cadastrados com sucesso ✅",
+        "OK",
+        { duration: 5000, panelClass: ['blue-snackbar'] }
+      );
+
     });
   }
 
