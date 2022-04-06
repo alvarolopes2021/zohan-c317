@@ -1,1 +1,27 @@
-<p>orders-history works!</p>
+<div class="main">
+    <div>
+        <app-logged-header title="HISTÓRICO"></app-logged-header>
+
+        <div class="hold-order-history">
+            <table>
+                <tr>
+                    <td>SERVIÇO</td>
+                    <td>DIA</td>
+                    <td>HORÁRIO</td>
+                    <td>VALOR</td>
+                    <td>AÇÃO</td>
+                </tr>
+                <tr *ngIf="orderBinding.length <= 0">
+                    <td colspan="5">NENHUM AGENDAMENTO REALIZADO</td>
+                </tr>
+                <tr *ngFor="let orderData of orderBinding">
+                    <td>{{orderData.serviceDescription}}</td>
+                    <td>{{orderData.dayTimeDay}}</td>
+                    <td>{{orderData.dayTimePretty}}</td>
+                    <td>{{orderData.serviceValue}}</td>
+                    <td>CANCELAR</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

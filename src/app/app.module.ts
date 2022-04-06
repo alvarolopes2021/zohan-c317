@@ -22,8 +22,6 @@ import { AdsComponent } from './home/ads/ads.component';
 import { LoginComponent } from './login/login.component';
 import { ClientHomeComponent } from './logged/client/client-home/client-home.component';
 import { AdminHomeComponent } from './logged/adm/admin-home/admin-home.component';
-import { CreateScheduleComponent } from './logged/adm/create-schedule/create-schedule.component';
-import { EditScheduleComponent } from './logged/adm/edit-schedule/edit-schedule.component';
 import { ListClientsComponent } from './logged/adm/list-clients/list-clients.component';
 import { AddAdsComponent } from './logged/adm/add-ads/add-ads.component';
 import { ProfileComponent } from './logged/common/profile/profile.component';
@@ -36,6 +34,7 @@ import { httpInterceptorProviders } from './services/interceptor.module';
 import { ForbidenComponent } from './logged/common/forbiden/forbiden.component';
 import { OrdersHistoryComponent } from './logged/client/orders-history/orders-history.component';
 import { SnackBarComponent } from './custom-components/snack-bar/snack-bar.component';
+import { EditDayTimeComponent } from './logged/adm/edit-day-time/edit-day-time.component';
 
 
 @NgModule({
@@ -51,8 +50,6 @@ import { SnackBarComponent } from './custom-components/snack-bar/snack-bar.compo
     LoginComponent,
     ClientHomeComponent,
     AdminHomeComponent,
-    CreateScheduleComponent,
-    EditScheduleComponent,
     ListClientsComponent,
     AddAdsComponent,
     ProfileComponent,
@@ -64,6 +61,7 @@ import { SnackBarComponent } from './custom-components/snack-bar/snack-bar.compo
     ForbidenComponent,
     OrdersHistoryComponent,
     SnackBarComponent,
+    EditDayTimeComponent,
   ],
   imports: [
     BrowserModule,

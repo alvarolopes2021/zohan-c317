@@ -33,6 +33,13 @@ export class AddServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.icons = this.iconService.getIcons();
+    this.servicesService.getServices()?.pipe(catchError(ErrorHandler.handleError)).subscribe((services)=> {
+      if(services instanceof Map){
+        return;
+      }
+
+      this.services = <ServicesModel[]>services[0]
+    })
   }
 
   addToList() {
@@ -52,14 +59,40 @@ export class AddServicesComponent implements OnInit {
       }
     }
 
-    this.services.push(serviceModel);
+    this.servicesService.insertServices([serviceModel])?.pipe(catchError(ErrorHandler.handleError)).subscribe((service) => {
+
+      if (service instanceof Map) {
+        return;
+      }
+
+      this.services.push(<ServicesModel>service[0]);
+
+    })
+
   }
 
   deleteFromList(item: ServicesModel) {
+
+    let op = confirm("Deseja deletar este serviço?");
+
+    if(!op)
+      return;
+
     if (this.services.includes(item)) {
       let index = this.services.indexOf(item);
-      if (index != -1)
-        this.services.splice(index, 1);
+      if (index != -1) {
+
+        this.servicesService.deleteService([item.serviceId!])?.pipe(catchError(ErrorHandler.handleError)).subscribe((service) => {
+
+          if (service instanceof Map) {
+            return;
+          }
+
+          this.services.splice(index, 1);
+
+        });
+
+      }
     }
   }
 
@@ -76,8 +109,21 @@ export class AddServicesComponent implements OnInit {
 
         let index = this.services.indexOf(item);
         if (index != -1) {
-          this.services[index].serviceDescription = descriptionById.value;
-          this.services[index].serviceValue = valueById.value;
+
+          let copy = this.services[index];
+          copy.serviceDescription = descriptionById.value;
+          copy.serviceValue = valueById.value;
+
+          this.servicesService.updateService(copy)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
+
+            if(value instanceof Map){
+              return;
+            }
+
+            this.services[index].serviceDescription = descriptionById.value;
+            this.services[index].serviceValue = valueById.value;
+
+          })
         }
       }
 
@@ -85,8 +131,9 @@ export class AddServicesComponent implements OnInit {
       let valueSpan = document.getElementsByClassName("value") as HTMLCollection;
 
       if (descriptionSpan !== null && valueSpan !== null) {
+
         for (let i = 0; i < descriptionSpan.length; i++) {
-          console.log(descriptionSpan[i].id);
+          
           if (descriptionSpan[i].id.toString() === item.serviceId) {
 
             if (descriptionById != null && descriptionById !== undefined && valueById !== null && valueById != undefined) {
@@ -104,6 +151,7 @@ export class AddServicesComponent implements OnInit {
               `<input type='text' value='${item.serviceValue}' id='${editValue + item.serviceId}' class='value'>`;
           }
         }
+
       }
     }
   }

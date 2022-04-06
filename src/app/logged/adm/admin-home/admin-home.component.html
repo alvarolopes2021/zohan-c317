@@ -9,30 +9,19 @@
                 <th>DIA</th>
                 <th>HORÁRIO</th>
                 <th>SERVIÇO</th>
-                <th>VALOR</th>
-            </tr>      
+                <th>AÇÕES</th>
+            </tr>   
             <tr>
-                <td>ALVARO</td>
-                <td>22-04-2022</td>
-                <td>12:45-13:30</td>
-                <td>CORTE</td>
-                <td>R$25.00</td>
-            </tr>      
-            <tr>
-                <td>GOHAN</td>                
-                <td>22-04-2022</td>
-                <td>13:30-14:30</td>
-                <td>CORTE</td>
-                <td>R$25.00</td>
+                <td colspan="5">SEM PRÓXIMOS AGENDAMENTOS</td>
+            </tr>   
+            <tr *ngFor="let order of nextOrders">
+                <td>{{order.userName}}</td>
+                <td>{{order.serviceDescription}}</td>
+                <td>{{order.dayTimeDay}}</td>
+                <td>{{order.dayTimePretty}}</td>
+                <td>{{order.serviceValue}}</td>
+                <td>CANCELAR</td>
             </tr> 
-
-            <tr>
-                <td>MAICO</td>                
-                <td>23-04-2022</td>
-                <td>13:30-14:30</td>
-                <td>CORTE</td>
-                <td>R$25.00</td>
-            </tr>    
         </table>
     </div>
 </div>

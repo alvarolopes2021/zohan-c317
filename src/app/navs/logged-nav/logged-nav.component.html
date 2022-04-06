@@ -30,7 +30,15 @@
                 <span class="media-query">CLIENTES</span>
             </li>
         </a>
-        <a routerLink="/logged/all-orders">
+        <a routerLink="/logged/all-orders" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+            <li>
+                <span>
+                    <fa-icon [icon]="icons.get('faBook')" class="input-icons"></fa-icon>
+                </span>
+                <span class="media-query">HISTÓRICO</span>
+            </li>
+        </a>
+        <a routerLink="/logged/orders-history" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.USER">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faBook')" class="input-icons"></fa-icon>
@@ -46,20 +54,12 @@
                 <span class="media-query">AGENDAR</span>
             </li>
         </a>
-        <a routerLink="/logged/create-schedule" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
-            <li>
-                <span>
-                    <fa-icon [icon]="icons.get('faUpload')" class="input-icons"></fa-icon>
-                </span>
-                <span class="media-query">CRIAR HORÁRIOS</span> 
-            </li>
-        </a>
         <a routerLink="/logged/edit-schedule" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
             <li>
                 <span>
                     <fa-icon [icon]="icons.get('faClock')" class="input-icons"></fa-icon>
                 </span>
-                <span class="media-query"> EDITAR HORÁRIOS</span>
+                <span class="media-query">HORÁRIOS</span> 
             </li>
         </a>
         <a routerLink="/logged/add-services" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
@@ -67,7 +67,7 @@
                 <span>
                     <fa-icon [icon]="icons.get('faScissors')" class="input-icons"></fa-icon>
                 </span>
-                <span class="media-query">ADICIONAR SERVIÇOS</span>
+                <span class="media-query">SERVIÇOS</span>
             </li>
         </a>
         <a routerLink="/logged/add-ads" *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">

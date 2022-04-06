@@ -23,4 +23,14 @@ export class UserService {
     return this.http.get(Constants.HttpEndpoints.Users.USER_PROFILE, {params: params} );
   }
 
+  updateUserProfile(user: UserModel){
+    if(user == null || user == undefined)
+      return;
+
+    user.userPsw = btoa(user.userPsw!);
+    user.newPsw = btoa(user.newPsw!);
+
+    return this.http.put(Constants.HttpEndpoints.Users.UPDATE_USER_PROFILE, user);
+  }
+
 }

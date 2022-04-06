@@ -65,7 +65,8 @@ h1{
 }
 
 
-input[type="text"]{
+input[type="text"],
+input[type="password"]{
     display: block;    
     margin-top: 1em;
     margin-bottom: 1em;    
@@ -81,6 +82,19 @@ input[type="checkbox"]{
 .below-image-information{
     text-align: left;        
     position: relative;    
+}
+
+.final-action-button{
+    width: 30%;
+    background-color: #eee;
+    color: #000;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    padding: 1%;
+}
+.final-action-button:hover{
+    background-color: #aaa;
 }
 
 @media only screen and (max-width: 600px) { 

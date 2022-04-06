@@ -4,6 +4,7 @@ export interface UserModel{
     userEmail?: string;
     userPhone?: string;
     userPsw?: string;
+    newPsw?: string;
     userType?: string;
     userToken?: {
         token: string,

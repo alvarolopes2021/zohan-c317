@@ -1,5 +1,30 @@
 <div class="main">
     <div>
         <app-logged-header title="TODOS OS PEDIDOS"></app-logged-header>
+
+        <div class="hold-all-orders">
+            <table>
+                <tr>
+                    <td>CLIENTE</td>
+                    <td>SERVIÇO</td>
+                    <td>DIA</td>
+                    <td>HORÁRIO</td>
+                    <td>VALOR</td>
+                    <td>AÇÃO</td>
+                </tr>
+                <tr *ngIf="orders.length <= 0">
+                    <td colspan="5">NENHUM AGENDAMENTO REALIZADO</td>
+                </tr>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.userName}}</td>
+                    <td>{{order.serviceDescription}}</td>
+                    <td>{{order.dayTimeDay}}</td>
+                    <td>{{order.dayTimePretty}}</td>
+                    <td>{{order.serviceValue}}</td>
+                    <td>CANCELAR</td>
+                </tr>
+            </table>
+
+        </div>
     </div>
 </div>

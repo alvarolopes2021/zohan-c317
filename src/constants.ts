@@ -17,12 +17,15 @@ export class Constants {
             static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
             static GET_SCHEDULES: string = this.IP + "schedule/get-schedules";
             static UPDATE_SCHEDULES: string = this.IP + "schedule/update-schedules";
+            static DELETE_DAYTIME: string = this.IP + "schedule/delete-dayTime";
+            static GET_AVAILABLE_DAYTIME: string = this.IP + "schedule/get-available-dayTime";
         }
 
         static Users = class {
             static IP: string = "http://localhost:3000/";
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
             static USER_PROFILE: string = this.IP + "user/user-profile";
+            static UPDATE_USER_PROFILE: string = this.IP + "user/update-user-profile";
         }
 
         static Ads = class {
@@ -35,11 +38,16 @@ export class Constants {
             static IP: string = "http://localhost:3000/";
             static ADD_SERVICES = this.IP + "services/add-services";
             static GET_SERVICES = this.IP + "services/get-services";
+            static DELETE_SERVICES = this.IP + "services/delete-services";
+            static UPDATE_SERVICES = this.IP + "services/update-services";
         }
 
         static Orders = class {
             static IP: string = "http://localhost:3000/";
             static CRAETE_ORDER = this.IP + "orders/create-order";
+            static GET_ORDER_BY_USER_ID = this.IP + "orders/get-orders-by-user-id";
+            static GET_ALL_ORDERS = this.IP + "orders/get-all-orders";
+            static GET_NEXT_ORDERS = this.IP + "orders/get-next-orders";
         }
     }
 
@@ -76,19 +84,15 @@ export class Constants {
         static BARBER = "BARBER";
     }
 
-    static Edition = class {
-        static ADDED = "ADDED";
-        static DELETED = "DELETED";
-        static UPDATED = "UPDATED";
-    }
-
     static Keys = class {
         static USERNAME: string = "USERNAME";
         static ROLE: string = "ROLE";
         static DATE: string = "DATE";
         static SCHEDULE_LIST: string = "SCHEDULE_LIST";
         static USER_PHONE: string = "USER_PHONE";
-        static SESSION_CLIENT_ID: string = "SESSION_CLIENT_ID"
+        static SESSION_CLIENT_ID: string = "SESSION_CLIENT_ID";
+        static DAY_TIME: string = "DAY_TIME";
+        static SERVICE_ID: string = "SERVICE_ID";
     }
 
 }

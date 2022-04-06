@@ -28,7 +28,9 @@ export class AddAdsComponent implements OnInit {
       }
 
       let textArea = this.form.get("ad");
-      textArea?.setValue(<string>value[0].adDescription);
+
+      if(<string>value[0] != undefined)
+        textArea?.setValue(<string>value[0].adDescription);
     })
   }
 

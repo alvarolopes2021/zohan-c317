@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { Constants } from 'src/constants';
 import { DayTimeModel } from '../models/dayTime.model';
-import { EditDayTimeActionModel } from '../models/edit-dayTime-action.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,7 @@ export class ScheduleService {
   ) { }
 
 
-  createSchedule(dayTimeList: DayTimeModel[]): Observable<any> | null {
-    console.log(dayTimeList);
+  createSchedule(dayTimeList: DayTimeModel[]): Observable<any> | null {    
     if (dayTimeList == null || dayTimeList == undefined || dayTimeList.length <= 0)
       return null;
 
@@ -33,13 +31,26 @@ export class ScheduleService {
     return this.http.get(Constants.HttpEndpoints.Schedules.GET_SCHEDULES, { params: params });
   }
 
-  updateSchedules(editionActions: EditDayTimeActionModel[]): Observable<any> | null {
+  updateSchedules(editionActions: DayTimeModel): Observable<any> | null {
 
     if(editionActions == null)
       return null;
 
     return this.http.put(Constants.HttpEndpoints.Schedules.UPDATE_SCHEDULES, editionActions);
     
+  }
+
+  deleteDayTime(dayTime: DayTimeModel){
+    if(dayTime == null || dayTime == undefined)
+      return;
+
+    let params = new HttpParams().append(Constants.Keys.DAY_TIME, dayTime.dayTimeId!);
+    return this.http.delete(Constants.HttpEndpoints.Schedules.DELETE_DAYTIME, {params: params});
+  }
+
+  getAvailableDayTime(date: Date): Observable<any>{
+    let params = new HttpParams().append(Constants.Keys.DATE, date.toISOString().split("T")[0]);
+    return this.http.get(Constants.HttpEndpoints.Schedules.GET_AVAILABLE_DAYTIME, {params: params});
   }
 
 }
