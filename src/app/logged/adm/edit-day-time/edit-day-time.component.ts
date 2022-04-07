@@ -67,8 +67,6 @@ export class EditDayTimeComponent implements OnInit {
         return;
       }
 
-      console.log(response);
-
       this.schedules.push(response[0]);
 
       this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));

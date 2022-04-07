@@ -28,4 +28,9 @@ export class OrdersService {
     return this.http.get(Constants.HttpEndpoints.Orders.GET_NEXT_ORDERS);
   }
 
+  cancelOrder(orderId: string): Observable<any>{
+    let params = new HttpParams().append(Constants.Keys.ORDER_ID, [orderId].toString());
+    return this.http.delete(Constants.HttpEndpoints.Orders.CANCEL_ORDER, {params: params});
+  }
+
 }

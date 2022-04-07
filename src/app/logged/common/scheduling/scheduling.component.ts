@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError } from 'rxjs';
+import { catchError, shareReplay } from 'rxjs';
 import { OrdersModel } from 'src/app/models/orders.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -41,11 +41,14 @@ export class SchedulingComponent implements OnInit {
   selectedService: ServicesModel = {};
   selectedSchedule: DayTimeModel = {};
 
+  userInfo: Map<string, string> | null = new Map<string, string>();
+
 
   form = new FormGroup({
     scheduleToInsert: new FormControl(''),
     schedule: new FormControl('', Validators.required),
-    service: new FormControl('', Validators.required)
+    service: new FormControl('', Validators.required),
+    userPhone: new FormControl('')
   });
 
   constructor(
@@ -60,6 +63,7 @@ export class SchedulingComponent implements OnInit {
 
   ngOnInit(): void {
     this.icons = this.iconsService.getIcons();
+    this.userInfo = this.authService.getTokenInformation();
   }
 
   selectDiv(scheduleId: string | undefined) {
@@ -124,46 +128,44 @@ export class SchedulingComponent implements OnInit {
       this.services = [];
       this.errors.clear();
 
-      this.scheduleService.getAvailableDayTime(this.selected)?.pipe(catchError(ErrorHandler.handleError)).
-        subscribe((value) => {
+      this.scheduleService.getAvailableDayTime(this.selected)?.pipe(catchError(ErrorHandler.handleError), shareReplay(1)).subscribe((value) => {
 
-          if (value instanceof Map) {
-            this.schedules = [];
-            this.services = [];
-            this.errors = value;
-            return;
+        if (value instanceof Map) {
+          this.schedules = [];
+          this.services = [];
+          this.errors = value;
+          return;
+        }
+
+        let today = new Date();
+        today.setHours(new Date().getHours() - 3);
+        let correctDay = today.toISOString();
+        let todayDate = correctDay?.split("T")[0];
+        let todayTime = correctDay?.split("T")[1].split(".")[0];
+
+        this.schedules = <DayTimeModel[]>value[0];
+
+        let availableSchedules: DayTimeModel[] = [];
+
+        this.schedules.forEach((element) => {
+          if (element.dayTimeDay?.split("T")[0]! > todayDate ||
+            (element.dayTimeDay?.split("T")[0]! == todayDate && element.dayTimeStart! >= todayTime)) {
+
+            availableSchedules.push(element);
           }
-
-          let today = new Date();
-          today.setHours(new Date().getHours() - 3);
-          let correctDay = today.toISOString();
-          let todayDate = correctDay?.split("T")[0];
-          let todayTime = correctDay?.split("T")[1].split(".")[0];
-
-          this.schedules = <DayTimeModel[]>value[0];
-
-          let availableSchedules: DayTimeModel[] = []
-
-          this.schedules.forEach((element) => {
-            if (element.dayTimeDay?.split("T")[0]! > todayDate || 
-              (element.dayTimeDay?.split("T")[0]! == todayDate && element.dayTimeStart! >= todayTime)) {
-
-              availableSchedules.push(element);
-            }
-          });
-
-
-          if (this.schedules.length <= 0) {
-            this.errors.set(Constants.Errors.ERROR, "Sem horários disponíveis")
-            return;
-          }
-
-          this.schedules = availableSchedules;
-
-
-          this.schedules.sort((a, b) => a.dayTimeStart!.localeCompare(b.dayTimeEnd!));
-
         });
+
+
+        if (availableSchedules.length <= 0) {
+          this.schedules = [];
+          this.errors.set(Constants.Errors.ERROR, "Sem horários disponíveis");
+          return;
+        }
+
+        this.schedules = availableSchedules;
+        this.schedules.sort((a, b) => a.dayTimeStart!.localeCompare(b.dayTimeEnd!));
+
+      });
 
       this.servicesService.getServices()?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
@@ -179,8 +181,6 @@ export class SchedulingComponent implements OnInit {
         this.services = <ServicesModel[]>value[0];
         this.services = this.services.sort((a, b) => a.serviceDescription!.localeCompare(b.serviceDescription!));
       });
-
-
 
     }
   }
@@ -206,12 +206,18 @@ export class SchedulingComponent implements OnInit {
     if (userInfo == null)
       return;
 
-
     let orderModel: OrdersModel = {};
 
     orderModel.order_clientId = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
     orderModel.order_idDayTime = this.selectedSchedule.dayTimeId;
     orderModel.order_serviceId = this.selectedService.serviceId;
+
+    if (userInfo.get(Constants.Keys.ROLE) == Constants.Roles.ADMIN) {
+      if (form.get("userPhone")?.value == null || form.get("userPhone")?.value == "")
+        return alert("Insira o número do cliente!")
+
+      orderModel.order_clientCellphone = form.get("userPhone")?.value;
+    }
 
     this.ordersService.createOrder(orderModel).pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
@@ -223,6 +229,11 @@ export class SchedulingComponent implements OnInit {
         "OK",
         { duration: 5000, panelClass: ['blue-snackbar'] }
       );
+
+      if (userInfo?.get(Constants.Keys.ROLE) == Constants.Roles.ADMIN) {
+        this.router.navigate(['logged/admin']);
+        return ;
+      }        
 
       this.router.navigate(['logged/orders-history']);
 

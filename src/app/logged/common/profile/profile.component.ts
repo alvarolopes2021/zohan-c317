@@ -91,14 +91,17 @@ export class ProfileComponent implements OnInit {
         return alert("Confirme sua nova senha digitando-a novamente!");
       else if (String(formValues.get("confirmNewPsw")?.value) !== String(formValues.get("newPsw")?.value))
         return alert("A nova senha e a confirmação não batem!");
+
+      this.userModel.userPsw = String(formValues.get("oldPsw")?.value);
+      this.userModel.newPsw = String(formValues.get("newPsw")?.value);
     }
 
 
     this.userModel.userName = formValues.get("userName")?.value;
     this.userModel.userPhone = formValues.get("userPhone")?.value;
-    this.userModel.userEmail = formValues.get("userEmail")?.value;
-    this.userModel.userPsw = String(formValues.get("oldPsw")?.value);
-    this.userModel.newPsw = String(formValues.get("newPsw")?.value);
+    this.userModel.userEmail = formValues.get("userEmail")?.value;    
+    this.userModel.userPsw = null;
+    this.userModel.newPsw = null;
 
     this.userService.updateUserProfile(this.userModel)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 

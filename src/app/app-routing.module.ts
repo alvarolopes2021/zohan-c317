@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'logged/profile', component: ProfileComponent, canActivate: [AuthGuardService]},
   {path: 'logged/all-orders', component: AllOrdersComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.ADMIN}},
   {path: 'logged/orders-history', component: OrdersHistoryComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}},
-  {path: 'logged/scheduling', component: SchedulingComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}},
+  {path: 'logged/scheduling', component: SchedulingComponent, canActivate: [AuthGuardService]},
   {path: 'logged/location', component: LoggedLocationComponent, canActivate: [RoleGuardService], data: {expectedRole: Constants.Roles.USER}}
 ];
 

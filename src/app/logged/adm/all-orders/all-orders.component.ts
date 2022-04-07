@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError } from 'rxjs';
 import { OrderBindingModel } from 'src/app/models/orders.model';
 import { ErrorHandler } from 'src/app/services/errorHandler';
@@ -14,7 +15,8 @@ export class AllOrdersComponent implements OnInit {
   orders: OrderBindingModel[] = [];
 
   constructor(
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -28,12 +30,59 @@ export class AllOrdersComponent implements OnInit {
       let i = 0;
       this.orders.forEach((element) => {        
         this.orders[i].dayTimeDay = element.dayTimeDay?.split("T")[0];
+        this.orders[i].canCancelOrder = this.canCancelOrder(element);
         i++;
       });
 
       this.orders = this.orders
         .sort((a, b) => b.dayTimeDay!.localeCompare(a.dayTimeDay!));
     })
+  }
+
+  canCancelOrder(order: OrderBindingModel) {
+    let today = new Date();
+    today.setHours(today.getHours() - 3);
+    let todayFormatted = today.toISOString();
+    let todayDate = todayFormatted.split("T")[0];
+    let todayTime = todayFormatted.split("T")[1].split(".")[0];
+
+    if (
+        order.dayTimeDay?.split("T")[0]! < todayDate ||
+        (order.dayTimeDay?.split("T")[0]! == todayDate && order.dayTimeStart! < todayTime)
+      ) {
+
+      return false;
+    }
+
+    return true;
+
+  }
+
+  cancelOrder(order: OrderBindingModel) {
+    if (order == null)
+      return;
+
+    let op = confirm("Deseja cancelar o agendamento?");
+
+    if (!op)
+      return;
+
+    this.ordersService.cancelOrder(order.orderId!).pipe(catchError(ErrorHandler.handleError)).subscribe((result) => {
+
+      if (result instanceof Map) {
+        return;
+      }
+
+      this.orders.splice(this.orders.indexOf(order), 1);
+
+      this.snackBar.open("Agendamento cancelado ✅",
+        "OK",
+        { duration: 5000, panelClass: ['blue-snackbar'] }
+      );
+
+
+    });
+
   }
 
 }

@@ -48,6 +48,7 @@ export class Constants {
             static GET_ORDER_BY_USER_ID = this.IP + "orders/get-orders-by-user-id";
             static GET_ALL_ORDERS = this.IP + "orders/get-all-orders";
             static GET_NEXT_ORDERS = this.IP + "orders/get-next-orders";
+            static CANCEL_ORDER = this.IP + "orders/cancel-order";
         }
     }
 
@@ -93,6 +94,7 @@ export class Constants {
         static SESSION_CLIENT_ID: string = "SESSION_CLIENT_ID";
         static DAY_TIME: string = "DAY_TIME";
         static SERVICE_ID: string = "SERVICE_ID";
+        static ORDER_ID: string = "ORDER_ID";
     }
 
 }

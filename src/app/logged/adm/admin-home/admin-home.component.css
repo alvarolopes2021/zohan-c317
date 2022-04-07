@@ -31,6 +31,19 @@ td, th{
     padding: 1em;
     text-align: center;
 }
+.action{
+    color: #b94343;
+    font-weight: bolder;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.ok{
+    cursor: default;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: #43b949;
+}
+
 
 
 @media only screen and (max-width: 600px) { 

@@ -3,8 +3,8 @@ export interface UserModel{
     userName?: string;
     userEmail?: string;
     userPhone?: string;
-    userPsw?: string;
-    newPsw?: string;
+    userPsw?: string | null;
+    newPsw?: string | null;
     userType?: string;
     userToken?: {
         token: string,

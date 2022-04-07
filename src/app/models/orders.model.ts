@@ -5,6 +5,7 @@ export interface OrdersModel {
     order_idDayTime?: string;
     order_clientId?: string;
     order_serviceId?: string;
+    order_clientCellphone?: string;
 }
 
 export interface OrderBindingModel {
@@ -16,4 +17,5 @@ export interface OrderBindingModel {
     serviceValue?: string;
     userName?: string;
     userPhone?: string;
+    canCancelOrder?: boolean;
 }

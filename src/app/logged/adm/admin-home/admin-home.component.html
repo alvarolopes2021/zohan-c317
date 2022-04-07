@@ -1,27 +1,27 @@
 <div class="main">
     <div class="hold-next-clients">
-        
+
         <app-logged-header title="PRÓXIMOS CLIENTES"></app-logged-header>
 
         <table>
             <tr>
                 <th>CLIENTE</th>
+                <th>SERVIÇO</th>
                 <th>DIA</th>
                 <th>HORÁRIO</th>
-                <th>SERVIÇO</th>
                 <th>AÇÕES</th>
-            </tr>   
-            <tr>
+            </tr>
+            <tr *ngIf="nextOrders.length <= 0">
                 <td colspan="5">SEM PRÓXIMOS AGENDAMENTOS</td>
-            </tr>   
+            </tr>
             <tr *ngFor="let order of nextOrders">
                 <td>{{order.userName}}</td>
                 <td>{{order.serviceDescription}}</td>
                 <td>{{order.dayTimeDay}}</td>
                 <td>{{order.dayTimePretty}}</td>
-                <td>{{order.serviceValue}}</td>
-                <td>CANCELAR</td>
-            </tr> 
+                <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CANCELAR</td>
+                <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
+            </tr>
         </table>
     </div>
 </div>

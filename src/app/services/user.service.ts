@@ -13,22 +13,24 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getAllUsers(): Observable<any> | null{
-    let params : HttpParams = new HttpParams().append(Constants.Keys.ROLE, Constants.Roles.USER);
-    return this.http.get<any>(Constants.HttpEndpoints.Users.GET_ALL_USERS, {params: params});        
+  getAllUsers(): Observable<any> | null {
+    let params: HttpParams = new HttpParams().append(Constants.Keys.ROLE, Constants.Roles.USER);
+    return this.http.get<any>(Constants.HttpEndpoints.Users.GET_ALL_USERS, { params: params });
   }
 
-  getUserProfile(id: string): Observable<any> | null{
-    let params : HttpParams = new HttpParams().append(Constants.Keys.SESSION_CLIENT_ID, id);
-    return this.http.get(Constants.HttpEndpoints.Users.USER_PROFILE, {params: params} );
+  getUserProfile(id: string): Observable<any> | null {
+    let params: HttpParams = new HttpParams().append(Constants.Keys.SESSION_CLIENT_ID, id);
+    return this.http.get(Constants.HttpEndpoints.Users.USER_PROFILE, { params: params });
   }
 
-  updateUserProfile(user: UserModel){
-    if(user == null || user == undefined)
+  updateUserProfile(user: UserModel) {
+    if (user == null || user == undefined)
       return;
 
-    user.userPsw = btoa(user.userPsw!);
-    user.newPsw = btoa(user.newPsw!);
+    if (user.userPsw != null && user.newPsw != null) {
+      user.userPsw = btoa(user.userPsw!);
+      user.newPsw = btoa(user.newPsw!);
+    }
 
     return this.http.put(Constants.HttpEndpoints.Users.UPDATE_USER_PROFILE, user);
   }

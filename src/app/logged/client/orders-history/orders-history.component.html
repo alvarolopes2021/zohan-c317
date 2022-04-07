@@ -19,7 +19,8 @@
                     <td>{{orderData.dayTimeDay}}</td>
                     <td>{{orderData.dayTimePretty}}</td>
                     <td>{{orderData.serviceValue}}</td>
-                    <td>CANCELAR</td>
+                    <td class="action" *ngIf="orderData.canCancelOrder" (click)="cancelOrder(orderData)">CANCELAR</td>
+                    <td class="ok" *ngIf="!orderData.canCancelOrder">OK</td>
                 </tr>
             </table>
         </div>

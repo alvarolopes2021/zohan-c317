@@ -17,7 +17,8 @@
                     <div *ngFor="let schedule of schedules">
                         <div class="selectable-schedule" [id]="schedule.dayTimeId">
                             <label [for]="schedule.dayTimeStart">{{schedule.dayTimePretty}}</label>
-                            <input type="radio" [id]="schedule.dayTimeStart" name="schedule" formControlName="schedule" [value]="schedule.dayTimeStart" (change)="selectDiv(schedule.dayTimeId)">
+                            <input type="radio" [id]="schedule.dayTimeStart" name="schedule" formControlName="schedule"
+                                [value]="schedule.dayTimeStart" (change)="selectDiv(schedule.dayTimeId)">
                         </div>
                     </div>
                 </fieldset>
@@ -39,6 +40,16 @@
                                 [value]="service.serviceDescription" formControlName="service"
                                 (change)="selectService(service.serviceId)">
                         </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div *ngIf="userInfo?.get(CONSTANTS.Keys.ROLE) === CONSTANTS.Roles.ADMIN">
+                <fieldset>
+                    <legend>TELEFONE DO USUÁRIO</legend>
+                    <div>
+                        <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone" title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false">
+
                     </div>
                 </fieldset>
             </div>

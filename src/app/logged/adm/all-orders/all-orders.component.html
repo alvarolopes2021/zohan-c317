@@ -13,7 +13,7 @@
                     <td>AÇÃO</td>
                 </tr>
                 <tr *ngIf="orders.length <= 0">
-                    <td colspan="5">NENHUM AGENDAMENTO REALIZADO</td>
+                    <td colspan="6">NENHUM AGENDAMENTO REALIZADO</td>
                 </tr>
                 <tr *ngFor="let order of orders">
                     <td>{{order.userName}}</td>
@@ -21,7 +21,8 @@
                     <td>{{order.dayTimeDay}}</td>
                     <td>{{order.dayTimePretty}}</td>
                     <td>{{order.serviceValue}}</td>
-                    <td>CANCELAR</td>
+                    <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CANCELAR</td>
+                    <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
                 </tr>
             </table>
 
