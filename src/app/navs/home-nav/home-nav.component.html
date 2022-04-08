@@ -1,5 +1,10 @@
 <nav>
-    <ul>
+    <ul class="display-cellphone-menu-ul">
+        <li (click)="showMenu()">
+            MENU            
+        </li>
+    </ul>
+    <ul class="cellphone-menu display-none">
         <a routerLink="/home"> <li routerLinkActive="active"> HOME </li>  </a> 
         <a routerLink="/ads"> <li routerLinkActive="active"> DIVULGAÇÕES </li> </a> 
         <a routerLink="/prices"> <li routerLinkActive="active"> VALORES </li> </a> 

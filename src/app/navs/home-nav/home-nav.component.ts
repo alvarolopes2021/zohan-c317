@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeNavComponent implements OnInit {
 
+  isCollapsed: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showMenu() {
+    if (this.isCollapsed) {
+      let menu = document.getElementsByClassName("cellphone-menu")[0];
+      menu.className = "cellphone-menu absolute";
+      this.isCollapsed = false;
+      return;
+    }
+
+    let menu = document.getElementsByClassName("cellphone-menu")[0];
+    menu.className = "cellphone-menu display-none absolute";
+    this.isCollapsed = true;
+
+  }
 }
