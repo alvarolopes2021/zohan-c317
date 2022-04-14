@@ -33,29 +33,29 @@ export class AddServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.icons = this.iconService.getIcons();
-    this.servicesService.getServices()?.pipe(catchError(ErrorHandler.handleError)).subscribe((services)=> {
-      if(services instanceof Map){
+    this.servicesService.getServices()?.pipe(catchError(ErrorHandler.handleError)).subscribe((services) => {
+      if (services instanceof Map) {
         return;
       }
 
-      this.services = <ServicesModel[]>services[0]
+      this.services = <ServicesModel[]>services;
     })
   }
 
   addToList() {
     let serviceModel: ServicesModel = {};
 
-    serviceModel.serviceId = (this.services.length + 1).toString();
-    serviceModel.serviceDescription = "CORTE";
-    serviceModel.serviceValue = "R$25.00"
+    serviceModel.serviceid = (this.services.length + 1).toString();
+    serviceModel.servicedescription = "CORTE";
+    serviceModel.servicevalue = "R$25.00"
 
     let nextId = 0;
     if (this.services.length > 0) {
-      let lastId = this.services[this.services.length - 1].serviceId;
+      let lastId = this.services[this.services.length - 1].serviceid;
 
       if (lastId != null && lastId != undefined) {
         nextId = parseInt(lastId) + 1;
-        serviceModel.serviceId = nextId.toString();
+        serviceModel.serviceid = nextId.toString();
       }
     }
 
@@ -75,20 +75,26 @@ export class AddServicesComponent implements OnInit {
 
     let op = confirm("Deseja deletar este serviço?");
 
-    if(!op)
+    if (!op)
       return;
 
     if (this.services.includes(item)) {
       let index = this.services.indexOf(item);
+
       if (index != -1) {
 
-        this.servicesService.deleteService([item.serviceId!])?.pipe(catchError(ErrorHandler.handleError)).subscribe((service) => {
+        this.servicesService.deleteService([item.serviceid!])?.pipe(catchError(ErrorHandler.handleError)).subscribe((service) => {
 
           if (service instanceof Map) {
             return;
           }
 
           this.services.splice(index, 1);
+
+          this.snackBar.open("Serviços deletado ✅",
+            "OK",
+            { duration: 5000, panelClass: ['blue-snackbar'] }
+          );
 
         });
 
@@ -100,10 +106,10 @@ export class AddServicesComponent implements OnInit {
     let editDescription = "description_";
     let editValue = "value_";
 
-    if (item.serviceId !== undefined) {
+    if (item.serviceid !== undefined) {
 
-      let descriptionById = document.getElementById(editDescription + item.serviceId) as HTMLInputElement;
-      let valueById = document.getElementById(editValue + item.serviceId) as HTMLInputElement;
+      let descriptionById = document.getElementById(editDescription + item.serviceid) as HTMLInputElement;
+      let valueById = document.getElementById(editValue + item.serviceid) as HTMLInputElement;
 
       if (descriptionById != null && descriptionById !== undefined && valueById !== null && valueById != undefined) {
 
@@ -111,17 +117,17 @@ export class AddServicesComponent implements OnInit {
         if (index != -1) {
 
           let copy = this.services[index];
-          copy.serviceDescription = descriptionById.value;
-          copy.serviceValue = valueById.value;
+          copy.servicedescription = descriptionById.value;
+          copy.servicevalue = valueById.value;
 
           this.servicesService.updateService(copy)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
-            if(value instanceof Map){
+            if (value instanceof Map) {
               return;
             }
 
-            this.services[index].serviceDescription = descriptionById.value;
-            this.services[index].serviceValue = valueById.value;
+            this.services[index].servicedescription = descriptionById.value;
+            this.services[index].servicevalue = valueById.value;
 
           })
         }
@@ -133,22 +139,22 @@ export class AddServicesComponent implements OnInit {
       if (descriptionSpan !== null && valueSpan !== null) {
 
         for (let i = 0; i < descriptionSpan.length; i++) {
-          
-          if (descriptionSpan[i].id.toString() === item.serviceId) {
+
+          if (descriptionSpan[i].id.toString() === item.serviceid) {
 
             if (descriptionById != null && descriptionById !== undefined && valueById !== null && valueById != undefined) {
-              descriptionSpan[i].innerHTML = `<span id="${item.serviceId}" class="description">${item.serviceDescription}</span>`;
+              descriptionSpan[i].innerHTML = `<span id="${item.serviceid}" class="description">${item.servicedescription}</span>`;
 
-              valueSpan[i].innerHTML = `<span id="${item.serviceId}" class="value">${item.serviceValue}</span>`;
+              valueSpan[i].innerHTML = `<span id="${item.serviceid}" class="value">${item.servicevalue}</span>`;
 
               return;
             }
 
             descriptionSpan[i].innerHTML =
-              `<input type='text' value='${item.serviceDescription}' id='${editDescription + item.serviceId}' class='description'>`;
+              `<input type='text' value='${item.servicedescription}' id='${editDescription + item.serviceid}' class='description'>`;
 
             valueSpan[i].innerHTML =
-              `<input type='text' value='${item.serviceValue}' id='${editValue + item.serviceId}' class='value'>`;
+              `<input type='text' value='${item.servicevalue}' id='${editValue + item.serviceid}' class='value'>`;
           }
         }
 

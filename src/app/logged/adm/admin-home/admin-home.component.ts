@@ -21,20 +21,21 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordersService.getNextOrders().pipe(catchError(ErrorHandler.handleError)).subscribe((orders) => {
+      
       if (orders instanceof Map) {
         return;
       }
 
-      this.nextOrders = <OrderBindingModel[]>orders[0];
+      this.nextOrders = <OrderBindingModel[]>orders;
 
       let i = 0;
       this.nextOrders.forEach((element) => {
-        this.nextOrders[i].dayTimeDay = this.nextOrders[i].dayTimeDay?.split("T")[0];
+        this.nextOrders[i].daytimeday = this.nextOrders[i].daytimeday?.split("T")[0];
         this.nextOrders[i].canCancelOrder = this.canCancelOrder(element);
         i++;
       });
 
-      this.nextOrders = this.nextOrders.sort((a, b) => a.dayTimeDay!.localeCompare(b.dayTimeDay!));
+      this.nextOrders = this.nextOrders.sort((a, b) => a.daytimeday!.localeCompare(b.daytimeday!));
 
     });
     
@@ -48,7 +49,7 @@ export class AdminHomeComponent implements OnInit {
     let todayDate = todayFormatted.split("T")[0];
     let todayTime = todayFormatted.split("T")[1].split(".")[0];
 
-    if(order.dayTimeDay?.split("T")[0]! <= todayDate && order.dayTimeStart! < todayTime){
+    if(order.daytimeday?.split("T")[0]! <= todayDate && order.daytimestart! < todayTime){
       return false;
     }
 
@@ -65,7 +66,7 @@ export class AdminHomeComponent implements OnInit {
     if (!op)
       return;
 
-    this.ordersService.cancelOrder(order.orderId!).pipe(catchError(ErrorHandler.handleError)).subscribe((result) => {
+    this.ordersService.cancelOrder(order.orderid!).pipe(catchError(ErrorHandler.handleError)).subscribe((result) => {
 
       if (result instanceof Map) {
         return;

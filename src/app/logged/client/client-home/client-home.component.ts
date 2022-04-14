@@ -22,7 +22,7 @@ export class ClientHomeComponent implements OnInit {
         return;
       }
 
-      this.services = <ServicesModel[]>value[0];
+      this.services = <ServicesModel[]>value;
     });
   }
 

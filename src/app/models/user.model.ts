@@ -1,12 +1,12 @@
 export interface UserModel{
-    userId?: string;
-    userName?: string;
-    userEmail?: string;
-    userPhone?: string;
-    userPsw?: string | null;
-    newPsw?: string | null;
-    userType?: string;
-    userToken?: {
+    userid?: string;
+    username?: string;
+    useremail?: string;
+    userphone?: string;
+    userpsw?: string | null;
+    newpsw?: string | null;
+    usertype?: string;
+    usertoken?: {
         token: string,
         expires: number
     }

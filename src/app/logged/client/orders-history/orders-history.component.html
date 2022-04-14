@@ -15,10 +15,10 @@
                     <td colspan="5">NENHUM AGENDAMENTO REALIZADO</td>
                 </tr>
                 <tr *ngFor="let orderData of orderBinding">
-                    <td>{{orderData.serviceDescription}}</td>
-                    <td>{{orderData.dayTimeDay}}</td>
-                    <td>{{orderData.dayTimePretty}}</td>
-                    <td>{{orderData.serviceValue}}</td>
+                    <td>{{orderData.servicedescription}}</td>
+                    <td>{{orderData.daytimeday}}</td>
+                    <td>{{orderData.daytimepretty}}</td>
+                    <td>{{orderData.servicevalue}}</td>
                     <td class="action" *ngIf="orderData.canCancelOrder" (click)="cancelOrder(orderData)">CANCELAR</td>
                     <td class="ok" *ngIf="!orderData.canCancelOrder">OK</td>
                 </tr>

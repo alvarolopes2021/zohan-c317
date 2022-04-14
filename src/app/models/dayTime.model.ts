@@ -1,7 +1,7 @@
 export interface DayTimeModel{
-    dayTimeId?: string ;
-    dayTimeDay?: string | null;
-    dayTimeStart?: string | null;
-    dayTimeEnd?: string | null;
-    dayTimePretty?: string | null;
+    daytimeid?: string ;
+    daytimeday?: string | null;
+    daytimestart?: string | null;
+    daytimeend?: string | null;
+    daytimepretty?: string | null;
 }

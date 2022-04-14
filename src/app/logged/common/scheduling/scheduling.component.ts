@@ -81,7 +81,7 @@ export class SchedulingComponent implements OnInit {
     for (let i = 0; i < selectableDivs.length; i++) {
       if (selectableDivs[i].id === scheduleId) {
         selectableDivs[i].className = "selected-div";
-        let index = this.schedules.findIndex((value) => value.dayTimeId === scheduleId);
+        let index = this.schedules.findIndex((value) => value.daytimeid === scheduleId);
         if (index !== null)
           this.selectedSchedule = this.schedules[index];
       }
@@ -106,7 +106,7 @@ export class SchedulingComponent implements OnInit {
     for (let i = 0; i < selectableDivs.length; i++) {
       if (selectableDivs[i].id === serviceid) {
         selectableDivs[i].className = "selected-service";
-        let index = this.services.findIndex((value) => value.serviceId === serviceid);
+        let index = this.services.findIndex((value) => value.serviceid === serviceid);
         if (index !== null)
           this.selectedService = this.services[index];
       }
@@ -143,18 +143,17 @@ export class SchedulingComponent implements OnInit {
         let todayDate = correctDay?.split("T")[0];
         let todayTime = correctDay?.split("T")[1].split(".")[0];
 
-        this.schedules = <DayTimeModel[]>value[0];
+        this.schedules = <DayTimeModel[]>value;
 
         let availableSchedules: DayTimeModel[] = [];
 
         this.schedules.forEach((element) => {
-          if (element.dayTimeDay?.split("T")[0]! > todayDate ||
-            (element.dayTimeDay?.split("T")[0]! == todayDate && element.dayTimeStart! >= todayTime)) {
+          if (element.daytimeday?.split("T")[0]! > todayDate ||
+            (element.daytimeday?.split("T")[0]! == todayDate && element.daytimestart! >= todayTime)) {
 
             availableSchedules.push(element);
           }
         });
-
 
         if (availableSchedules.length <= 0) {
           this.schedules = [];
@@ -163,7 +162,7 @@ export class SchedulingComponent implements OnInit {
         }
 
         this.schedules = availableSchedules;
-        this.schedules.sort((a, b) => a.dayTimeStart!.localeCompare(b.dayTimeEnd!));
+        this.schedules.sort((a, b) => a.daytimestart!.localeCompare(b.daytimeend!));
 
       });
 
@@ -178,8 +177,8 @@ export class SchedulingComponent implements OnInit {
           return;
         }
 
-        this.services = <ServicesModel[]>value[0];
-        this.services = this.services.sort((a, b) => a.serviceDescription!.localeCompare(b.serviceDescription!));
+        this.services = <ServicesModel[]>value;
+        this.services = this.services.sort((a, b) => a.servicedescription!.localeCompare(b.servicedescription!));
       });
 
     }
@@ -208,20 +207,24 @@ export class SchedulingComponent implements OnInit {
 
     let orderModel: OrdersModel = {};
 
-    orderModel.order_clientId = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
-    orderModel.order_idDayTime = this.selectedSchedule.dayTimeId;
-    orderModel.order_serviceId = this.selectedService.serviceId;
+    orderModel.order_clientid = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
+    orderModel.order_iddaytime = this.selectedSchedule.daytimeid;
+    orderModel.order_serviceid = this.selectedService.serviceid;
 
     if (userInfo.get(Constants.Keys.ROLE) == Constants.Roles.ADMIN) {
       if (form.get("userPhone")?.value == null || form.get("userPhone")?.value == "")
         return alert("Insira o número do cliente!")
 
-      orderModel.order_clientCellphone = form.get("userPhone")?.value;
+      orderModel.order_clientcellphone = form.get("userPhone")?.value;
     }
 
     this.ordersService.createOrder(orderModel).pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
       if (value instanceof Map) {
+        this.snackBar.open(`${value.get("ERROR")} ⛔`,
+          "OK",
+          { duration: 5000, panelClass: ['blue-snackbar'] }
+        );
         return;
       }
 
@@ -232,8 +235,8 @@ export class SchedulingComponent implements OnInit {
 
       if (userInfo?.get(Constants.Keys.ROLE) == Constants.Roles.ADMIN) {
         this.router.navigate(['logged/admin']);
-        return ;
-      }        
+        return;
+      }
 
       this.router.navigate(['logged/orders-history']);
 

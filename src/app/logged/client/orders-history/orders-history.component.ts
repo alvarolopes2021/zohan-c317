@@ -35,19 +35,19 @@ export class OrdersHistoryComponent implements OnInit {
         return;
       }
 
-      this.orderBinding = <OrderBindingModel[]>orders[0];
+      this.orderBinding = <OrderBindingModel[]>orders;
 
 
       let i = 0;
       this.orderBinding.forEach((element) => {
-        this.orderBinding[i].dayTimeDay = this.orderBinding[i].dayTimeDay?.split("T")[0];
+        this.orderBinding[i].daytimeday = this.orderBinding[i].daytimeday?.split("T")[0];
         this.orderBinding[i].canCancelOrder = this.canCancelOrder(element);
         i++;
       });
 
       //sort by date and order time
       this.orderBinding.sort((a, b) =>
-        b.dayTimeDay!.localeCompare(a.dayTimeDay!) || b.dayTimePretty!.localeCompare(a.dayTimePretty!)
+        b.daytimeday!.localeCompare(a.daytimeday!) || b.daytimepretty!.localeCompare(a.daytimepretty!)
       );
 
     });
@@ -61,8 +61,8 @@ export class OrdersHistoryComponent implements OnInit {
     let todayTime = todayFormatted.split("T")[1].split(".")[0];
 
     if (
-        order.dayTimeDay?.split("T")[0]! < todayDate ||
-        (order.dayTimeDay?.split("T")[0]! == todayDate && order.dayTimeStart! < todayTime)
+        order.daytimeday?.split("T")[0]! < todayDate ||
+        (order.daytimeday?.split("T")[0]! == todayDate && order.daytimestart! < todayTime)
       ) {
 
       return false;
@@ -81,7 +81,7 @@ export class OrdersHistoryComponent implements OnInit {
     if (!op)
       return;
 
-    this.ordersService.cancelOrder(order.orderId!).pipe(catchError(ErrorHandler.handleError)).subscribe((result) => {
+    this.ordersService.cancelOrder(order.orderid!).pipe(catchError(ErrorHandler.handleError)).subscribe((result) => {
 
       if (result instanceof Map) {
         return;

@@ -49,17 +49,17 @@ export class EditDayTimeComponent implements OnInit {
     if (String(timeToBeInserted).length <= 0)
       return alert('O horário não pode ser vazio');
 
-    if (this.schedules.filter(e => e.dayTimePretty === timeToBeInserted).length > 0)
+    if (this.schedules.filter(e => e.daytimepretty === timeToBeInserted).length > 0)
       return;
 
 
     this.selected.setHours(this.selected.getHours()-3);
     
     let dayTimeModel: DayTimeModel = {};
-    dayTimeModel.dayTimeDay = this.selected.toISOString().split("T")[0];
-    dayTimeModel.dayTimeStart = String(timeToBeInserted).split("-")[0];
-    dayTimeModel.dayTimeEnd = String(timeToBeInserted).split("-")[1];
-    dayTimeModel.dayTimePretty = timeToBeInserted;
+    dayTimeModel.daytimeday = this.selected.toISOString().split("T")[0];
+    dayTimeModel.daytimestart = String(timeToBeInserted).split("-")[0];
+    dayTimeModel.daytimeend = String(timeToBeInserted).split("-")[1];
+    dayTimeModel.daytimepretty = timeToBeInserted;
 
     this.daytimeService.createSchedule([dayTimeModel])?.pipe(catchError(ErrorHandler.handleError)).subscribe((response) => {
 
@@ -69,7 +69,7 @@ export class EditDayTimeComponent implements OnInit {
 
       this.schedules.push(response[0]);
 
-      this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
+      this.schedules.sort((a, b) => a.daytimepretty!.localeCompare(b.daytimepretty!));
 
     });
   }
@@ -87,7 +87,7 @@ export class EditDayTimeComponent implements OnInit {
       const index: number = this.schedules.indexOf(value);
       if (index !== -1) {
         this.schedules.splice(index, 1);
-        this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
+        this.schedules.sort((a, b) => a.daytimepretty!.localeCompare(b.daytimepretty!));
 
         this.daytimeService.deleteDayTime(value)?.pipe(catchError(ErrorHandler.handleError)).subscribe((resp) => {
           if (resp instanceof Map) {
@@ -108,11 +108,11 @@ export class EditDayTimeComponent implements OnInit {
 
   editItemFromList(value: DayTimeModel) {
     let edit = "edit_";
-    let span = document.getElementById(value.dayTimePretty!);
-    let input = document.getElementById(edit + value.dayTimePretty) as HTMLInputElement;
+    let span = document.getElementById(value.daytimepretty!);
+    let input = document.getElementById(edit + value.daytimepretty) as HTMLInputElement;
 
     if (span !== null) {
-      span.innerHTML = `<input type='text' value='${value.dayTimePretty}' id='${edit + value.dayTimePretty}' class='list-input' mask='00:00-00:00' autofocus>`;
+      span.innerHTML = `<input type='text' value='${value.daytimepretty}' id='${edit + value.daytimepretty}' class='list-input' mask='00:00-00:00' autofocus>`;
     }
     if (input !== null) {
 
@@ -124,9 +124,9 @@ export class EditDayTimeComponent implements OnInit {
 
         if (input.value !== null && input.value.length > 0) { // ensures the input is not empty          
 
-          oldSchedule.dayTimeStart = String(input.value).split("-")[0] + ":00";
-          oldSchedule.dayTimeEnd = String(input.value).split("-")[1] + ":00";
-          oldSchedule.dayTimePretty = input.value;
+          oldSchedule.daytimestart = String(input.value).split("-")[0] + ":00";
+          oldSchedule.daytimeend = String(input.value).split("-")[1] + ":00";
+          oldSchedule.daytimepretty = input.value;
 
           let index = this.schedules.indexOf(value); // gets the index of the old value
 
@@ -147,12 +147,12 @@ export class EditDayTimeComponent implements OnInit {
 
           })
 
-          this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
+          this.schedules.sort((a, b) => a.daytimepretty!.localeCompare(b.daytimepretty!));
         }
       }
 
       if (span != null)
-        span.innerHTML = `<span id="${value.dayTimePretty}">${value.dayTimePretty}</span>`;
+        span.innerHTML = `<span id="${value.daytimepretty}">${value.daytimepretty}</span>`;
     }
   }
 
@@ -171,9 +171,9 @@ export class EditDayTimeComponent implements OnInit {
           return;
         }
 
-        this.schedules = <DayTimeModel[]>dayTimeList[0];
+        this.schedules = <DayTimeModel[]>dayTimeList;
 
-        this.schedules = this.schedules.sort((a, b) => a.dayTimePretty!.localeCompare(b.dayTimePretty!));
+        this.schedules = this.schedules.sort((a, b) => a.daytimepretty!.localeCompare(b.daytimepretty!));
 
       })
     }

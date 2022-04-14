@@ -17,10 +17,10 @@
                 </tr>
                 <tr *ngFor="let service of services">
                     <td>
-                        <span [id]="service.serviceId" class="description">{{service.serviceDescription}}</span>
+                        <span [id]="service.serviceid" class="description">{{service.servicedescription}}</span>
                     </td>
                     <td>
-                        <span [id]="service.serviceId" class="value">{{service.serviceValue}}</span>
+                        <span [id]="service.serviceid" class="value">{{service.servicevalue}}</span>
                     </td>
                     <td>
                         <button class="crud-button edit" (click)="editItemInList(service)">

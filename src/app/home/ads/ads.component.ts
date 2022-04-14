@@ -22,7 +22,7 @@ export class AdsComponent implements OnInit {
       if(adsArray.length <= 0)
         return;
 
-      this.ad = ads[0].adDescription;
+      this.ad = ads.addescription;
 
       let adh3 = document.getElementById("ad");
 

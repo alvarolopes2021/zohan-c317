@@ -1,7 +1,7 @@
 export interface EditDayTimeActionModel{
-    dayTimeId?: string;
+    daytimeid?: string;
     date?: string;
     action?: string;
-    oldValue?: string | null;
-    newValue?: string | null;
+    oldvalue?: string | null;
+    newnalue?: string | null;
 }

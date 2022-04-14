@@ -63,8 +63,8 @@ export class LoginComponent implements OnInit {
 
     let user: UserModel = {};
 
-    user.userPhone = formValue.get('userPhone')?.value;
-    user.userPsw = formValue.get('userPsw')?.value;
+    user.userphone = formValue.get('userPhone')?.value;
+    user.userpsw = formValue.get('userPsw')?.value;
 
     this.authService.login(user)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
 
       user = <UserModel>value;
 
-      switch (user.userType) {
+      switch (user.usertype) {
         case Constants.Roles.USER:
           this.router.navigate(['/logged/client']);
           this.authService.setIsLoggedIn = true;
@@ -92,9 +92,9 @@ export class LoginComponent implements OnInit {
       }
 
       // inserts the token in local storage
-      if (user.userToken != null && user.userId != null) {
-        UtilService.setInLocalStorage(Constants.Auth.TOKEN, user.userToken.token);
-        UtilService.setInLocalStorage(Constants.Keys.SESSION_CLIENT_ID, user.userId);
+      if (user.usertoken != null && user.userid != null) {
+        UtilService.setInLocalStorage(Constants.Auth.TOKEN, user.usertoken.token);
+        UtilService.setInLocalStorage(Constants.Keys.SESSION_CLIENT_ID, user.userid);
       }
 
     });

@@ -15,10 +15,10 @@
                         <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
                     </div>
                     <div *ngFor="let schedule of schedules">
-                        <div class="selectable-schedule" [id]="schedule.dayTimeId">
-                            <label [for]="schedule.dayTimeStart">{{schedule.dayTimePretty}}</label>
-                            <input type="radio" [id]="schedule.dayTimeStart" name="schedule" formControlName="schedule"
-                                [value]="schedule.dayTimeStart" (change)="selectDiv(schedule.dayTimeId)">
+                        <div class="selectable-schedule" [id]="schedule.daytimeid">
+                            <label [for]="schedule.daytimestart">{{schedule.daytimepretty}}</label>
+                            <input type="radio" [id]="schedule.daytimestart" name="schedule" formControlName="schedule"
+                                [value]="schedule.daytimestart" (change)="selectDiv(schedule.daytimeid)">
                         </div>
                     </div>
                 </fieldset>
@@ -34,11 +34,11 @@
                         <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
                     </div>
                     <div *ngFor="let service of services">
-                        <div class="selectable-service" [id]="service.serviceId">
-                            <label [for]="service.serviceDescription">{{service.serviceDescription}}</label>
-                            <input type="radio" [id]="service.serviceDescription" name="service"
-                                [value]="service.serviceDescription" formControlName="service"
-                                (change)="selectService(service.serviceId)">
+                        <div class="selectable-service" [id]="service.serviceid">
+                            <label [for]="service.servicedescription">{{service.servicedescription}}</label>
+                            <input type="radio" [id]="service.servicedescription" name="service"
+                                [value]="service.servicedescription" formControlName="service"
+                                (change)="selectService(service.serviceid)">
                         </div>
                     </div>
                 </fieldset>

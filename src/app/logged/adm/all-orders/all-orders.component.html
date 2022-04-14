@@ -16,11 +16,11 @@
                     <td colspan="6">NENHUM AGENDAMENTO REALIZADO</td>
                 </tr>
                 <tr *ngFor="let order of orders">
-                    <td>{{order.userName}}</td>
-                    <td>{{order.serviceDescription}}</td>
-                    <td>{{order.dayTimeDay}}</td>
-                    <td>{{order.dayTimePretty}}</td>
-                    <td>{{order.serviceValue}}</td>
+                    <td>{{order.username}}</td>
+                    <td>{{order.servicedescription}}</td>
+                    <td>{{order.daytimeday}}</td>
+                    <td>{{order.daytimepretty}}</td>
+                    <td>{{order.servicevalue}}</td>
                     <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CANCELAR</td>
                     <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
                 </tr>

@@ -1,5 +1,5 @@
 export interface ServicesModel {
-    serviceId?: string;
-    serviceDescription?: string;
-    serviceValue?: string;
+    serviceid?: string;
+    servicedescription?: string;
+    servicevalue?: string;
 }

@@ -44,7 +44,7 @@ export class ScheduleService {
     if(dayTime == null || dayTime == undefined)
       return;
 
-    let params = new HttpParams().append(Constants.Keys.DAY_TIME, dayTime.dayTimeId!);
+    let params = new HttpParams().append(Constants.Keys.DAY_TIME, dayTime.daytimeid!);
     return this.http.delete(Constants.HttpEndpoints.Schedules.DELETE_DAYTIME, {params: params});
   }
 

@@ -14,7 +14,7 @@ export class AdsService {
 
   createAd(ad: string) : Observable<any> | null{
     let adsModel : AdsModel = {};
-    adsModel.adDescription = ad;
+    adsModel.addescription = ad;
     return this.http.post<any>(Constants.HttpEndpoints.Ads.CREATE_AD, adsModel);
   }
 

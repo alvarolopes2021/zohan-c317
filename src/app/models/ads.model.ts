@@ -1,4 +1,4 @@
 export interface AdsModel{
-    adId?: string;
-    adDescription?: string;
+    adid?: string;
+    addescription?: string;
 }

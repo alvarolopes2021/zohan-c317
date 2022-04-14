@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError } from 'rxjs';
+
 import { AdsService } from 'src/app/services/ads.service';
 import { ErrorHandler } from 'src/app/services/errorHandler';
 
@@ -29,8 +30,8 @@ export class AddAdsComponent implements OnInit {
 
       let textArea = this.form.get("ad");
 
-      if(<string>value[0] != undefined)
-        textArea?.setValue(<string>value[0].adDescription);
+      if(<string>value != undefined)
+        textArea?.setValue(<string>value.addescription);
     })
   }
 

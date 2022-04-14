@@ -23,7 +23,7 @@ export class PricesComponent implements OnInit {
         return;
       }     
 
-      this.services = <ServicesModel[]>value[0];
+      this.services = <ServicesModel[]>value;
     });    
   }
 

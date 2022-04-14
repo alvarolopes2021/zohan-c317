@@ -52,15 +52,15 @@ export class ProfileComponent implements OnInit {
             return;
           }
           this.userModel = <UserModel>user;
-          this.userModel.userId = userId;
+          this.userModel.userid = userId;
 
           let username = this.userInfo?.get(Constants.Keys.USERNAME);
 
           if (username != null && username != undefined)
             this.form.setValue({
               userName: username,
-              userPhone: this.userModel.userPhone,
-              userEmail: this.userModel.userEmail,
+              userPhone: this.userModel.userphone,
+              userEmail: this.userModel.useremail,
               oldPsw: "",
               newPsw: "",
               confirmNewPsw: ""
@@ -92,16 +92,16 @@ export class ProfileComponent implements OnInit {
       else if (String(formValues.get("confirmNewPsw")?.value) !== String(formValues.get("newPsw")?.value))
         return alert("A nova senha e a confirmação não batem!");
 
-      this.userModel.userPsw = String(formValues.get("oldPsw")?.value);
-      this.userModel.newPsw = String(formValues.get("newPsw")?.value);
+      this.userModel.userpsw = String(formValues.get("oldPsw")?.value);
+      this.userModel.newpsw = String(formValues.get("newPsw")?.value);
     }
 
 
-    this.userModel.userName = formValues.get("userName")?.value;
-    this.userModel.userPhone = formValues.get("userPhone")?.value;
-    this.userModel.userEmail = formValues.get("userEmail")?.value;    
-    this.userModel.userPsw = null;
-    this.userModel.newPsw = null;
+    this.userModel.username = formValues.get("userName")?.value;
+    this.userModel.userphone = formValues.get("userPhone")?.value;
+    this.userModel.useremail = formValues.get("userEmail")?.value;    
+    this.userModel.userpsw = null;
+    this.userModel.newpsw = null;
 
     this.userService.updateUserProfile(this.userModel)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 

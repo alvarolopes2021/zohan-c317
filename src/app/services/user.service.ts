@@ -27,9 +27,9 @@ export class UserService {
     if (user == null || user == undefined)
       return;
 
-    if (user.userPsw != null && user.newPsw != null) {
-      user.userPsw = btoa(user.userPsw!);
-      user.newPsw = btoa(user.newPsw!);
+    if (user.userpsw != null && user.newpsw != null) {
+      user.userpsw = btoa(user.userpsw!);
+      user.newpsw = btoa(user.newpsw!);
     }
 
     return this.http.put(Constants.HttpEndpoints.Users.UPDATE_USER_PROFILE, user);
