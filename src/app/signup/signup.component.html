@@ -1,4 +1,4 @@
-<div class="main">
+<div class="signup-main">
 
     <div class="hold-logo">
         <img src="./../../assets/dark_theme_main.jpeg" alt="logo">
@@ -25,7 +25,7 @@
                 <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone"
                     title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false">
             </div>
-            
+
             <div class="input-container">
                 <label for="psw">
                     <fa-icon [icon]="icons.get('faLock')" class="input-icons"></fa-icon>
@@ -41,8 +41,7 @@
                 <input type="password" id="confirmPsw" name="confirmPsw" formControlName="userConfirmPsw"
                     placeholder="Confirmar senha">
             </div>
-            <div class="display-errors" 
-                 *ngIf="errors.size > 0 && errors.has(CONSTANTS.Errors.PASSWORD_EMPTY)">
+            <div class="display-errors" *ngIf="errors.size > 0 && errors.has(CONSTANTS.Errors.PASSWORD_EMPTY)">
                 <p>{{errors.get(CONSTANTS.Errors.PASSWORD_EMPTY)}}</p>
             </div>
 
@@ -53,11 +52,8 @@
             <div>
                 <button class="submit" (click)="signup()" *ngIf="!isSigningUp">ENVIAR</button>
             </div>
-            <div>                
-                <mat-progress-spinner
-                    class="spinner"                 
-                    [mode]="mode"
-                    *ngIf="isSigningUp" >
+            <div>
+                <mat-progress-spinner class="spinner" [mode]="mode" *ngIf="isSigningUp">
                 </mat-progress-spinner>
             </div>
 

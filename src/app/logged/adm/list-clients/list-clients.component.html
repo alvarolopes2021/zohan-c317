@@ -1,20 +1,20 @@
-<div class="main">
+<div class="list-clients-main">
     <div class="hold-clients">
-        
+
         <app-logged-header title="CLIENTES"></app-logged-header>
 
         <table>
             <tr>
                 <th>NOME</th>
                 <th>TELEFONE</th>
-            </tr>      
+            </tr>
             <tr *ngIf="users.length == 0">
                 <td colspan="2">NENHUM CLIENTE CADASTRADO</td>
-            </tr>     
+            </tr>
             <tr *ngFor="let user of users">
                 <td>{{user.username}}</td>
                 <td>{{user.userphone}}</td>
-            </tr> 
+            </tr>
         </table>
     </div>
 </div>

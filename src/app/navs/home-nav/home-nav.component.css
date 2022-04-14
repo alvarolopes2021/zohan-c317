@@ -31,16 +31,18 @@ a{
         padding: 0.5em ;
         display: block;
         text-align: center;
-        background-color: #000;
+        background-color: rgb(29, 27, 27);
     }   
     ul{        
         width: 100%;
         z-index: 5;
+        background-color: rgb(29, 27, 27);
     }
     .display-cellphone-menu-ul{
         cursor: pointer;
         display: block;
     }
+
     .menu-right{
         float: none;
     }

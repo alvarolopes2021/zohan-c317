@@ -20,7 +20,8 @@ import {
   faClockRotateLeft,
   faPeopleArrows,
   faBan,
-  faHandScissors
+  faHandScissors,
+  faBars
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -43,17 +44,18 @@ export class IconServiceService {
     icons.set("faBook", faBook);
     icons.set("faSign", faSignHanging);
     icons.set("faLocation", faLocationPin);
-    icons.set("faUser", faUser);    
+    icons.set("faUser", faUser);
     icons.set("faSignOut", faSignOut);
     icons.set("faUpload", faUpload);
     icons.set("faList", faList);
     icons.set("faDelete", faTrashCan);
     icons.set("faScissors", faScissors);
-    icons.set("faClock", faClock); 
+    icons.set("faClock", faClock);
     icons.set("faEditClock", faClockRotateLeft);
     icons.set("faPeople", faPeopleArrows);
     icons.set("faBan", faBan);
     icons.set("faHandScissors", faHandScissors);
+    icons.set("faHamburger", faBars);
 
     return icons;
   }

@@ -1,16 +1,17 @@
-<div class="main">
+<div class="edit-day-time-main">
     <div class="hold-create-schedule">
 
         <app-logged-header title="EDITAR HORÁRIOS"></app-logged-header>
 
-        <form [formGroup]="form" >
-            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar" (click)="getDayTime()"></mat-calendar>
+        <form [formGroup]="form">
+            <mat-calendar [(selected)]="selected" [minDate]="minDate" class="calendar" (click)="getDayTime()">
+            </mat-calendar>
 
             <fieldset>
                 <legend>Horário a adicionar</legend>
                 <div>
-                    <input type="text" placeholder="13:00-13:45" formControlName="scheduleToInsert" 
-                        mask="00:00-00:00" [dropSpecialCharacters]="false">
+                    <input type="text" placeholder="13:00-13:45" formControlName="scheduleToInsert" mask="00:00-00:00"
+                        [dropSpecialCharacters]="false">
                     <button type="button" (click)="addToList()" class="mid-action-button">ADICIONAR</button>
                 </div>
             </fieldset>
@@ -21,10 +22,10 @@
                     <span>NENHUM HORÁRIO ADICIONADO</span>
                 </div>
                 <div *ngFor="let schedule of schedules">
-                    
+
                     <div class="span" [id]="schedule.daytimepretty">
                         <span>{{schedule.daytimepretty}}</span>
-                    </div>                    
+                    </div>
 
                     <button class="crud-button delete" (click)="deleteFromList(schedule)">
                         <fa-icon [icon]="icons.get('faDelete')"></fa-icon>

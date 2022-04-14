@@ -1,10 +1,12 @@
-<div class="main">
+<div class="login-main">
 
     <div class="hold-logo">
         <img src="./../../assets/dark_theme_main.jpeg" alt="logo">
     </div>
 
     <div class="hold-form">
+
+        <button id="close" (click)="close()"> X </button>
 
         <h1>LOGIN</h1>
 
@@ -30,7 +32,7 @@
                 <p>{{errors.get(CONSTANTS.Errors.ERROR)}}</p>
             </div>
 
-            
+
             <div>
                 <button class="submit" (click)="login()" *ngIf="!isLoggingIn">ENVIAR</button>
             </div>

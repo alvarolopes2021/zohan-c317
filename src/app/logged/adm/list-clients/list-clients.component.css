@@ -1,4 +1,4 @@
-.main{
+.list-clients-main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ td, th{
 }
 
 @media only screen and (max-width: 600px) { 
-    .main{
+    .list-clients-main{
         width: 90%;
     }
 }

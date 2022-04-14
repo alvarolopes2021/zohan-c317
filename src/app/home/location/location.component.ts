@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from 'src/app/utils/util.service';
 
 @Component({
   selector: 'app-location',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private utils: UtilService
+  ) { }
 
   ngOnInit(): void {
+    this.utils.checkIsLoggedIn();
   }
 
 }

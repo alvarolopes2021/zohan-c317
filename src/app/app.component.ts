@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 import { slideInAnimation } from './animations/slideAnimation';
-import { Constants } from 'src/constants';
+import { UtilService } from './utils/util.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router : Router
+    private utils: UtilService
   ) { }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -32,34 +32,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.isLoggedIn.subscribe((value) => this.isLoggedIn = value ); // {2}
-    this.checkIsLoggedIn();
-  }
-
-  async checkIsLoggedIn() {
-    let token = this.authService.getTokenInformation();
-
-    if (token != null && token.size > 0) {
-      this.authService.setIsLoggedIn = true;
-
-      switch (token.get(Constants.Keys.ROLE)){
-        case Constants.Roles.USER:
-          this.router.navigate(['/logged/client']);
-          break;
-        case Constants.Roles.BARBER:
-          this.router.navigate(['/logged/barber']);
-          break;
-        case Constants.Roles.ADMIN:
-          this.router.navigate(['/logged/admin']);
-          break;
-        default:
-          this.router.navigate(['/login']);
-          break;
-      }
-
-      return;
-    }
-    
+    this.authService.isLoggedIn.subscribe((value) => this.isLoggedIn = value); // {2}
+    this.utils.checkIsLoggedIn();
   }
 
 }

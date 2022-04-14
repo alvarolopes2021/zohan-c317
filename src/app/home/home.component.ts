@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UtilService } from '../utils/util.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private utils: UtilService
+  ) { }
 
   ngOnInit(): void {
+    this.utils.checkIsLoggedIn();
   }
 
 }

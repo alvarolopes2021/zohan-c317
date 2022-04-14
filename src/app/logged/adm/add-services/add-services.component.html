@@ -1,4 +1,4 @@
-<div class="main">
+<div class="add-service-main">
     <div class="hold-add-ads">
 
         <app-logged-header title="SERVIÇOS"></app-logged-header>
@@ -28,7 +28,7 @@
                         </button>
                     </td>
                     <td>
-                        <button class="crud-button delete" (click)="deleteFromList(service)" >
+                        <button class="crud-button delete" (click)="deleteFromList(service)">
                             <fa-icon [icon]="icons.get('faDelete')"></fa-icon>
                         </button>
                     </td>
@@ -37,7 +37,7 @@
             </table>
 
             <button class="add-button" (click)="addToList()">+</button>
-            
+
         </form>
     </div>
 </div>

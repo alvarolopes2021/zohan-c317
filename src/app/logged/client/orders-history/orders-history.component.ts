@@ -6,6 +6,7 @@ import { OrderBindingModel } from 'src/app/models/orders.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorHandler } from 'src/app/services/errorHandler';
 import { OrdersService } from 'src/app/services/orders.service';
+import { UtilService } from 'src/app/utils/util.service';
 import { Constants } from 'src/constants';
 
 @Component({
@@ -20,10 +21,12 @@ export class OrdersHistoryComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private authService: AuthService,
+    private utils: UtilService,
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
+
     let userInfo: Map<string, string> | null = this.authService.getTokenInformation();
 
     if (userInfo == null)
@@ -61,9 +64,9 @@ export class OrdersHistoryComponent implements OnInit {
     let todayTime = todayFormatted.split("T")[1].split(".")[0];
 
     if (
-        order.daytimeday?.split("T")[0]! < todayDate ||
-        (order.daytimeday?.split("T")[0]! == todayDate && order.daytimestart! < todayTime)
-      ) {
+      order.daytimeday?.split("T")[0]! < todayDate ||
+      (order.daytimeday?.split("T")[0]! == todayDate && order.daytimestart! < todayTime)
+    ) {
 
       return false;
     }

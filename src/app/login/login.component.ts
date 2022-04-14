@@ -40,11 +40,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private iconService: IconServiceService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private utils: UtilService
   ) { }
 
 
   ngOnInit(): void {
+    this.utils.checkIsLoggedIn();
     this.icons = this.iconService.getIcons();
   }
 
@@ -99,6 +101,13 @@ export class LoginComponent implements OnInit {
 
     });
 
+  }
+
+  async close() {
+    let mainDiv = document.getElementsByClassName("main")[0];
+    if (mainDiv != null && mainDiv != undefined) {
+      mainDiv.remove();
+    }
   }
 
 }

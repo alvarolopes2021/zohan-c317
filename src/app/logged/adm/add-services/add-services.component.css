@@ -1,4 +1,4 @@
-.main{
+.add-service-main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,7 +91,7 @@ input[type="text"]{
 
 
 @media only screen and (max-width: 600px) { 
-    .main{
+    .add-service-main{
         width: 90%;
     }
     td, th{

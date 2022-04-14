@@ -10,6 +10,7 @@ import { UserModel } from '../models/user.model';
 import { catchError } from 'rxjs';
 import { ErrorHandler } from '../services/errorHandler';
 import { Router } from '@angular/router';
+import { UtilService } from '../utils/util.service';
 
 @Component({
   selector: 'app-signup',
@@ -41,11 +42,15 @@ export class SignupComponent implements OnInit {
   constructor(
     private iconService: IconServiceService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private utils: UtilService
   ) { }
 
 
   ngOnInit(): void {
+
+    this.utils.checkIsLoggedIn();
+
     this.icons = this.iconService.getIcons();
   }
 
