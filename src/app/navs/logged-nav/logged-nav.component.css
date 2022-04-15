@@ -60,7 +60,8 @@ a{
         display: block;
     }
     .expand-menu{
-        position: absolute;
+        position: fixed;
+        float: left;
         width: 40%;
         z-index: 5;
     }

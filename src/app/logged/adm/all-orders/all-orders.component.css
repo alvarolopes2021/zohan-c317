@@ -27,6 +27,7 @@ tr:nth-child(even){
 td, th{
     padding: 1em;
     text-align: center;
+    word-break: break-all;
 }
 
 
@@ -43,12 +44,23 @@ td, th{
     color: #43b949;
 }
 
-@media only screen and (max-width: 600px) { 
+@media only screen and (min-width: 400px) and (max-width: 600px) { 
     .all-orders-main{
         width: 90%;
     }
     td, th{
         padding: 0.2em;
+        text-align: center;
+        font-size: 0.9rem;
+    } 
+}
+
+@media only screen and (max-width: 400px) { 
+    .all-orders-main{
+        width: 90%;
+    }
+    td, th{
+        padding: 0;
         text-align: center;
         font-size: 0.9rem;
     } 

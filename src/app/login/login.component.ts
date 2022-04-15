@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
 
       switch (user.usertype) {
         case Constants.Roles.USER:
-          this.router.navigate(['/logged/client']);
+          this.router.navigate(['/logged/scheduling']);
           this.authService.setIsLoggedIn = true;
           break;
         case Constants.Roles.BARBER:

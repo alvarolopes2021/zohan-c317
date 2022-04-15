@@ -18,7 +18,7 @@ h1{
     text-align: center;
 }
 
-.profile-box{    
+.profile-box{   
     position: relative;
     width: 70%;
     margin: auto auto 5% auto;
@@ -67,8 +67,10 @@ h1{
     text-align: left;
 }
 
-
-input[type="text"]{
+input[type="tel"],
+input[type="email"],
+input[type="text"],
+input[type="password"]{
     display: block;    
     margin-top: 1em;
     margin-bottom: 1em;    
@@ -99,7 +101,7 @@ input[type="checkbox"]{
     background-color: #aaa;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 800px) {      
+@media only screen and (min-width: 600px) and (max-width: 800px) {    
     .left-side{            
         width: 50%;
     }
@@ -115,7 +117,7 @@ input[type="checkbox"]{
 
 
 @media only screen and (min-width: 400px) and (max-width: 600px) { 
-    .main{
+    .main-profile{
         width: 90%;
     }
     .profile-box{ 
@@ -142,7 +144,13 @@ input[type="checkbox"]{
     }
 }
 
-@media only screen and (max-width: 400px) {      
+@media only screen and (max-width: 400px) {  
+    .main-profile{
+        width: 90%;
+    }
+    .profile-box{
+        width: 80%;
+    }    
     .left-side{            
         width: 50%;
     }
@@ -151,5 +159,9 @@ input[type="checkbox"]{
     }
     .hold-profile-image{                  
         width: 80%;
+    }
+    .final-action-button{
+        width: 50%;
+        padding: 3%;
     }
 }

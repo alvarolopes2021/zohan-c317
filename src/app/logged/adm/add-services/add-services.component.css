@@ -97,10 +97,14 @@ input[type="text"]{
     td, th{
         padding: 0.2em;
         text-align: center;
-        font-size: 0.9rem;
+        font-size: 1rem;
+    }
+    td{        
+        word-break: break-all;
     }
     input[type="text"]{        
-        width: 55%;
+        width: 95%;
+        padding: 1%;
     }
     .mid-action-button{
         margin: 0;

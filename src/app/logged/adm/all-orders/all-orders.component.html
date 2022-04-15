@@ -21,7 +21,9 @@
                     <td>{{order.daytimepretty}}</td>
                     <td>{{order.daytimeday}}</td>                    
                     <td>{{order.servicevalue}}</td>
-                    <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CANCELAR</td>
+                    <td class="action" *ngIf="order.canCancelOrder" 
+                        (click)="cancelOrder(order)">CAN<wbr>CE<wbr>LAR
+                    </td>
                     <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
                 </tr>
             </table>

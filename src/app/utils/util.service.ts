@@ -38,7 +38,7 @@ export class UtilService {
 
             switch (token.get(Constants.Keys.ROLE)) {
                 case Constants.Roles.USER:
-                    this.router.navigate(['/logged/client']);
+                    this.router.navigate(['/logged/scheduling']);
                     break;
                 case Constants.Roles.BARBER:
                     this.router.navigate(['/logged/barber']);
