@@ -7,8 +7,8 @@
                 <tr>
                     <td>CLIENTE</td>
                     <td>SERVIÇO</td>
-                    <td>DIA</td>
                     <td>HORÁRIO</td>
+                    <td>DIA</td>                    
                     <td>VALOR</td>
                     <td>AÇÃO</td>
                 </tr>
@@ -18,8 +18,8 @@
                 <tr *ngFor="let order of orders">
                     <td>{{order.username}}</td>
                     <td>{{order.servicedescription}}</td>
-                    <td>{{order.daytimeday}}</td>
                     <td>{{order.daytimepretty}}</td>
+                    <td>{{order.daytimeday}}</td>                    
                     <td>{{order.servicevalue}}</td>
                     <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CANCELAR</td>
                     <td class="ok" *ngIf="!order.canCancelOrder">OK</td>

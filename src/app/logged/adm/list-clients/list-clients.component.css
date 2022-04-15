@@ -1,4 +1,4 @@
-.list-clients-main{
+.list-clients-main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,30 +9,39 @@
     color: #eee;
     overflow: auto;
 }
-.hold-clients{
+
+.hold-clients {
     width: 100%;
 }
-h1{
-    margin: 1.2em;    
+
+h1 {
+    margin: 1.2em;
     text-align: center;
 }
 
-table{
+table {
     width: 100%;
     border-collapse: collapse;
 }
 
-tr:nth-child(even){
+tr:nth-child(even) {
     background-color: #eee;
     color: #000;
 }
-td, th{
+
+td,
+th {
     padding: 1em;
     text-align: center;
 }
 
-@media only screen and (max-width: 600px) { 
-    .list-clients-main{
+@media only screen and (max-width: 600px) {
+    .list-clients-main {
         width: 90%;
+    }
+
+    td,
+    th {
+        font-size: 0.9rem;
     }
 }

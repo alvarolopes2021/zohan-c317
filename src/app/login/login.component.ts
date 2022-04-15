@@ -94,9 +94,10 @@ export class LoginComponent implements OnInit {
       }
 
       // inserts the token in local storage
-      if (user.usertoken != null && user.userid != null) {
+      if (user.usertoken != null && user.userid != null && user.username != null) {
         UtilService.setInLocalStorage(Constants.Auth.TOKEN, user.usertoken.token);
         UtilService.setInLocalStorage(Constants.Keys.SESSION_CLIENT_ID, user.userid);
+        UtilService.setInLocalStorage(Constants.Keys.USERNAME, user.username);
       }
 
     });
@@ -104,7 +105,7 @@ export class LoginComponent implements OnInit {
   }
 
   async close() {
-    let mainDiv = document.getElementsByClassName("main")[0];
+    let mainDiv = document.getElementsByClassName("login-main")[0];
     if (mainDiv != null && mainDiv != undefined) {
       mainDiv.remove();
     }

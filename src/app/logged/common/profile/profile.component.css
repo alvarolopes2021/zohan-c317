@@ -1,4 +1,4 @@
-.main{
+.main-profile{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +8,9 @@
     min-height: 100%;
     color: #eee;
     overflow: auto;
+}
+.hold-profile{
+    width: 100%;
 }
 
 h1{
@@ -65,8 +68,7 @@ h1{
 }
 
 
-input[type="text"],
-input[type="password"]{
+input[type="text"]{
     display: block;    
     margin-top: 1em;
     margin-bottom: 1em;    
@@ -97,12 +99,27 @@ input[type="checkbox"]{
     background-color: #aaa;
 }
 
-@media only screen and (max-width: 600px) { 
+@media only screen and (min-width: 600px) and (max-width: 800px) {      
+    .left-side{            
+        width: 50%;
+    }
+    .right-side{
+        width: 50%;
+    }    
+    .hold-profile-image{                  
+        width: 70%;
+        height: 55%;
+        margin-top: 2rem;
+    }
+}
+
+
+@media only screen and (min-width: 400px) and (max-width: 600px) { 
     .main{
         width: 90%;
     }
-    .profile-box{                  
-        margin: auto auto 5% auto;
+    .profile-box{ 
+        border: 1px solid #000;                 
         width: 80%;
     }    
     .left-side{            
@@ -122,5 +139,17 @@ input[type="checkbox"]{
     .final-action-button{
         width: 50%;
         padding: 3%;
+    }
+}
+
+@media only screen and (max-width: 400px) {      
+    .left-side{            
+        width: 50%;
+    }
+    .right-side{
+        width: 50%;
+    }
+    .hold-profile-image{                  
+        width: 80%;
     }
 }

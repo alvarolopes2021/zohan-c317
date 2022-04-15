@@ -6,6 +6,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorHandler } from 'src/app/services/errorHandler';
 import { UserService } from 'src/app/services/user.service';
+import { UtilService } from 'src/app/utils/util.service';
 import { Constants } from 'src/constants';
 
 @Component({
@@ -54,7 +55,7 @@ export class ProfileComponent implements OnInit {
           this.userModel = <UserModel>user;
           this.userModel.userid = userId;
 
-          let username = this.userInfo?.get(Constants.Keys.USERNAME);
+          let username = UtilService.getFromLocalStorage(Constants.Keys.USERNAME);
 
           if (username != null && username != undefined)
             this.form.setValue({
@@ -79,6 +80,9 @@ export class ProfileComponent implements OnInit {
 
     if (formValues.get("userPhone")?.invalid)
       return alert("Telefone não pode ser vazio!");
+         
+    this.userModel.userpsw = null;
+    this.userModel.newpsw = null;
 
     if (this.willChangePassword) {
       if (String(formValues.get("oldPsw")?.value).length <= 0)
@@ -99,9 +103,7 @@ export class ProfileComponent implements OnInit {
 
     this.userModel.username = formValues.get("userName")?.value;
     this.userModel.userphone = formValues.get("userPhone")?.value;
-    this.userModel.useremail = formValues.get("userEmail")?.value;    
-    this.userModel.userpsw = null;
-    this.userModel.newpsw = null;
+    this.userModel.useremail = formValues.get("userEmail")?.value; 
 
     this.userService.updateUserProfile(this.userModel)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
@@ -113,10 +115,15 @@ export class ProfileComponent implements OnInit {
         return;
       }
 
+      UtilService.setInLocalStorage(Constants.Keys.USERNAME, this.userModel.username!);
+
       this.snackBar.open("Perfil atualizado ✅",
         "OK",
         { duration: 5000, panelClass: ['blue-snackbar'] }
       );
+
+      location.reload();
+
     })
 
   }

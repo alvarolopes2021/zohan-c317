@@ -97,6 +97,7 @@ input[type="text"]{
     td, th{
         padding: 0.2em;
         text-align: center;
+        font-size: 0.9rem;
     }
     input[type="text"]{        
         width: 55%;

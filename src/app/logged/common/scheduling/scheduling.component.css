@@ -1,4 +1,4 @@
-.main {
+.main-scheduling {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,6 @@
 
 .hold-scheduling {
     width: 100%;
-    overflow: auto;
 }
 
 .calendar {
@@ -44,8 +43,7 @@ input[type="radio"] {
     display: none;
 }
 
-input[type="tel"],
-input[type="text"] {
+.hold-scheduling input[type="tel"]{    
     margin: 3%;
     padding: 2%;
     width: 60%;
@@ -101,7 +99,7 @@ label {
 }
 
 @media only screen and (max-width: 600px) {
-    .main {
+    .main-scheduling {
         width: 90%;
     }
 
