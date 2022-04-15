@@ -13,11 +13,6 @@
     width: 100%;
 }
 
-h1{
-    margin: 1.2em;    
-    text-align: center;
-}
-
 .profile-box{   
     position: relative;
     width: 70%;
@@ -67,10 +62,12 @@ h1{
     text-align: left;
 }
 
+.profile-box 
 input[type="tel"],
 input[type="email"],
 input[type="text"],
 input[type="password"]{
+    position: relative;
     display: block;    
     margin-top: 1em;
     margin-bottom: 1em;    
@@ -84,11 +81,13 @@ input[type="checkbox"]{
     padding: 1.2em;
 }
 .below-image-information{
+    position: relative;
     text-align: left;        
     position: relative;    
 }
 
 .final-action-button{
+    position: relative;
     width: 30%;
     background-color: #eee;
     color: #000;
@@ -102,6 +101,9 @@ input[type="checkbox"]{
 }
 
 @media only screen and (min-width: 600px) and (max-width: 800px) {    
+    .main-profile{
+        width: 90%;
+    }
     .left-side{            
         width: 50%;
     }

@@ -1,6 +1,6 @@
 <div class="main-profile">
     <div class="hold-profile">
-        
+
         <app-logged-header title="PERFIL"></app-logged-header>
 
         <div class="profile-box">
@@ -15,12 +15,12 @@
                             <div class="hold-profile-image">
                                 <img src="../../../../assets/barber.ico" alt="Imagem do perfil">
                             </div>
-                        </div>                        
+                        </div>
 
                         <div class="bottom">
                             <label for="">ALTERAR SENHA</label>
                             <input type="checkbox" (change)="willChangePassword = !willChangePassword">
-                        </div>  
+                        </div>
 
                     </div>
 
@@ -31,27 +31,33 @@
                             <input type="text" name="" id="userName" formControlName="userName">
 
                             <label for="userPhone">TELEFONE</label>
-                            <input type="tel" name="" id="userPhone" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false" formControlName="userPhone">
+                            <input type="tel" name="" id="userPhone" mask="(00) 0 0000-0000"
+                                [dropSpecialCharacters]="false" formControlName="userPhone">
 
                             <label for="userEmail">EMAIL</label>
                             <input type="email" name="" id="userEmail" formControlName="userEmail">
 
                         </div>
-                    </div>                   
+                    </div>
                 </div>
 
                 <div class="below-image-information">
                     <div *ngIf="willChangePassword">
                         <label for="oldPsw">SENHA ANTIGA</label>
-                        <input type="password" name="" id="oldPsw" value="" placeholder="Digite sua senha atual" formControlName="oldPsw">
+                        <input type="password" name="" id="oldPsw" value="" placeholder="Digite sua senha atual"
+                            formControlName="oldPsw">
                         <label for="newPsw">NOVA SENHA</label>
-                        <input type="password" name="" id="newPsw" value="" placeholder="Digite a nova senha" formControlName="newPsw">
+                        <input type="password" name="" id="newPsw" value="" placeholder="Digite a nova senha"
+                            formControlName="newPsw">
                         <label for="confirmNewPsw">CONFIRMAR NOVA SENHA</label>
-                        <input type="password" name="" id="confirmNewPsw" value="" placeholder="Digite novamente a nova senha" formControlName="confirmNewPsw">
+                        <input type="password" name="" id="confirmNewPsw" value=""
+                            placeholder="Digite novamente a nova senha" formControlName="confirmNewPsw">
                     </div>
                 </div>
 
-                <button class="final-action-button" (click)="updateProfile()">ATUALIZAR</button>
+                <div>
+                    <button class="final-action-button" (click)="updateProfile()">ATUALIZAR</button>
+                </div>
 
             </form>
 
