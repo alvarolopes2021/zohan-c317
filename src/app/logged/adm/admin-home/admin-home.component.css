@@ -30,6 +30,7 @@ tr:nth-child(even){
 td, th{
     padding: 1em;
     text-align: center;
+    word-break: break-word;
 }
 .action{
     color: #b94343;

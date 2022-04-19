@@ -47,8 +47,9 @@ td, th{
         width: 90%;
     }
     td, th{
-        padding: 0.2em;
+        padding: 0.1em;
         text-align: center;
         font-size: 0.9rem;
+        word-break: break-word;
     } 
 }

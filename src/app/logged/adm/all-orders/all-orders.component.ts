@@ -39,7 +39,7 @@ export class AllOrdersComponent implements OnInit {
       });
 
       this.orders = this.orders
-        .sort((a, b) => b.daytimeday!.localeCompare(a.daytimeday!));
+        .sort((a, b) => b.daytimeday!.localeCompare(a.daytimeday!) || b.daytimepretty!.localeCompare(a.daytimepretty!));
     });
   }
 

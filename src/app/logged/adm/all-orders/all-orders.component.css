@@ -27,7 +27,7 @@ tr:nth-child(even){
 td, th{
     padding: 1em;
     text-align: center;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 
@@ -60,7 +60,7 @@ td, th{
         width: 90%;
     }
     td, th{
-        padding: 0;
+        padding: 0.1em;
         text-align: center;
         font-size: 0.9rem;
     } 

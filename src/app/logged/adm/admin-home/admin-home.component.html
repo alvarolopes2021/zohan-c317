@@ -18,7 +18,7 @@
                 <td>{{order.username}}</td>
                 <td>{{order.servicedescription}}</td>
                 <td>{{order.daytimepretty}}</td>
-                <td>{{order.daytimeday}}</td>                
+                <td>{{order.daytimeday | date: 'dd/MM/yyyy'}}</td>                
                 <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">
                     CAN<wbr>CE<wbr>LAR
                 </td>
