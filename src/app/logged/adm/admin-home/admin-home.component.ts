@@ -49,7 +49,7 @@ export class AdminHomeComponent implements OnInit {
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
 
-    if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString()) { 
+    if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString('en-GB')) { 
       return false;
     }
     return true;
