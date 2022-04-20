@@ -21,7 +21,7 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordersService.getNextOrders().pipe(catchError(ErrorHandler.handleError)).subscribe((orders) => {
-      
+
       if (orders instanceof Map) {
         return;
       }
@@ -32,24 +32,38 @@ export class AdminHomeComponent implements OnInit {
       this.nextOrders.forEach((element) => {
         this.nextOrders[i].daytimeday = this.nextOrders[i].daytimeday?.split("T")[0];
         this.nextOrders[i].canCancelOrder = this.canCancelOrder(element);
-        i++;
+        i++;        
       });
 
-      this.nextOrders = this.nextOrders.sort((a, b) => a.daytimeday!.localeCompare(b.daytimeday!));
+      this.nextOrders = this.nextOrders.filter(this.checkIfIsNextOrder);
+
+      this.nextOrders = this.nextOrders.sort((a, b) => a.daytimeday!.localeCompare(b.daytimeday!) || a.daytimepretty!.localeCompare(b.daytimepretty!));
 
     });
-    
+
+  }
+
+  checkIfIsNextOrder(element: OrderBindingModel): Boolean {
+    let today = new Date();
+    today.setHours(today.getHours() - 3);
+    let todayFormatted = today.toISOString();
+    let todayDate = todayFormatted.split("T")[0];
+
+    if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString()) { 
+      return false;
+    }
+    return true;
   }
 
 
-  canCancelOrder(order: OrderBindingModel){
+  canCancelOrder(order: OrderBindingModel) {
     let today = new Date();
     today.setHours(today.getHours() - 3);
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
     let todayTime = todayFormatted.split("T")[1].split(".")[0];
 
-    if(order.daytimeday?.split("T")[0]! <= todayDate && order.daytimestart! < todayTime){
+    if (order.daytimeday?.split("T")[0]! <= todayDate && order.daytimestart! < todayTime) {
       return false;
     }
 
