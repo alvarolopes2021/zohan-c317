@@ -34,6 +34,11 @@ img {
     display: none;
 }
 
+
+#home-divulga{
+    display: none;
+}
+
 @keyframes slidedown {
     from {
       margin-top: -100%;
@@ -56,5 +61,13 @@ img {
     }
     img {
         width: 150%;
+    }
+    
+    #home-divulga{
+        display: block;        
+    }
+
+    #home-divulga .hold-icon{
+        display: none;
     }
 }

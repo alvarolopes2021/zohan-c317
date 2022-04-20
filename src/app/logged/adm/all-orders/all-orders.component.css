@@ -9,8 +9,7 @@
     color: #eee;
     overflow: auto;
 }
-
-.hold-order-history{    
+.hold-all-orders{    
     width: 100%;
 }
 
@@ -29,8 +28,6 @@ td, th{
     text-align: center;
     word-break: break-word;
 }
-
-
 .action{
     color: #b94343;
     font-weight: bolder;

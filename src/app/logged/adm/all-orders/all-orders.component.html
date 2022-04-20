@@ -1,33 +1,30 @@
 <div class="all-orders-main">
-    <div>
+    <div class="hold-all-orders">
+
         <app-logged-header title="TODOS OS PEDIDOS"></app-logged-header>
 
-        <div class="hold-all-orders">
-            <table>
-                <tr>
-                    <td>CLIENTE</td>
-                    <td>SERVIÇO</td>
-                    <td>HORÁRIO</td>
-                    <td>DIA</td>                    
-                    <td>VALOR</td>
-                    <td>AÇÃO</td>
-                </tr>
-                <tr *ngIf="orders.length <= 0">
-                    <td colspan="6">NENHUM AGENDAMENTO REALIZADO</td>
-                </tr>
-                <tr *ngFor="let order of orders">
-                    <td>{{order.username}}</td>
-                    <td>{{order.servicedescription}}</td>
-                    <td>{{order.daytimepretty}}</td>
-                    <td>{{order.daytimeday | date: 'dd/MM/yyyy'}}</td>                    
-                    <td>{{order.servicevalue}}</td>
-                    <td class="action" *ngIf="order.canCancelOrder" 
-                        (click)="cancelOrder(order)">CAN<wbr>CE<wbr>LAR
-                    </td>
-                    <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
-                </tr>
-            </table>
-
-        </div>
+        <table>
+            <tr>
+                <td>CLIENTE</td>
+                <td>SERVIÇO</td>
+                <td>HORÁRIO</td>
+                <td>DIA</td>
+                <td>VALOR</td>
+                <td>AÇÃO</td>
+            </tr>
+            <tr *ngIf="orders.length <= 0">
+                <td colspan="6">NENHUM AGENDAMENTO REALIZADO</td>
+            </tr>
+            <tr *ngFor="let order of orders">
+                <td>{{order.username}}</td>
+                <td>{{order.servicedescription}}</td>
+                <td>{{order.daytimepretty}}</td>
+                <td>{{order.daytimeday | date: 'dd/MM/yyyy'}}</td>
+                <td>{{order.servicevalue}}</td>
+                <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">CAN<wbr>CE<wbr>LAR
+                </td>
+                <td class="ok" *ngIf="!order.canCancelOrder">OK</td>
+            </tr>
+        </table>
     </div>
 </div>
