@@ -10,17 +10,22 @@
             <div>
                 <fieldset>
                     <legend>HORÁRIOS DISPONÍVEIS</legend>
-                    <div *ngIf="schedules.length <= 0" class="empty">
-                        <span *ngIf="errors.size <= 0">ESCOLHA UM DIA</span>
-                        <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
-                    </div>
-                    <div *ngFor="let schedule of schedules">
-                        <div class="selectable-schedule" [id]="schedule.daytimeid">
-                            <label [for]="schedule.daytimestart">{{schedule.daytimepretty}}</label>
-                            <input type="radio" [id]="schedule.daytimestart" name="schedule" formControlName="schedule"
-                                [value]="schedule.daytimestart" (change)="selectDiv(schedule.daytimeid)">
-                        </div>
-                    </div>
+
+                    <select name="schedule" id="" formControlName="schedule">
+                        <option value="" disabled selected>HORÁRIOS</option>
+
+                        <option *ngIf="schedules.length <= 0 && errors.size <= 0" disabled selected>ESCOLHA UM DIA
+                        </option>
+
+                        <option *ngIf="errors.size > 0" class="error" disabled selected>
+                            {{errors.get(CONSTANTS.Errors.ERROR)}}</option>
+
+                        <option [value]="schedule.daytimeid" *ngFor="let schedule of schedules">
+                            {{schedule.daytimepretty}}
+                        </option>
+
+                    </select>
+
                 </fieldset>
             </div>
 
@@ -28,19 +33,23 @@
             <div>
                 <fieldset>
                     <legend>SERVIÇOS</legend>
-                    <div *ngIf="services.length <= 0" class="empty">
-                        <span *ngIf="schedules.length <= 0 && errors.size <= 0">ESCOLHA UM DIA</span>
-                        <span *ngIf="errors.size <= 0 && schedules.length > 0">NÃO HÁ SERVIÇOS CADASTRADOS</span>
-                        <span *ngIf="errors.size > 0" class="error">{{errors.get(CONSTANTS.Errors.ERROR)}}</span>
-                    </div>
-                    <div *ngFor="let service of services">
-                        <div class="selectable-service" [id]="service.serviceid">
-                            <label [for]="service.servicedescription">{{service.servicedescription}}</label>
-                            <input type="radio" [id]="service.servicedescription" name="service"
-                                [value]="service.servicedescription" formControlName="service"
-                                (change)="selectService(service.serviceid)">
-                        </div>
-                    </div>
+                    <select name="service" id="" formControlName="service">
+                        <option value="" disabled selected>SERVIÇOS</option>
+
+                        <option *ngIf="schedules.length <= 0 && errors.size <= 0" disabled selected>ESCOLHA UM DIA
+                        </option>
+
+                        <option *ngIf="errors.size <= 0 && services.length <= 0 && schedules.length > 0" disabled
+                            selected>NÃO HÁ SERVIÇOS CADASTRADOS</option>
+
+                        <option *ngIf="errors.size > 0" class="error" disabled selected>
+                            {{errors.get(CONSTANTS.Errors.ERROR)}}</option>
+
+                        <option [value]="service.serviceid" *ngFor="let service of services">
+                            {{service.servicedescription}}
+                        </option>
+
+                    </select>
                 </fieldset>
             </div>
 
@@ -48,7 +57,8 @@
                 <fieldset>
                     <legend>TELEFONE DO USUÁRIO</legend>
                     <div>
-                        <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone" title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false">
+                        <input type="tel" name="phone" id="phone" formControlName="userPhone" placeholder="Telefone"
+                            title="Telefone - (35) 9 9898-9898" mask="(00) 0 0000-0000" [dropSpecialCharacters]="false">
 
                     </div>
                 </fieldset>

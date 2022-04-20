@@ -66,7 +66,9 @@ export class SchedulingComponent implements OnInit {
     this.userInfo = this.authService.getTokenInformation();
   }
 
+
   selectDiv(scheduleId: string | undefined) {
+    /*
     let selectableDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("selectable-schedule");
     let selectedDiv: HTMLCollectionOf<Element> = document.getElementsByClassName("selected-div");
 
@@ -89,10 +91,12 @@ export class SchedulingComponent implements OnInit {
         selectableDivs[i].className = "selectable-schedule";
       }
     }
+    */
   }
 
+
   selectService(serviceid: string | undefined) {
-    let selectableDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("selectable-service");
+    /*let selectableDivs: HTMLCollectionOf<Element> = document.getElementsByClassName("selectable-service");
     let selectedDiv: HTMLCollectionOf<Element> = document.getElementsByClassName("selected-service");
 
     //CLEARS ALL SELECTED SERVICES
@@ -113,7 +117,7 @@ export class SchedulingComponent implements OnInit {
       else {
         selectableDivs[i].className = "selectable-service";
       }
-    }
+    }*/
   }
 
   getData() {
@@ -204,6 +208,18 @@ export class SchedulingComponent implements OnInit {
 
     if (userInfo == null)
       return;
+
+    let index = this.schedules.findIndex((value) => value.daytimeid === form.get("schedule")?.value);
+    if (index == null)
+      return;
+    this.selectedSchedule = this.schedules[index];
+
+
+    let service = this.services.findIndex((value) => value.serviceid === form.get("service")?.value);
+    if (service == null)
+      return;
+    this.selectedService = this.services[service];
+
 
     let orderModel: OrdersModel = {};
 

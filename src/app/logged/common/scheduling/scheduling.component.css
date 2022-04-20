@@ -44,6 +44,16 @@ input[type="radio"] {
     display: none;
 }
 
+select{
+    margin: 3%;
+    padding: 2%;
+    width: 60%;
+}
+option{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
 .hold-scheduling input[type="tel"]{    
     margin: 3%;
     padding: 2%;
