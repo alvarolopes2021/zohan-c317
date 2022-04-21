@@ -48,6 +48,11 @@ export class AdminHomeComponent implements OnInit {
     today.setHours(today.getHours() - 3);
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
+    
+    
+    console.log(new Date().toLocaleTimeString('en-GB'));
+    console.log(todayFormatted);
+    console.log(element);
 
     if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString('en-GB')) { 
       return false;
@@ -61,7 +66,7 @@ export class AdminHomeComponent implements OnInit {
     today.setHours(today.getHours() - 3);
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
-    let todayTime = todayFormatted.split("T")[1].split(".")[0];
+    let todayTime = todayFormatted.split("T")[1].split(".")[0];        
 
     if (order.daytimeday?.split("T")[0]! <= todayDate && order.daytimestart! < todayTime) {
       return false;
