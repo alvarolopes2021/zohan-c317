@@ -1,4 +1,4 @@
-.main{
+.orders-history-main{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,6 @@
     color: #eee;
     overflow: auto;
 }
-
 .hold-order-history{    
     width: 100%;
 }
@@ -43,7 +42,7 @@ td, th{
 }
 
 @media only screen and (max-width: 600px) { 
-    .main{
+    .orders-history-main{
         width: 90%;
     }
     td, th{
