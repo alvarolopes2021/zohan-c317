@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Constants } from 'src/constants';
 import { UserModel } from '../models/user.model';
 
@@ -33,6 +33,10 @@ export class UserService {
     }
 
     return this.http.put(Constants.HttpEndpoints.Users.UPDATE_USER_PROFILE, user);
+  }
+
+  deleteAccount(user: UserModel): Observable<any> | null {
+    return this.http.delete(Constants.HttpEndpoints.Users.DELETE_ACCOUNT, { body: user });
   }
 
 }

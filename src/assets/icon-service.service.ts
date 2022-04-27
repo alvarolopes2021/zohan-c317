@@ -21,7 +21,8 @@ import {
   faPeopleArrows,
   faBan,
   faHandScissors,
-  faBars
+  faBars,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
@@ -56,6 +57,7 @@ export class IconServiceService {
     icons.set("faBan", faBan);
     icons.set("faHandScissors", faHandScissors);
     icons.set("faHamburger", faBars);
+    icons.set("faSearch", faSearch);
 
     return icons;
   }

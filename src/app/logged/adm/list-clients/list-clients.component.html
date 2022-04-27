@@ -3,17 +3,26 @@
 
         <app-logged-header title="CLIENTES"></app-logged-header>
 
+        <div class="text">
+            <label for="text">
+                <fa-icon [icon]="icons.get('faSearch')" class="input-icons"></fa-icon>
+            </label>
+            <input type="text" name="" id="text" placeholder="Nome ou apelido" (keyup)="search()">
+        </div>
+
         <table>
             <tr>
                 <th>NOME</th>
                 <th>TELEFONE</th>
+                <th>DELETAR</th>
             </tr>
             <tr *ngIf="users.length == 0">
-                <td colspan="2">NENHUM CLIENTE CADASTRADO</td>
+                <td colspan="3">NENHUM CLIENTE CADASTRADO</td>
             </tr>
             <tr *ngFor="let user of users">
                 <td>{{user.username}}</td>
                 <td>{{user.userphone}}</td>
+                <td (click)="deleteAccount(user.userid!)" class="delete">DELE<wbr>TAR</td>
             </tr>
         </table>
     </div>

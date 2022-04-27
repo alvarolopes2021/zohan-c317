@@ -32,7 +32,7 @@ export class AdminHomeComponent implements OnInit {
       this.nextOrders.forEach((element) => {
         this.nextOrders[i].daytimeday = this.nextOrders[i].daytimeday?.split("T")[0];
         this.nextOrders[i].canCancelOrder = this.canCancelOrder(element);
-        i++;        
+        i++;
       });
 
       this.nextOrders = this.nextOrders.filter(this.checkIfIsNextOrder);
@@ -48,8 +48,8 @@ export class AdminHomeComponent implements OnInit {
     today.setHours(today.getHours() - 3);
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
-    
-    if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString('en-GB')) { 
+
+    if (element.daytimeday == todayDate && element.daytimestart! < new Date().toLocaleTimeString('en-GB')) {
       return false;
     }
     return true;
@@ -61,7 +61,7 @@ export class AdminHomeComponent implements OnInit {
     today.setHours(today.getHours() - 3);
     let todayFormatted = today.toISOString();
     let todayDate = todayFormatted.split("T")[0];
-    let todayTime = todayFormatted.split("T")[1].split(".")[0];        
+    let todayTime = todayFormatted.split("T")[1].split(".")[0];
 
     if (order.daytimeday?.split("T")[0]! <= todayDate && order.daytimestart! < todayTime) {
       return false;
@@ -75,7 +75,7 @@ export class AdminHomeComponent implements OnInit {
     if (order == null)
       return;
 
-    let op = confirm("Deseja cancelar o agendamento?");
+    let op = confirm("Deseja cancelar o agendamento? ⛔");
 
     if (!op)
       return;

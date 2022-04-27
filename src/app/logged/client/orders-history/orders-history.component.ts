@@ -79,7 +79,7 @@ export class OrdersHistoryComponent implements OnInit {
     if (order == null)
       return;
 
-    let op = confirm("Deseja cancelar o agendamento?");
+    let op = confirm("Deseja cancelar o agendamento? ⛔");
 
     if (!op)
       return;

@@ -29,6 +29,7 @@ export class Constants {
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
             static USER_PROFILE: string = this.IP + "user/user-profile";
             static UPDATE_USER_PROFILE: string = this.IP + "user/update-user-profile";
+            static DELETE_ACCOUNT: string = this.IP + "user/delete-account";
         }
 
         static Ads = class {

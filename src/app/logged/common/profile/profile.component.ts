@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
     if (this.userInfo != null && this.userInfo != undefined) {
       let userId = this.userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
 
-      if (userId != null && userId != undefined)
+      if (userId != null && userId != undefined) {
         this.userService.getUserProfile(userId)?.pipe(catchError(ErrorHandler.handleError)).subscribe((user) => {
 
           if (user instanceof Map) {
@@ -68,6 +68,7 @@ export class ProfileComponent implements OnInit {
             });
 
         });
+      }
     }
   }
 
@@ -80,7 +81,7 @@ export class ProfileComponent implements OnInit {
 
     if (formValues.get("userPhone")?.invalid)
       return alert("Telefone não pode ser vazio!");
-         
+
     this.userModel.userpsw = null;
     this.userModel.newpsw = null;
 
@@ -103,7 +104,7 @@ export class ProfileComponent implements OnInit {
 
     this.userModel.username = formValues.get("userName")?.value;
     this.userModel.userphone = formValues.get("userPhone")?.value;
-    this.userModel.useremail = formValues.get("userEmail")?.value; 
+    this.userModel.useremail = formValues.get("userEmail")?.value;
 
     this.userService.updateUserProfile(this.userModel)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
 
@@ -124,8 +125,29 @@ export class ProfileComponent implements OnInit {
 
       location.reload();
 
-    })
+    });
 
+  }
+
+  deleteAccount() {
+    let op = confirm("Deseja deletar a conta? ⛔");
+
+    if (!op)
+      return;
+
+    this.userService.deleteAccount(this.userModel)?.pipe(catchError(ErrorHandler.handleError)).subscribe((value) => {
+
+      if (value instanceof Map) {
+        return;
+      }
+
+      UtilService.removeFromLocalStorage(Constants.Auth.TOKEN);
+      UtilService.removeFromLocalStorage(Constants.Keys.SESSION_CLIENT_ID);
+      UtilService.removeFromLocalStorage(Constants.Keys.USERNAME);
+
+      location.reload();
+
+    });
   }
 
 }

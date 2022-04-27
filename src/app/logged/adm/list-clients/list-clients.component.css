@@ -35,7 +35,41 @@ th {
     text-align: center;
 }
 
+.delete {
+    color: #b94343;
+    font-weight: bolder;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.input-icons {
+    color: #000;
+    background-color: #fff;
+    display: inline-block;
+    padding: 0%;
+    margin-top: 1%;
+    margin-left: 1%;
+    right: 16%;
+    border-radius: 0.5em;
+    position: absolute;
+}
+
+.input-icons:hover {
+    cursor: pointer;
+}
+
+#text {
+    width: 70%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: none;
+    border-radius: 0.5em;
+    margin: 2% auto 2% auto;
+    display: block;
+}
+
 @media only screen and (max-width: 600px) {
+
     .list-clients-main {
         width: 90%;
     }
@@ -43,5 +77,11 @@ th {
     td,
     th {
         font-size: 0.9rem;
+        padding: 0.8em;
+    }
+
+    #text {
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
     }
 }
