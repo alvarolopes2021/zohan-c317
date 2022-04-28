@@ -52,6 +52,7 @@ th {
     right: 16%;
     border-radius: 0.5em;
     position: absolute;
+    z-index: 3;
 }
 
 .input-icons:hover {

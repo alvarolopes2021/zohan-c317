@@ -1,6 +1,6 @@
 <div class="orders-history-main">
     <div class="hold-order-history">
-        
+
         <app-logged-header title="HISTÓRICO"></app-logged-header>
 
         <table>
@@ -15,11 +15,12 @@
                 <td colspan="5">NENHUM AGENDAMENTO REALIZADO</td>
             </tr>
             <tr *ngFor="let orderData of orderBinding">
-                <td>{{orderData.servicedescription}}</td>
-                <td>{{orderData.daytimeday  | date: 'dd/MM/yyyy'}}</td>
+                <td>{{orderData.order_servicedescription}}</td>
+                <td>{{orderData.daytimeday | date: 'dd/MM/yyyy'}}</td>
                 <td>{{orderData.daytimepretty}}</td>
-                <td>{{orderData.servicevalue}}</td>
-                <td class="action" *ngIf="orderData.canCancelOrder" (click)="cancelOrder(orderData)">CAN<wbr>CE<wbr>LAR</td>
+                <td>{{orderData.order_servicevalue}}</td>
+                <td class="action" *ngIf="orderData.canCancelOrder" (click)="cancelOrder(orderData)">CAN<wbr>CE<wbr>LAR
+                </td>
                 <td class="ok" *ngIf="!orderData.canCancelOrder">OK</td>
             </tr>
         </table>

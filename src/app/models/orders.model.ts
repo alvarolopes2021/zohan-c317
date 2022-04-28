@@ -1,19 +1,22 @@
 export interface OrdersModel {
     orderid?: string;
+    order_userid?: string;
+    order_username?: string;
+    order_userphone?: string;
     order_iddaytime?: string;
-    order_clientid?: string;
-    order_serviceid?: string;
+    order_servicedescription?: string;
+    order_servicevalue?: string;
     order_clientcellphone?: string;
 }
 
 export interface OrderBindingModel {
-    daytimeday?: string;
-    daytimepretty?: string;
-    daytimestart?: string;
     orderid?: string;
-    servicedescription?: string;
-    servicevalue?: string;
-    username?: string;
-    userphone?: string;
+    daytimeday?: string;
+    daytimestart?: string;
+    daytimepretty?: string;
+    order_username?: string;
+    order_userphone?: string;
+    order_servicedescription?: string;
+    order_servicevalue?: string;
     canCancelOrder?: boolean;
 }

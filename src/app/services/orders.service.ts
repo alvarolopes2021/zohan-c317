@@ -11,26 +11,26 @@ export class OrdersService {
 
   constructor(private http: HttpClient) { }
 
-  createOrder(order: OrdersModel){
+  createOrder(order: OrdersModel) {
     return this.http.post(Constants.HttpEndpoints.Orders.CRAETE_ORDER, order);
   }
 
-  getOrdersByUserId(userId: string): Observable<any>{
+  getOrdersByUserId(userId: string): Observable<any> {
     let params = new HttpParams().append(Constants.Keys.SESSION_CLIENT_ID, userId);
-    return this.http.get(Constants.HttpEndpoints.Orders.GET_ORDER_BY_USER_ID, {params: params} );
+    return this.http.get(Constants.HttpEndpoints.Orders.GET_ORDER_BY_USER_ID, { params: params });
   }
 
-  getAllOrders(): Observable<any>{    
+  getAllOrders(): Observable<any> {
     return this.http.get(Constants.HttpEndpoints.Orders.GET_ALL_ORDERS);
   }
 
-  getNextOrders(): Observable<any>{    
+  getNextOrders(): Observable<any> {
     return this.http.get(Constants.HttpEndpoints.Orders.GET_NEXT_ORDERS);
   }
 
-  cancelOrder(orderId: string): Observable<any>{
+  cancelOrder(orderId: string): Observable<any> {
     let params = new HttpParams().append(Constants.Keys.ORDER_ID, [orderId].toString());
-    return this.http.delete(Constants.HttpEndpoints.Orders.CANCEL_ORDER, {params: params});
+    return this.http.delete(Constants.HttpEndpoints.Orders.CANCEL_ORDER, { params: params });
   }
 
 }

@@ -1,4 +1,4 @@
-.add-service-main{
+.add-service-main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,55 +9,61 @@
     color: #eee;
     overflow: auto;
 }
-.hold-add-ads{
+
+.hold-add-ads {
     width: 100%;
     overflow: auto;
 }
 
-h1{
-    margin: 1.2em;    
+h1 {
+    margin: 1.2em;
     text-align: center;
 }
 
 
-table{
+table {
     margin: auto;
     width: 100%;
     border-collapse: collapse;
 }
-tr:nth-child(even){
+
+tr:nth-child(even) {
     background-color: #eee;
     color: #000;
 }
-td, th{
+
+td,
+th {
     padding: 1em;
     text-align: center;
 }
 
-input[type="text"]{
+input[type="text"] {
     padding: 1%;
     width: 60%;
 }
 
-.crud-button{
+.crud-button {
     display: inline-block;
     padding: 3%;
     border: none;
-    color: #fff;    
+    color: #fff;
     cursor: pointer;
 }
-.delete{
+
+.delete-service {
     background-color: #ff0000;
 }
-.edit{
+
+.edit {
     background-color: #294681;
 }
 
-.empty{
+.empty {
     margin: 5%;
 }
 
-.add-button{
+.add-button {
     background-color: #294681;
     color: #eee;
     border: none;
@@ -65,17 +71,18 @@ input[type="text"]{
     width: 100%;
     cursor: pointer;
 }
-.add-button:hover{
+
+.add-button:hover {
     background-color: #283f6b;
-   
+
 }
 
-.hold-button{
+.hold-button {
     margin: 2% auto 2% auto;
     text-align: center;
 }
 
-.final-action-button{
+.final-action-button {
     width: 30%;
     background-color: #eee;
     color: #000;
@@ -84,37 +91,45 @@ input[type="text"]{
     border: none;
     padding: 1%;
 }
-.final-action-button:hover{
+
+.final-action-button:hover {
     background-color: #aaa;
 }
 
 
 
-@media only screen and (max-width: 600px) { 
-    .add-service-main{
+@media only screen and (max-width: 600px) {
+    .add-service-main {
         width: 90%;
     }
-    td, th{
+
+    td,
+    th {
         padding: 0.2em;
         text-align: center;
         font-size: 1rem;
     }
-    td{        
+
+    td {
         word-break: break-all;
     }
-    input[type="text"]{        
+
+    input[type="text"] {
         width: 95%;
         padding: 1%;
     }
-    .mid-action-button{
+
+    .mid-action-button {
         margin: 0;
     }
-    .hold-button{
-        margin-top: 1.5em;        
+
+    .hold-button {
+        margin-top: 1.5em;
     }
-    .final-action-button{
+
+    .final-action-button {
         width: 50%;
         padding: 3%;
     }
-    
+
 }

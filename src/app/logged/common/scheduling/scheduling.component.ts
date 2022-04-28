@@ -223,9 +223,12 @@ export class SchedulingComponent implements OnInit {
 
     let orderModel: OrdersModel = {};
 
-    orderModel.order_clientid = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
+    orderModel.order_userid = userInfo.get(Constants.Keys.SESSION_CLIENT_ID);
+    orderModel.order_username = userInfo.get(Constants.Keys.USERNAME);
+    orderModel.order_userphone = "";
     orderModel.order_iddaytime = this.selectedSchedule.daytimeid;
-    orderModel.order_serviceid = this.selectedService.serviceid;
+    orderModel.order_servicedescription = this.selectedService.servicedescription;
+    orderModel.order_servicevalue = this.selectedService.servicevalue;
 
     if (userInfo.get(Constants.Keys.ROLE) == Constants.Roles.ADMIN) {
       if (form.get("userPhone")?.value == null || form.get("userPhone")?.value == "")

@@ -66,6 +66,13 @@
     text-align: left;
 }
 
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
 .profile-box input[type="tel"],
 input[type="email"],
 input[type="text"],
@@ -102,13 +109,13 @@ input[type="checkbox"] {
 }
 
 .final-action-button:hover {
-    background-color: #aaa;
+    background-color: #bbb;
 }
 
 .btn-delete {
     position: relative;
     width: 30%;
-    background-color: #c00;
+    background-color: #ff0000;
     color: #fff;
     margin: 2% auto auto 2%;
     cursor: pointer;
@@ -117,7 +124,7 @@ input[type="checkbox"] {
 }
 
 .btn-delete:hover {
-    background-color: #a00;
+    background-color: rgb(212, 26, 26);
 }
 
 @media only screen and (min-width: 600px) and (max-width: 800px) {

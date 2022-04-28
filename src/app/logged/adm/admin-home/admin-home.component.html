@@ -8,17 +8,17 @@
                 <th>CLIENTE</th>
                 <th>SERVIÇO</th>
                 <th>HORÁRIO</th>
-                <th>DIA</th>                
+                <th>DIA</th>
                 <th>AÇÕES</th>
             </tr>
             <tr *ngIf="nextOrders.length <= 0">
                 <td colspan="5">SEM PRÓXIMOS AGENDAMENTOS</td>
             </tr>
             <tr *ngFor="let order of nextOrders">
-                <td>{{order.username}}</td>
-                <td>{{order.servicedescription}}</td>
+                <td>{{order.order_username}}</td>
+                <td>{{order.order_servicedescription}}</td>
                 <td>{{order.daytimepretty}}</td>
-                <td>{{order.daytimeday | date: 'dd/MM/yyyy'}}</td>                
+                <td>{{order.daytimeday | date: 'dd/MM/yyyy'}}</td>
                 <td class="action" *ngIf="order.canCancelOrder" (click)="cancelOrder(order)">
                     CAN<wbr>CE<wbr>LAR
                 </td>
