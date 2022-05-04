@@ -4,8 +4,8 @@ export class Constants {
 
         static Login = class {
 
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
 
             static LOGIN: string = this.IP + "auth/login";
 
@@ -14,8 +14,8 @@ export class Constants {
 
         static Schedules = class {
 
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
             static CREATE_SCHEDULE: string = this.IP + "schedule/create-schedule";
             static GET_SCHEDULES: string = this.IP + "schedule/get-schedules";
             static UPDATE_SCHEDULES: string = this.IP + "schedule/update-schedules";
@@ -24,8 +24,8 @@ export class Constants {
         }
 
         static Users = class {
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
             static GET_ALL_USERS: string = this.IP + "user/get-all-users";
             static USER_PROFILE: string = this.IP + "user/user-profile";
             static UPDATE_USER_PROFILE: string = this.IP + "user/update-user-profile";
@@ -33,15 +33,15 @@ export class Constants {
         }
 
         static Ads = class {
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
             static CREATE_AD: string = this.IP + "ads/insert-ad";
             static GET_ADD: string = this.IP + "ads/get-ads";
         }
 
         static Services = class {
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
             static ADD_SERVICES = this.IP + "services/add-services";
             static GET_SERVICES = this.IP + "services/get-services";
             static DELETE_SERVICES = this.IP + "services/delete-services";
@@ -49,8 +49,8 @@ export class Constants {
         }
 
         static Orders = class {
-            /*static IP: string = "https://zohan-backend.herokuapp.com/";*/
-            static IP: string = "http://localhost:3000/";
+            static IP: string = "https://zohan-backend.herokuapp.com/";
+            /*static IP: string = "http://localhost:3000/";*/
             static CRAETE_ORDER = this.IP + "orders/create-order";
             static GET_ORDER_BY_USER_ID = this.IP + "orders/get-orders-by-user-id";
             static GET_ALL_ORDERS = this.IP + "orders/get-all-orders";
